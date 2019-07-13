@@ -1,0 +1,479 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{fullpage}
+\usepackage{titlesec}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[portuguese]{babel}
+
+\linespread{1.03}
+
+\titleformat{\section}{\normalfont\Large}{\thesection}{1em}{}
+
+\title{\textbf{Uma Conjectura de Erd\H{o}s e Hajnal}\\Exame de Qualificação}
+\author{IME USP\\Aluno: Rodrigo Aparecido Enju\\Orientador: Yoshiharu Kohayakawa }
+\date{}
+
+\newtheorem{teorema}{Teorema}[section]
+\newtheorem{lema}{Lema}[teorema]
+\newtheorem{definicao}{Definição}[section]
+\newtheorem{conjectura}{Conjectura}
+\newtheorem{corolario}{Corolário}
+
+\newcommand{\bbp}{\mathbb{P}}
+
+\begin{document}
+\renewcommand{\abstractname}{Resumo}
+
+\maketitle
+\begin{abstract}
+    Este trabalho se inicia com o estudo de alguns resultados parciais. Primeiramente mostrando que todo grafo com número cromático suficientemente grande contém um subgrafo com número cromático grande e livre de triângulos, assim como contém um circuito ímpar grande.
+    
+    Em seguida estudamos a família dos grafos de Kneser, na qual temos que todo grafo com número cromático suficientemente grande contém um subgrafo com número cromático e cintura grandes.
+\end{abstract}
+
+\section{Introdução}
+
+% Uma possível abordagem para o estudo de grafos é procurar um limiar para o número cromático, para o qual todo grafo com número cromático acima de tal limiar contém um subgrafo com alguma propriedade de interesse. Um exemplo conhecido é que todo grafo com número cromático pelo menos $3$ contém um circuito ímpar como subgrafo. De forma semelhante, podemos estudar a relação entre o número cromático de um grafo e a existência de subgrafos com número cromático e cintura grandes.
+
+Uma possível abordagem para o estudo de grafos é procurar propriedades que garantam a existência de subgrafos de interesse. Um exemplo conhecido é que, se um grafo tem a propriedade de precisar de pelo menos $3$ cores para colorir seus vértices de forma que dois vértices adjacentes tenham cores distintas, então o grafo contém um circuito ímpar como subgrafo. O número cromático de um grafo $G$, denotado por $\chi(G)$, é o menor número de cores necessárias para fazer uma tal coloração. A cintura de um grafo $G$, denotada por $g(G)$, é o comprimento de um menor circuito de $G$.
+
+Erd\H{o}s mostrou que para todo par de inteiros positivos $k$ e $g$, existe um grafo $G$ com número cromático pelo menos $k$ e cintura pelo menos $g$ \cite{erdos1959graph}. Dessa forma, podemos estudar propriedades que garantam a existência de grafos com cintura e número cromático grandes como subgrafos de outros grafos.
+
+Em \cite{erdos1969conj}, Erd\H{o}s e Hajnal propõem a seguinte conjectura.
+
+\begin{conjectura}[Erd\H{o}s e Hajnal, 1969]
+Para todo par de inteiros positivos $k$ e $g$, existe um inteiro $f(k,g)$ tal que todo grafo $G$ com $\chi(G) \geq f(k,g)$ contém um subgrafo $H$ com $\chi(H) \geq k$ e $g(H) \geq g$.
+\end{conjectura}
+
+Ou seja, se o número cromático de um grafo é suficientemente grande, ele contém um subgrafo de número cromático e cintura grandes.
+
+A conjectura será o foco do trabalho. Serão apresentados alguns resultados parciais, para valores particulares de $k$ e $g$ para os quais a conjectura é verdadeira, assim como uma família de grafos para a qual a conjectura vale.
+
+\section{Grafos Livres de Triângulos}
+Em \cite{rodl1977chromatic} R\"{o}dl demonstrou o seguinte teorema.
+
+\begin{teorema}\label{rodlthm}
+Para todo inteiro positivo $k$, existe um inteiro $f(k)$ tal que todo grafo $G$ com $\chi(G) \geq f(k)$ contém um subgrafo livre de triângulos $H$ com $\chi(H) \geq k$.
+\end{teorema}
+
+Em termos da conjectura de Erd\H{o}s e Hajnal, o Teorema \ref{rodlthm} mostra que $f(k,4)$ existe para todo $k$.
+
+\begin{proof}{(Teorema \ref{rodlthm})}
+Vamos mostrar que para todo par de inteiros $m,n$, existe um inteiro $\phi(m,n)$ tal que todo grafo $G$ com $\chi(G) \geq \phi(m,n)$ contém $K_m$ como subgrafo ou contém um subgrafo $H$ livre de triângulos e com $\chi(H) \geq n$.
+
+%Ao provar a existência de $\phi(m,n)$, como temos que para todo $k$ existe um grafo livre de triângulos com número cromático pelo menos $k$, então podemos tomar $m$ como o número de vértices de um tal grafo, e $n := k$, assim, todo grafo com número cromático pelo menos $\phi(m,n)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$.
+
+Dado um grafo $G = (V,E)$, seja $<$ uma ordenação dos vértices de $G$. E para cada vértice $v$ de $G$, seja~$L(v,G)$ o grafo dos vizinhos à esquerda de $v$ em $G$, definido da seguinte forma.
+
+\[V(L(v,G)) = \{v' : v' < v, \{v,v'\}\in E(G)\},\]
+
+\[E(L(v,G)) = \{\{v',v''\}: v',v'' \in V(L(v,G)), \{v',v''\} \in E(G).\}\]
+
+Ou seja, $L(v,G)$ é o grafo induzido pelos vizinhos de $v$ que estão à sua esquerda na ordenação $<$.
+
+Provaremos a existência de $\phi(m,n)$ por indução em $m$. Claramente $\phi(2,n) = 2$ para todo $n$, pois todo grafo com número cromático pelo menos $2$ contém uma aresta.
+
+Seja $G = (V,E)$ um grafo com $\chi(G) \geq (p-1)(q-1)+1$, e seja $E_1,E_2$ uma partição de $E$. Então temos que $\chi(V,E_1) \geq p$ ou $\chi(V,E_2) \geq q$, pois caso contrário podemos colorir $G$ com até $(p-1)(q-1)$ cores.
+
+Suponha que $\phi(m-1,n)$ existe. Então consideremos um grafo $G_0$ com \[\chi(G_0) = (n-1)^{\phi(m-1,n)-1}+1 =: \phi(m,n).\]
+
+Se $G_0$ contém $K_m$ como subgrafo, concluímos a prova. Então suponha que $G_0$ não contém $K_m$ como subgrafo. Seja $<$ uma ordenação dos vértices de $G_0$. Note que para todo $v \in V(G_0)$, $L(v,G_0)$ não contém~$K_{m-1}$, pois caso contenha, todo vértice do $K_{m-1}$ é adjacente ao vértice $v$, e logo $G_0$ conteria um $K_m$.
+
+Se $\chi(L(v,G_0)) \geq \phi(m-1,n)$ para algum $v$, então por hipótese de indução, $L(v,G_0)$ contém um subgrafo~$H$ livre de triângulos e com $\chi(H) \geq n$, e logo $G_0$ contém um subgrafo livre de triângulos e com número cromático pelo menos $n$.
+
+Então consideremos o caso $\chi(L(v,G_0)) \leq \phi(m-1,n)-1$ para todo $v\in G_0$. Considere uma $l$-coloração de cada $L(v,G_0)$, $l\leq \phi(m-1,n)-1$. Para cada vértice $v\in G_0$, seja $B_i^v$ o conjunto de vértices de $L(v,G_0)$ de cor $i$, onde $i\leq l$. Então $\cup_{i=1}^l B_i^v$ é a $l$-coloração de $L(v,G_0)$ considerada.
+
+Definimos a seguinte partição de $E(G_0)$.
+
+\[E(G_0) = E_1 \cup \cdots \cup E_{\phi(m-1,n)-1},\]
+\[E_i = \{\{v_j,v\} : v_j \in B_i^v, v\in V(G_0).\}\]
+
+Ou seja, uma aresta $\{v_j,v\}$, com $v_j < v$ está em $E_i$ se na $l$-coloração de $L(v,G_0)$ o vértice $v_j$ recebe a cor $i$.
+
+Se $\chi(V(G_0),E_i) \leq n-1$ para todo $i$, então podemos encontrar uma coloração com até $(n-1)^{\phi(m-1,n)-1}$ cores para $G_0$, contradição, pois $\chi(G_0) = (n-1)^{\phi(m-1,n)-1}+1$, então $\chi(V(G_0),E_i)\geq n$ para algum $i$.
+
+E $(V(G_0),E_i)$ é livre de triângulos, pois caso exista um triângulo $v_1v_2v_3$, $v_1 < v_2 < v_3$ em $(V(G_0),E_i)$, temos que $v_1,v_2 \in L(v_3, G_0)$, mas na coloração de $L(v_3, G_0)$, $v_1$ e $v_2$ receberam a cor $i$, logo $v_1v_2$ não pode ser uma aresta.
+
+Logo, existe um $i$ tal que $(V(G_0),E_i)$ é um subgrafo de $G_0$ livre de triângulos e com número cromático pelo menos $n$.
+
+Tome $m := m(k)$ o menor número de vértices necessários para que $K_m$ contenha um subgrafo livre de triângulos com número cromático $k$. Então todo grafo com número cromático pelo menos $\phi(m, k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$.
+\end{proof}
+
+Até o momento, $g=4$ é o maior valor conhecido para o qual a conjectura foi verificada.
+
+\section{Grafos com Circuitos Ímpares}
+Outra possível abordagem é demonstrar que $f(3,g)$ existe para todo $g$, ou seja, que para todo inteiro positivo $g$, existe um inteiro $f(3,g)$ tal que todo grafo $G$ com $\chi(G)\geq f(3,g)$ contém um circuito ímpar de comprimento pelo menos $g$.
+
+\begin{definicao}
+Seja $G$ um grafo. Denotamos por $L(G)$ o conjunto de comprimentos de circuitos ímpares de $G$.
+\end{definicao}
+
+Usaremos o seguinte resultado de Gyárfás \cite{gyarfas1992graphs}.
+
+\begin{teorema}\label{gyarfasthm}
+Se $G$ é um grafo $2$-conexo com grau mínimo pelo menos $2k+1$, então $|L(G)|=k\geq1$ implica que $G = K_{2k+2}$.
+\end{teorema}
+
+\begin{corolario}\label{gyarfascor}
+Se $G$ é um grafo e $k := |L(G)|$, então $G$ pode ser colorido com até $2k+1$ cores, exceto no caso de $G$ conter um bloco isomorfo a $K_{2k+2}$, neste caso $G$ pode ser colorido com $2k+2$ cores.
+\end{corolario}
+
+Pelo corolário, se um grafo $G$ tem número cromático pelo menos $2g+1$, então $G$ contém pelo menos $g$ comprimentos de circuito ímpar distintos. Logo $G$ contém um circuito ímpar de tamanho pelo menos $2g+1$. Assim, temos que $f(3,g)$ existe para todo $g$.
+
+\begin{proof}{(Corolário \ref{gyarfascor})}
+Seja G um grafo, e seja $k := |L(G)|$. É bem conhecido que o número cromático de um grafo é igual ao maior dentre os números cromáticos de seus blocos, portanto basta mostrar que cada bloco $2$-conexo de $G$ pode ser colorido com até $2k+1$ cores ou é isomorfo a $K_{2k+2}$ (e neste caso, pode ser colorido com $2k+2$ cores).
+
+Seja $H$ um bloco $2$-conexo de G, e seja $k' := |L(H)|$. Claramente $k' \leq k$. Vamos considerar os seguintes casos, Caso $(1)$: $\delta(H) \geq 2k'+1$ e Caso $(2)$: $\delta(H) \leq 2k'$.
+
+No Caso $(1)$, aplicando o Teorema temos que $H$ é isomorfo a $K_{2k'+2}$, e logo pode ser colorido com exatamente $2k'+2\leq 2k+2$ cores, e usando $2k+2$ cores apenas no caso $k' = k$, ou seja, no caso de $H$  isomorfo a $K_{2k+2}$.
+
+No Caso $(2)$, vamos mostrar que $H$ pode ser colorido com até $2k'+1$ cores.
+
+Suponha por contradição que existe um grafo $2$-conexo com $m$ comprimentos de circuito ímpar, grau mínimo no máximo $2m$ e número cromático pelo menos $2m+2$.
+
+Considere $m$ o menor possível valor tal que existe um grafo como descrito acima. Seja $H'$ um tal grafo com $|L(H')| = m$ e menor número de vértices.
+
+Temos que $H'$ não pode conter um $K_{2m+2}$ como subgrafo. Como $\delta(G) \leq 2m$, $H'$ não é isomorfo a~$K_{2m+2}$. E se $H'$ contém $K_{2m+2}$ como subgrafo próprio, como temos que $H'$ é $2$-conexo, existem dois caminhos disjuntos de um vértice de grau no máximo $2m$ até o clique. Com isso, podemos encontrar $m$ comprimentos de circuito ímpar dentro do clique, e um estritamente maior usando os dois caminhos, contradição.
+
+Seja $v$ tal que $d_{H'}(v) \le 2m$. Seja $H''$ o grafo induzido por $V(H') \setminus \{v\}$. Como $v$ tem grau no máximo~$2m$ e~$H'$ precisa de pelo menos $2m+2$ cores, então $H''$ precisa de $2m+2$ cores. Em particular, algum bloco~$2$-conexo $B$ de $H''$ precisa de $2m+2$ cores.
+
+Seja $m' := |L(B)|$. Se $m' = m$ então $B$ pode ser colorido com $2m+1$ cores, pois $B$ é um grafo com~$|L(B)| = m$ e com número de vértices estritamente menor que $H'$. Se $m' < m$ então $B$ pode ser colorido com $2m'+1 < 2m+1$ cores, pois $m$ é o menor valor para o qual existe um contra-exemplo. E se~$m' = 0$, então $B$ é bipartido, e logo pode ser colorido com até $2 < 3 \leq 2m+1$ cores. Portanto, $H'$ admite uma~$(2m+1)$-coloração. Temos uma contradição, logo $H'$ não existe. 
+
+Então todo grafo $H$ como descrito no caso $(2)$ pode ser colorido com $2k'+1$ cores.
+\end{proof}
+
+\section{Grafos de Kneser}
+Mohar e Wu demonstraram em \cite{mohar2015triangle} que a conjectura é verdadeira para os grafos de Kneser.
+
+\begin{definicao}
+Um grafo de Kneser de parâmetros $n$ e $k$, denotado $KG(n,k)$, é um grafo cujos vértices são todos os $k$-subconjuntos de $[n]$, e dois vértices $v$ e $w$ são adjacentes se $v \cap w = \emptyset$.
+\end{definicao}
+
+\begin{definicao}
+Seja $G$ um grafo. O \textit{blow-up} de $G$ de potência $m$, denotado por $G^{(m)}$, é um grafo obtido de~$G$ substituindo cada vértice por um conjunto independente de tamanho $m$ (chamado de \textit{blow-up} do vértice), e para cada aresta $xy$ de $G$, o \textit{blow-up} de $x$ e de $y$ formam um grafo bipartido completo $K_{m,m}$. O grafo bipartido completo obtido a partir de uma aresta é chamado de \textit{blow-up} da aresta.
+\end{definicao}
+
+\begin{teorema}[Mohar e Wu, 2015]\label{moharwuthm}
+Suponha que $G$ é um grafo com $\Delta(G) \leq \Delta$ e $\chi(G) \geq x$. Suponha que $m$ é um inteiro maior que $x(x\Delta)^{2g-4}$. Então existe um subgrafo $H$ de $G^{(m)}$ com cintura maior que $g$ e número cromático maior que $x$.
+\end{teorema}
+
+Para demonstrar o teorema, vamos mostrar que \textit{blow-ups} de grafos com número cromático grande contém subgrafos com número cromático e cintura grandes. E também que grafos de Kneser contém \textit{blow-ups} de grafos de Kneser menores com potência grande como subgrafos.
+
+\begin{lema}\label{lemma1kg}
+Dado um grafo $G$ com $\chi(G) > x$, seja $H$ um subgrafo de $G^{(m)}$. Suponha que para toda aresta $ab$ de $G$, e qualquer subconjuntos $X,Y$ contidos no \textit{blow-up} de $a$ e $b$, respectivamente, com $|X| \geq \frac{m}{x}$ e $|Y| \geq \frac{m}{x}$, existe uma aresta entre $X$ e $Y$ em $H$. Então $\chi(H) > x$.
+\end{lema}
+
+\begin{proof}{(Lema \ref{lemma1kg})}
+Por simplicidade, suponha que $x$ divide $m$. Seja $G$ um grafo com $\chi(G) > x$ e seja $H$ um subgrafo de $G^{(m)}$ como descrito acima. Para cada vértice $a$ de $G$, seja $a_H$ o conjunto de vértices de $H$ contidos no \textit{blow-up} de $a$.
+
+Seja $ab$ uma aresta de $G$. No máximo $m/x-1$ vértices do \textit{blow-up} de $a$ não estão em $a_H$, pois caso contrário temos um conjunto $A$, $|A| = m/x$, contido no \textit{blow-up} de $a$ e sem arestas incidentes em $H$, contradizendo a escolha de $H$. Portanto temos que para cada vértice $a$ de $G$, $|a_H| \geq m-m/x+1$.
+
+Suponha por contradição que $H$ pode ser colorido com até $x$ cores. Como $|a_H|$ tem pelo menos $m-m/x+1$ vértices, e $H$ pode ser colorido com $x$ cores, pelo princípio da casa dos pombos, alguma cor é usada pelo menos $m/x$ vezes em $a_H$. E para cada vértice $a$, seja $c(a)$ uma tal cor.
+
+Considere uma $x$-coloração de $H$. Para cada aresta $ab$ de $G$, seja $A$ o conjunto dos vértices de $a_H$ com cor $c(a)$ e $B$ o conjunto dos vértices de $b_H$ com cor $c(b)$. Como $|A|\geq m/x$ e $|B|\geq m/x$, existe uma aresta entre $A$ e $B$, logo $c(a) \neq c(b)$. Mas nesse caso, a função $c$ define uma $x$-coloração de $G$, pois $c(a) \neq c(b)$ para toda aresta $ab$ de $G$. Contradição, logo $H$ não pode ser colorido com $x$ cores.
+\end{proof}
+
+A demonstração do Teorema \ref{moharwuthm} faz uso do Lema Local de Lovász, definido a seguir.
+
+\begin{teorema}[Lema Local de Lovász]
+Seja $\mathcal{A} = \{A_1, \cdots, A_n\}$ um conjunto finito de eventos em um espaço de probabilidade $\Omega$. Para cada $A\in \mathcal{A}$, seja $\Gamma(A)$ o conjunto dos elementos de $\mathcal{A}\setminus A$ que não são independentes de $A$. Se existe uma função real $y : \mathcal{A} \rightarrow (0,1)$ tal que
+\[\bbp(A)\leq y(A) \prod_{B\in \Gamma(A)}(1-y(B))\ \forall A\in \mathcal{A}\]
+então 
+\[\bbp(\overline{A_1}\ \wedge \cdots \wedge \overline{A_n}) \geq \prod_{A\in\mathcal{A}}(1-y(A)).\]
+Ou seja, a probabilidade de todos os eventos de $\mathcal{A}$ não ocorrerem é positiva.
+\end{teorema}
+
+\begin{proof}{(Teorema \ref{moharwuthm})}
+Seja $s := m/x$, $\lambda := 1/4g$ e $p := s^{\lambda-1}$. Seja $H$ um subgrafo aleatório de $G^{(m)}$, onde cada aresta é escolhida independentemente com probabilidade $p$.
+
+Se $C$ é um circuito em $G^{(m)}$ de comprimento no máximo $g$, seja $A_C$ o evento de todas as arestas de~$C$ estarem em $H$. A probabilidade de $A_C$ é a probabilidade de cada aresta de $C$ ser escolhida, então temos que~$\bbp(A_C) = p^{|C|} = s^{(\lambda-1)|C|}$. Se para todo $C$, vale que $\overline{A_C}$, então a cintura de $H$ é pelo menos $g$.
+
+Seja $B$ um subgrafo do \textit{blow-up} de uma aresta de $G$ isomorfo a $K_{s,s}$. Seja $A_B$ o evento de $H$ não conter nenhuma das arestas de $B$. Temos que $\bbp(A_B) = (1-p)^{s^2} \leq e^{-ps^2} = e^{-s^{1+\lambda}}$. Se para todo $B$, vale que $\overline{A_B}$, então $H$ é um subgrafo como descrito no lema \ref{lemma1kg}.
+
+Aplicando o Lema Local de Lovász, mostraremos que
+
+\[\bbp\left(\left(\bigwedge\limits_{|C|\leq g}\overline{A_C}\right)\wedge\left(\bigwedge\limits_{B\cong K_{s,s}}\overline{A_B}\right)\right) > 0.\]
+
+Ou seja, que existe um subgrafo de $G^{(m)}$ como descrito no lema \ref{lemma1kg} com cintura pelo menos $g$.
+
+Considere um circuito $C$ com $|C| \leq g$. Como $\Delta(G^{(m)}) \leq m\Delta$, então $C$ compartilha arestas com no máximo $|C|(m\Delta)^{j-2} = |C|(sx\Delta)^{j-2}$ circuitos de comprimento $j$ em $G^{(m)}$, assim como compartilha arestas com no máximo $|C|\binom{m}{s}^2$ cópias de $K_{s,s}$.
+
+Considere uma cópia $B$ de $K_{s,s}$. Existem no máximo $s^2(xs\Delta)^{j-2}$ circuitos de comprimento $j$ em $G^{(m)}$ que compartilham arestas com $B$, e existem no máximo $\binom{m}{s}^2$ cópias de $K_{s,s}$ que compartilham arestas com~$B$.
+
+Para cada circuito $C$ com $|C| \leq g$, seja $y_{|C|} := y(A_C) = \bbp(A_C)^{1-\lambda} = s^{-(1-\lambda)^2|C|} < s^{(2\lambda - 1)|C|}$, e seja~$y_0 := y(A_B) = e^{-0.5s^{1+\lambda}} \approx \bbp(A_B)^{0.5}$. Basta mostrar que
+\begin{equation}\label{eq1}
+\bbp(A_C) \leq y_{|C|}\left(\prod_{3\leq j\leq g}(1-y_j)^{|C|(sx\Delta)^{j-2}}\right)(1-y_0)^{|C|\binom{m}{s}^2},
+\end{equation}
+\begin{equation}\label{eq2}
+\bbp(A_B)\leq y_0 \left(\prod_{3\leq j\leq g}(1-y_j)^{s^2(sx\Delta)^{j-2}}\right)(1-y_0)^{\binom{m}{s}^2}.
+\end{equation}
+
+Podemos simplificar as desigualdades da seguinte forma.
+
+Primeiramente, tomamos o logaritmo da desigualdade $(\ref{eq1})$.
+
+\[(\lambda-1)|C|\log(s) \leq \log(y_{|C|}) + \sum_{3\leq j\leq g} |C|(sx\Delta)^{j-2}\log(1-y_j)+|C|\binom{m}{s}^2\log(1-y_0).\]
+
+Como $\log(y_{|C|}) = -(1-\lambda)^2|C|\log(s)$, temos
+
+\[(\lambda-1)\log(s) \leq -(1-\lambda)^2\log(s)+\sum_{3\leq j\leq g} (sx\Delta)^{j-2}\log(1-y_j)+\binom{m}{s}^2\log(1-y_0),\]
+
+%\[(\lambda-1)\log(s)+(1-\lambda)^2\log(s) \leq \sum_{3\leq j\leq g} (sx\Delta)^{j-2}\log(1-y_j)+\binom{m}{s}^2\log(1-y_0),\]
+
+\[(\lambda^2 - \lambda)\log(s) \leq \sum_{3\leq j\leq g} (sx\Delta)^{j-2}\log(1-y_j)+\binom{m}{s}^2\log(1-y_0),\]
+
+Por conveniência, podemos multiplicar a inequação por $-1$, e temos
+
+\[(\lambda - \lambda^2)\log(s) \geq -\sum_{3\leq j\leq g} (sx\Delta)^{j-2}\log(1-y_j)-\binom{m}{s}^2\log(1-y_0).\]
+
+Usando o fato de que $0.9\log(1-z) > -z$ para $z$ pequeno, temos que $-\log(1-z) < z/0.9$ para $z$ pequeno. Então
+
+\[\lambda(1 - \lambda)\log(s) \geq \sum_{3\leq j\leq g} (sx\Delta)^{j-2}\frac{y_j}{0.9}+\binom{m}{s}^2\frac{y_0}{0.9}.\]
+
+Como $y_j = s^{-(1-\lambda)^{2}j}$ e $y_0 = e^{-0.5s^{1+\lambda}}$,
+
+\[0.9\lambda(1 - \lambda)\log(s) \geq \sum_{3\leq j\leq g} (sx\Delta)^{j-2}s^{-(1-\lambda)^2j}+\binom{m}{s}^2e^{-0.5s^{1+\lambda}},\]
+
+e como $s^{-(1-\lambda)^2j} < s^{(2\lambda - 1)j}$, para mostrar que a desigualdade \ref{eq1} vale, basta mostrar
+
+\begin{equation}\label{eq3}
+0.9\lambda(1-\lambda)\log s \geq \sum_{3\leq j\leq g}s^{(2\lambda-1)j}(sx\Delta)^{j-2}+e^{-0.5s^{1+\lambda}}\binom{sx}{s}^2
+\end{equation}
+
+Agora tomamos o logaritmo da desigualdade \ref{eq2}.
+
+\[-s^{1+\lambda} \leq -0.5s^{1+\lambda} + \sum_{3\leq j \leq g} s^2(sx\Delta)^{j-2}\log(1-y_j) + \binom{m}{x}^2\log(1-y_0),\]
+
+\[0.5s^{1+\lambda} \geq -\sum_{3\leq j \leq g} s^2(sx\Delta)^{j-2}\log(1-y_j) - \binom{m}{x}^2\log(1-y_0).\]
+
+Como $-\log(1-z) < z/0.9$ para $z$ pequeno, temos
+
+\[0.5s^{1+\lambda} \geq \sum_{3\leq j \leq g} s^2(sx\Delta)^{j-2}\frac{y_j}{0.9} + \binom{m}{x}^2\frac{y_0}{0.9},\]
+
+e temos $y_j = s^{-(1-\lambda)^2j}$ e $y_0 = e^{-0.5s^{1+\lambda}}$
+
+\[0.45s^{1+\lambda} \geq \sum_{3\leq j \leq g} s^2(sx\Delta)^{j-2} s^{-(1-\lambda)^2j} + \binom{m}{x}^2e^{-0.5s^{1+\lambda}}.\]
+
+Como $s^{-(1-\lambda)^2j} < s^{(2\lambda - 1)j}$, para mostrar que a desigualdade \ref{eq2} vale, basta mostrar
+
+\begin{equation}\label{eq4}
+0.4s^{1+\lambda} \geq \sum_{3\leq j\leq g}s^{(2\lambda-1)j}s^2(sx\Delta)^{j-2}+e^{-0.5s^{1+\lambda}}\binom{sx}{s}^2
+\end{equation}
+
+Então, para provar o teorema, basta mostrar que as desigualdades \ref{eq3} e \ref{eq4} valem.
+
+Temos que 
+
+\begin{equation*}
+\setlength{\jot}{5pt}
+\begin{aligned}
+\sum_{3\leq j\leq g}s^{(2\lambda-1)j}s^2(sx\Delta)^{j-2} & = \sum_{3\leq j\leq g}s^{2\lambda j}(x\Delta)^{j-2} \\
+ & \leq s^{2\lambda g}(x\Delta)^{g-2} \\
+ & < 1.1s^{2\lambda g}(x\Delta)^{g-2} \\
+ & = 1.1s^{0.5}(x\Delta)^{g-2}.
+\end{aligned}
+\end{equation*}
+
+Como $s = m/x > x(x\Delta)^{2g-4}/x = (x\Delta)^{2g-4}$, temos que $s^{0.5} > (x\Delta)^{g-2}$, e logo $1.1s^{0.5}(x\Delta)^{g-2} < 1.1s^{0.5}s^{0.5}$. Portanto, temos que
+
+\begin{equation*}
+\sum_{3\leq j\leq g}s^{(2\lambda-1)j}s^2(sx\Delta)^{j-2} < 1.1s.
+\end{equation*}
+
+Concluímos também que
+
+\begin{equation*}
+\sum_{3\leq j\leq g}s^{(2\lambda-1)j}(sx\Delta)^{j-2} < 1.1s^{-1}.
+\end{equation*}
+
+Como $\binom{sx}{s}^2 < (ex)^{2s}$, temos
+
+\[e^{-0.5s^{1+\lambda}}\binom{sx}{s}^2 < \left(e^{-0.5s^{\lambda}}(ex)^2\right)^s = \left(e^{-0.5s^\lambda + 2 + 2\log(x)}\right)^s\]
+
+Como $s > (x\Delta)^{2g-4}$, temos que $s^\lambda > (x\Delta)^{\frac{2g-4}{4g}}$, e como $g \geq 4$, $(x\Delta)^{\frac{2g-4}{4g}} \geq (x\Delta)^{1/4}$. 
+
+Note que $(x\Delta)^{1/4} > 4(1+\log(x))$ para $x$ suficientemente grande, então \[\left(e^{-0.5s^\lambda + 2 + 2\log(x)}\right)^s < \left(e^{-0.5(4+4\log(x)) + 2 + 2\log(x)}\right)^s = (e^0)^s = 1.\]
+
+Portanto $e^{-0.5s^{1+\lambda}}\binom{sx}{s}^2 < 1$.
+
+Para concluir que as desigualdade \ref{eq3} e \ref{eq4} valem, basta mostrar que
+
+\[0.9\lambda(1-\lambda)\log s \geq 1.1s^{-1} + 1\]
+e
+\[0.4s^{1+\lambda}\geq 1.1s + 1.\]
+
+Como a ordem de $\log s$ é maior que a ordem de $s^{-1}$, e a ordem de $s^{1+\lambda}$ é maior que a ordem de $s$, as desigualdades valem para $s$ suficientemente grande. E temos que $s$ é grande, pois $s > (x\Delta)^{2g-4}$ e $x$ é grande.
+\end{proof}
+
+Grafos de Kneser contém \textit{blow-ups} de grafos de Kneser menores com potência grande \cite{mohar2016dichromatic}.
+
+\begin{teorema}[Mohar e Wu, 2016]\label{moharwukn}
+Sejam $n,k,t$ e $x$ inteiros não-negativos tais que $0 < k < n$ e $x < kt$. O grafo de Kneser KG$(nt, kt-x)$ contém o \textit{blow-up} de KG$(n,k)$ com potência $\binom{k(t-1)}{x}$ como subgrafo. Ademais se $x < t$, KG$(nt, kt-x)$ contém o \textit{blow-up} de KG$(n,k)$ com potência $\binom{kt}{x}$, e se $x = t$, contém o \textit{blow-up} de~KG$(n,k)$ com potência $\binom{kt}{x}-k$.
+\end{teorema}
+
+\begin{proof}{(Teorema \ref{moharwukn})}
+Seja $G = KG(nt, kt-x)$ e $H = KG(n,k)$. Podemos entender os vértices de $G$ como os subconjuntos de tamanho $(kt-x)$ de $[n]\times [t]$, e os vértices de $H$ como os subconjuntos de tamanho $k$ de $[n]$. Dado um vértice $A\in V(G)$, seja $f(A) = \{a\in [n] : (a,b)\in A \text{ para algum }b\in [t]\}$, ou seja,~$f(A)$ é a projeção de $A$ em $[n]$.
+
+Note que se para dois vértices $A,B$ de $G$, temos que $f(A)\cap f(B) = \emptyset$, então $A\cap B = \emptyset$. Logo, se~$|f(A)| = |f(B)| = k$ e $f(A)$ e $f(B)$ são adjacentes em $H$, então $A$ e $B$ são adjacentes em $G$. Para cada vértice $X\in V(H)$, se $f(A) = X$ para algum vértice $A$ de $G$, então $A$ é um subconjunto de $X \times [t]$.
+
+Se $x<t$, como $A \subset X \times [t]$ é um conjunto de tamanho $kt-x$, pelo princípio da casa dos pombos temos que $f(A) = X$. Então existem $\binom{kt}{x}$ vértices de $G$ que são projetados em $X$ por $f$. Temos então que $G$ contém o \textit{blow-up} de $H$ de potência $\binom{kt}{x}$.
+
+Se $x=t$, dentre os possíveis $(kt-x)$-subconjuntos de $X \times [t]$ temos $k$ casos onde $f(A) \neq X$, no caso, os subconjuntos que contém todos os elementos de $X\setminus v \times [t]$ para cada $v\in X$. Portanto, temos que $G$ contém o \textit{blow-up} de $H$ de potência $\binom{kt}{x}-k$.
+
+No caso geral, podemos considerar os $(kt-x)$-subconjuntos de $X\times [t]$ que contém todos os elementos de~$X \times \{1\}$. Nesse caso, claramente $f(A) = X$ e temos $\binom{kt-k}{(kt-x)-k} = \binom{k(t-1)}{k(t-1)-x} = \binom{k(t-1)}{x}$ tais subconjuntos. Portanto, $G$ contém o \textit{blow-up} de $H$ de potência $\binom{k(t-1)}{x}$.
+\end{proof}
+
+\begin{corolario}\label{knesercor}
+A conjectura de Erd\H{o}s e Hajnal é verdadeira para os grafos de Kneser.
+\end{corolario}
+
+\begin{proof}{(Corolário \ref{knesercor})}
+Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, e seja $G = KG(2n,n-2x)$ um grafo de Kneser com número cromático grande. Como $\chi(G) = 4x+2$, então basta que~$x$ seja grande em termos de $k$ e $g$.
+
+Seja $t = x/k$. Pelo teorema \ref{moharwukn}, temos que $G$ contém o \textit{blow-up} de $H := KG(2n/t, (n-x)/t)$ com potência~$m = \binom{(n-x)(t-1)/t}{x}$. Vamos assumir que o resultado das divisões são inteiros. Cada vértice de $H$ tem grau $\binom{(n+x)/t}{(n-x)/t} = \binom{(n+x)/t}{2x/t}$, que é limitado superiormente por
+
+\[\Delta := ((n+x)/t)^{2x/t} = \left(\frac{nk}{x} + k\right)^{2k}.\]
+
+Temos que $G$ contém $H^{(m)}$ como subgrafo. Vamos mostrar que $H^{(m)}$ contém um subgrafo com número cromático pelo menos $k$ e cintura maior que $g$ usando o teorema \ref{moharwuthm}. Como $\chi(H) = 2k+2$, basta mostrar que $m\geq k(k\Delta)^{2g-4}$.
+
+Caso $n > x/(\frac{1}{2} - \frac{1}{2k})$, considere $z$ tal que $\frac{n}{x} = 2 + 2z$. Temos que $z > \frac{1}{k}$, pois
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+2+2z &= n/x \\
+& > \left(\frac{1}{2} - \frac{1}{2k}\right)^{-1}\\
+& = \left(\frac{k-1}{2k}\right)^{-1}\\
+& = \frac{2k}{k-1}.
+\end{aligned}
+\end{equation*}
+
+Logo $1+z > k/(k-1) = 1+1/(k-1)$, e portanto $z > 1/(k-1) > 1/k$.
+
+Se $x > (k+2)^2$, então
+
+% \[\frac{n-x}{x}\times \frac{t-1}{t} = \frac{k(n-x)(t-1)}{x^2}\]
+% \[\frac{(n-x)(kt-k)}{x^2} = \frac{(n-x)(x-k)}{x^2} > \frac{(n-x)(k^2-k)}{x^2}\]
+
+% \[\frac{n-x}{x}\times \frac{t-1}{t} = (\frac{n}{x} - 1)(1 - \frac{1}{t})\]
+% \[=  (\frac{n}{x} - 1)(1 - \frac{k}{x}) = \frac{n}{x} - \frac{nk}{x^2} + \frac{k}{x} - 1\]
+% \[= 2+2z - \frac{nk}{x^2} + \frac{k}{x} - 1 = 1+2z - \frac{nk}{x^2} + \frac{k}{x}\]
+% \[= 1+2z - \frac{k}{x}(\frac{n}{x} - 1)\]
+% Como $x > k^2$, então $k/x < 1/k < z$
+% \[1+2z - \frac{k}{x}(\frac{n}{x} - 1) > 1+2z - z(\frac{n}{x} - 1)\]\
+% E como $n/x > 2k/(k-1) > 2k/k = 2$, então 
+% \[\]
+
+% \[1+z = n/2x\]
+% \[(n-x)/x = n/x - 1 = 1+2z = n/2x + z\]
+
+% \[\frac{n-x}{x}\times \frac{t-1}{t} = \frac{k(n-x)(t-1)}{x^2} > \frac{k(n-x)(k-1)}{x^2} = \frac{k(\frac{n}{2x}+z)(k-1)}{x}\]
+
+\begin{equation}\label{kncase1eq1}
+\frac{n-x}{x}\times \frac{t-1}{t} \geq 1+z
+\end{equation}
+
+e
+
+\begin{equation}\label{kncase1eq2}
+\frac{n}{x}+1 = 3+2z < (1+z)^{x/2}.
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%% Era 10gk^2\log k
+Se $x \geq 14gk^2\log k$, então
+
+\begin{equation}\label{kncase1eq3}
+k^{2g(2k+1)} < (1+z)^{x/2}
+\end{equation}
+
+Para mostrar a desigualdade \ref{kncase1eq1}, temos que
+
+\[\frac{n-x}{x}\times \frac{t-1}{t} = \left(\frac{n}{x} - 1\right)\left(1 - \frac{1}{t}\right) = 1 + 2z - \frac{1+2z}{t}.\]
+
+Então, queremos mostrar que
+
+\[1 + 2z - \frac{1+2z}{t} \geq 1 + z,\]
+
+ou seja, que
+
+\[z \geq \frac{1+2z}{t}.\]
+
+Como $t,z > 0$, então equivalentemente basta mostrar que 
+
+\[t \geq \frac{1+2z}{z}.\]
+
+Como $t = x/k$ e $k > 1/z$, então basta que
+
+\[\frac{x}{k} \geq k + 2.\]
+
+Como $x>(k+2)^2$, então $x/k > k+2$ e logo a desigualdade \ref{kncase1eq1} vale.
+
+Para a desigualdade \ref{kncase1eq2}, como $1/k < z$ e para $k\geq 3$ temos que $3 < (1+1/k)^{\frac{(k+2)^2}{2}-1}$,
+
+%Para a desigualdade \ref{kncase1eq2}, temos que $3+2z < 3(1+z)$, e como $x > (k+2)^2$, temos que $3 < (1+z)^{(k+2)^2/2 - 1} < (1+z)^{x/2 - 1}$ para $k \geq 3$.
+%%%%%%%%%%%%%%%%%%%%% Pra k > 2.6, (1+1/k)^(k^2) > 9
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+3 + 2z & < 3(1+z)\\
+& < \left(1+\frac{1}{k}\right)^{\frac{(k+2)^2}{2}-1}(1+z)\\
+& < (1+z)^{\frac{(k+2)^2}{2}-1}(1+z)\\
+& < (1+z)^{\frac{x}{2}-1}(1+z) \\
+& = (1+z)^{\frac{x}{2}}.
+\end{aligned}
+\end{equation*}
+
+Para a desigualdade \ref{kncase1eq3}, como $e < (1+1/k)^{k+1}$, temos
+
+\begin{equation*}
+\setlength{\jot}{5pt}
+\begin{aligned}
+k^{2g(2k+1)} & = e^{2g(2k+1)\log k}\\
+& < \left(1+\frac{1}{k}\right)^{(k+1)2g(2k+1)\log k}\\
+& < \left(1+\frac{1}{k}\right)^{(2k^2+3k+1)2g\log k}.
+\end{aligned}
+\end{equation*}
+
+Para $k \geq 3$, temos que $2k^2+3k+1<3.5k^2$, e como $\frac{1}{k} < z$, então $k^{2g(2k+1)} < (1+z)^{7gk^2\log k} \leq (1+z)^{x/2}$.
+
+Usando as desigualdades \ref{kncase1eq1}, \ref{kncase1eq2} e \ref{kncase1eq3}, temos
+
+\begin{equation*}
+\setlength{\jot}{5pt}
+\begin{aligned}
+k(k\Delta)^{2g-4} & = k^{2g-3}\left(\frac{nk}{x}+k\right)^{2k(2g-4)} \\
+ & \leq \left(\frac{(n-x)(t-1)/t}{x}\right)^x \\
+ & < \binom{(n-x)(t-1)/t}{x} = m.
+\end{aligned}
+\end{equation*}
+
+% \begin{equation*}
+% \begin{aligned}
+% k(k\Delta)^{2g-4} & = k^{2g-3}\left(\frac{nk}{x}+k\right)^{2k(2g-4)} \\
+%  & = k^{2g-3}k^{2k(2g-4)}\left(\frac{n}{x}+1\right)^{2k(2g-4)} \\
+%  & < k^{2g(2k+1) - 8k - 3}(1+z)^{x/2}\left(\frac{n}{x}+1\right)^{2k(2g-4)-1} \\
+%  & < (1+z)^{x/2}k^{-8k - 3}(1+z)^{x/2}\left(3+2z\right)^{2k(2g-4)-1} \\
+%  & = (1+z)^x\frac{1}{k^{8k + 3}}\left(3+2z\right)^{2k(2g-4)-1} \\
+%  & < \\
+%  & < (1+z)^x \\
+%  & \leq \left(\frac{(n-x)(t-1)/t}{x}\right)^x \\
+%  & < \binom{(n-x)(t-1)/t}{x} = m.
+% \end{aligned}
+% \end{equation*}
+
+Caso $n \leq x/(\frac{1}{2} - \frac{1}{2k})$, então $n-2x \leq n/k$. Logo $KG(2n,n-2x)$ contém $KG(k,1) = K_k$ como subgrafo, pois como cada subconjunto de tamanho $n-2x$ é menor que um subconjunto de tamanho $n/k$, temos pelo menos $k$ subconjuntos disjuntos dois-a-dois. Ademais, se $x$ é grande, $KG(2n,n-2x)$ contém um \textit{blow-up} de~$K_k$ com potência grande.
+
+Portanto, pelo teorema \ref{moharwuthm}, $KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos $k$ e cintura maior que $g$.
+\end{proof}
+
+\section{Próximos Passos}
+% Palestra de Gabor Tardos
+% Talvez tentar aplicar para outras familias de grafos
+
+\bibliographystyle{ieeetr}
+\bibliography{ref}
+
+\end{document}
