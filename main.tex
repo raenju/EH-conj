@@ -8,7 +8,7 @@
 \usepackage{amssymb}
 \usepackage[portuguese]{babel}
 
-\linespread{1.03}
+%\linespread{1.03}
 
 \titleformat{\section}{\normalfont\Large}{\thesection}{1em}{}
 
@@ -24,8 +24,35 @@
 
 \newcommand{\bbp}{\mathbb{P}}
 
+\usepackage{setspace}
+\usepackage{datetime}
+\usepackage{lineno}
+\newcommand*\patchAmsMathEnvironmentForLineno[1]{%
+\expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
+\expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
+\renewenvironment{#1}%
+{\linenomath\csname old#1\endcsname}%
+{\csname oldend#1\endcsname\endlinenomath}}% 
+\newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
+\patchAmsMathEnvironmentForLineno{#1}%
+\patchAmsMathEnvironmentForLineno{#1*}}%
+\AtBeginDocument{%
+\patchBothAmsMathEnvironmentsForLineno{equation}%
+\patchBothAmsMathEnvironmentsForLineno{align}%
+\patchBothAmsMathEnvironmentsForLineno{flalign}%
+\patchBothAmsMathEnvironmentsForLineno{alignat}%
+\patchBothAmsMathEnvironmentsForLineno{gather}%
+\patchBothAmsMathEnvironmentsForLineno{multline}%
+}
+
 \begin{document}
+\linenumbers 
+\shortdate
+\yyyymmdddate
+\settimeformat{ampmtime}
+\date{\today, \currenttime}
 \renewcommand{\abstractname}{Resumo}
+\onehalfspace
 
 \maketitle
 \begin{abstract}
@@ -476,4 +503,13 @@ Portanto, pelo teorema \ref{moharwuthm}, $KG(2n,n-2x)$ contém um subgrafo com n
 \bibliographystyle{ieeetr}
 \bibliography{ref}
 
+\endgroup % because of \onehalfspace
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% eval: (auto-fill-mode t)
+%%% eval: (LaTeX-math-mode t)
+%%% eval: (flyspell-mode t)
+%%% TeX-master: t
+%%% End:
