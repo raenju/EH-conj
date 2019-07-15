@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{fullpage}
+\usepackage{titlesec}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[portuguese]{babel}
+
+\title{Resumo - Exame de Qualificação}
+\author{IME USP\\Aluno: Rodrigo Aparecido Enju\\Orientador: Yoshiharu Kohayakawa }
+\date{July 2019}
+
+\usepackage{setspace}
+\usepackage{datetime}
+\usepackage{lineno}
+\newcommand*\patchAmsMathEnvironmentForLineno[1]{%
+\expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
+\expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
+\renewenvironment{#1}%
+{\linenomath\csname old#1\endcsname}%
+{\csname oldend#1\endcsname\endlinenomath}}% 
+\newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
+\patchAmsMathEnvironmentForLineno{#1}%
+\patchAmsMathEnvironmentForLineno{#1*}}%
+\AtBeginDocument{%
+\patchBothAmsMathEnvironmentsForLineno{equation}%
+\patchBothAmsMathEnvironmentsForLineno{align}%
+\patchBothAmsMathEnvironmentsForLineno{flalign}%
+\patchBothAmsMathEnvironmentsForLineno{alignat}%
+\patchBothAmsMathEnvironmentsForLineno{gather}%
+\patchBothAmsMathEnvironmentsForLineno{multline}%
+}
+
+\begin{document}
+\linenumbers 
+\shortdate
+\yyyymmdddate
+\settimeformat{ampmtime}
+\date{\today, \currenttime}
+\renewcommand{\abstractname}{Resumo}
+\onehalfspace
+
+\maketitle
+
+Erd\H{o}s provou que para todo par de inteiros positivos $k$ e $g$, existe um grafo com número cromático pelo menos $k$ e cintura pelo menos $g$ \cite{erdos1959graph}. Erd\H{o}s e Hajnal conjecturam a existência de um inteiro $f(k,g)$ para todo par de inteiros positivos $k$ e $g$ tal que todo grafo com número cromático pelo menos $f(k,g)$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$ \cite{erdos1969conj}.
+
+O foco do projeto será o estudo da conjectura de Erd\H{o}s e Hajnal. Serão abordados alguns resultados parciais e famílias de grafos para as quais a conjectura é verdadeira.
+
+Dentre os resultados a serem estudados temos a demonstração que a conjectura vale para $g = 4$ e $k$ arbitrário, ou seja, que para todo $k$ existe um inteiro~$f(k,4)$ tal que todo grafo com número cromático pelo menos $f(k,4)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. 
+
+Assim como será demonstrado o caso $k=3$ e $g$ arbitrário, ou seja, para todo $g$ existe um $f(3,g)$ tal que todo grafo com número cromático pelo menos $f(3,g)$ contém um subgrafo com número cromático pelo menos~$3$ e cintura pelo menos $g$, em particular, tal subgrafo é um circuito ímpar de comprimento pelo menos~$g$.
+
+Mohar e Wu demonstraram outro importante resultado, mostrando que a conjectura é verdadeira para a família de grafos de Kneser \cite{mohar2015triangle}.
+
+\bibliographystyle{ieeetr}
+\bibliography{ref}
+
+\endgroup
+\end{document}
