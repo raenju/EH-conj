@@ -190,7 +190,7 @@ Suponha que $G$ é um grafo com $\Delta(G) \leq \Delta$ e $\chi(G) \geq x$. Supo
 Para demonstrar o teorema, vamos mostrar que \textit{blow-ups} de grafos com número cromático grande contém subgrafos com número cromático e cintura grandes. E também que grafos de Kneser contém \textit{blow-ups} de grafos de Kneser menores com potência grande como subgrafos.
 
 \begin{lema}\label{lemma1kg}
-Dado um grafo $G$ com $\chi(G) > x$, seja $H$ um subgrafo de $G^{(m)}$. Suponha que para toda aresta $ab$ de $G$, e qualquer subconjuntos $X,Y$ contidos no \textit{blow-up} de $a$ e $b$, respectivamente, com $|X| \geq \frac{m}{x}$ e $|Y| \geq \frac{m}{x}$, existe uma aresta entre $X$ e $Y$ em $H$. Então $\chi(H) > x$.
+Dado um grafo $G$ com $\chi(G) > x$, seja $H$ um subgrafo de $G^{(m)}$. Suponha que para toda aresta $ab$ de $G$, e qualquer subconjuntos $X,Y$ contidos no \textit{blow-up} de $a$ e $b$, respectivamente, com $|X| \geq \frac{m}{x}$ e~$|Y| \geq \frac{m}{x}$, existe uma aresta entre $X$ e $Y$ em $H$. Então $\chi(H) > x$.
 \end{lema}
 
 \begin{proof}{(Lema \ref{lemma1kg})}
@@ -280,7 +280,7 @@ Como $-\log(1-z) < z/0.9$ para $z$ pequeno, temos
 
 \[0.5s^{1+\lambda} \geq \sum_{3\leq j \leq g} s^2(sx\Delta)^{j-2}\frac{y_j}{0.9} + \binom{m}{x}^2\frac{y_0}{0.9},\]
 
-e temos $y_j = s^{-(1-\lambda)^2j}$ e $y_0 = e^{-0.5s^{1+\lambda}}$
+e temos que $y_j = s^{-(1-\lambda)^2j}$ e $y_0 = e^{-0.5s^{1+\lambda}}$, 
 
 \[0.45s^{1+\lambda} \geq \sum_{3\leq j \leq g} s^2(sx\Delta)^{j-2} s^{-(1-\lambda)^2j} + \binom{m}{x}^2e^{-0.5s^{1+\lambda}}.\]
 
@@ -304,7 +304,7 @@ Temos que
 \end{aligned}
 \end{equation*}
 
-Como $s = m/x > x(x\Delta)^{2g-4}/x = (x\Delta)^{2g-4}$, temos que $s^{0.5} > (x\Delta)^{g-2}$, e logo $1.1s^{0.5}(x\Delta)^{g-2} < 1.1s^{0.5}s^{0.5}$. Portanto, temos que
+Como $s = m/x > x(x\Delta)^{2g-4}/x = (x\Delta)^{2g-4}$, temos que $s^{0.5} > (x\Delta)^{g-2}$, e logo temos \\que $1.1s^{0.5}(x\Delta)^{g-2} < 1.1s^{0.5}s^{0.5}$. Portanto,
 
 \begin{equation*}
 \sum_{3\leq j\leq g}s^{(2\lambda-1)j}s^2(sx\Delta)^{j-2} < 1.1s.
@@ -320,7 +320,7 @@ Como $\binom{sx}{s}^2 < (ex)^{2s}$, temos
 
 \[e^{-0.5s^{1+\lambda}}\binom{sx}{s}^2 < \left(e^{-0.5s^{\lambda}}(ex)^2\right)^s = \left(e^{-0.5s^\lambda + 2 + 2\log(x)}\right)^s\]
 
-Como $s > (x\Delta)^{2g-4}$, temos que $s^\lambda > (x\Delta)^{\frac{2g-4}{4g}}$, e como $g \geq 4$, $(x\Delta)^{\frac{2g-4}{4g}} \geq (x\Delta)^{1/4}$. 
+E $s > (x\Delta)^{2g-4}$, então $s^\lambda > (x\Delta)^{\frac{2g-4}{4g}}$, e como $g \geq 4$, temos que $(x\Delta)^{\frac{2g-4}{4g}} \geq (x\Delta)^{1/4}$. 
 
 Note que $(x\Delta)^{1/4} > 4(1+\log(x))$ para $x$ suficientemente grande, então \[\left(e^{-0.5s^\lambda + 2 + 2\log(x)}\right)^s < \left(e^{-0.5(4+4\log(x)) + 2 + 2\log(x)}\right)^s = (e^0)^s = 1.\]
 
@@ -342,7 +342,7 @@ Sejam $n,k,t$ e $x$ inteiros não-negativos tais que $0 < k < n$ e $x < kt$. O g
 \end{teorema}
 
 \begin{proof}{(Teorema \ref{moharwukn})}
-Seja $G = KG(nt, kt-x)$ e $H = KG(n,k)$. Podemos entender os vértices de $G$ como os subconjuntos de tamanho $(kt-x)$ de $[n]\times [t]$, e os vértices de $H$ como os subconjuntos de tamanho $k$ de $[n]$. Dado um vértice $A\in V(G)$, seja $f(A) = \{a\in [n] : (a,b)\in A \text{ para algum }b\in [t]\}$, ou seja,~$f(A)$ é a projeção de $A$ em $[n]$.
+Seja $G = KG(nt, kt-x)$ e $H = KG(n,k)$. Podemos entender os vértices de $G$ como os subconjuntos de tamanho $(kt-x)$ de $[n]\times [t]$, e os vértices de $H$ como os subconjuntos de tamanho~$k$ de $[n]$. Dado um vértice $A\in V(G)$, seja $f(A) = \{a\in [n] : (a,b)\in A \text{ para algum }b\in [t]\}$, ou seja,~$f(A)$ é a projeção de $A$ em $[n]$.
 
 Note que se para dois vértices $A,B$ de $G$, temos que $f(A)\cap f(B) = \emptyset$, então $A\cap B = \emptyset$. Logo, se~$|f(A)| = |f(B)| = k$ e $f(A)$ e $f(B)$ são adjacentes em $H$, então $A$ e $B$ são adjacentes em $G$. Para cada vértice $X\in V(H)$, se $f(A) = X$ para algum vértice $A$ de $G$, então $A$ é um subconjunto de $X \times [t]$.
 
@@ -431,7 +431,7 @@ Como $t,z > 0$, então equivalentemente basta mostrar que
 
 \[t \geq \frac{1+2z}{z}.\]
 
-Como $t = x/k$ e $k > 1/z$, então basta que
+Temos que $t = x/k$ e $k > 1/z$, então basta que
 
 \[\frac{x}{k} \geq k + 2.\]
 
@@ -453,7 +453,7 @@ Para a desigualdade \ref{kncase1eq2}, como $1/k < z$ e para $k\geq 3$ temos que 
 \end{aligned}
 \end{equation*}
 
-Para a desigualdade \ref{kncase1eq3}, como $e < (1+1/k)^{k+1}$, temos
+Para a desigualdade \ref{kncase1eq3}, como $e < (1+1/k)^{k+1}$,
 
 \begin{equation*}
 \setlength{\jot}{5pt}
@@ -497,8 +497,9 @@ Portanto, pelo teorema \ref{moharwuthm}, $KG(2n,n-2x)$ contém um subgrafo com n
 \end{proof}
 
 \section{Próximos Passos}
-% Palestra de Gabor Tardos
-% Talvez tentar aplicar para outras familias de grafos
+Em uma palestra recente, Gábor Tardos apresentou algumas tentativas de encontrar contra-exemplos para a conjectura. Dentre elas, a família dos \textit{Shift Graphs}, Tardos mostrou que se o número cromático de um \textit{Shift Graph} for pelo menos $k+g$, então ele tem um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$. Outra família de grafos estudada foram os \textit{Burling Graphs}.
+
+Tais temas podem ser abordados na continuação deste projeto, assim como o estudo de outras famílias de grafos para as quais a conjectura ainda está em aberto. Também é relevante complementar os tópicos já estudados, como incluir a prova do teorema \ref{gyarfasthm}, omitida neste texto.
 
 \bibliographystyle{ieeetr}
 \bibliography{ref}
