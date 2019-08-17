@@ -188,7 +188,7 @@ Suponha que $G$ é um grafo com $\Delta(G) \leq \Delta$ e $\chi(G) \geq x$. Supo
 \end{teorema}
 
 Para demonstrar o teorema, vamos mostrar que \textit{blow-ups} de grafos com número cromático grande contém subgrafos com número cromático e cintura grandes. E também que grafos de Kneser contém \textit{blow-ups} de grafos de Kneser menores com potência grande como subgrafos.
-
+\clearpage
 \begin{lema}\label{lemma1kg}
 Dado um grafo $G$ com $\chi(G) > x$, seja $H$ um subgrafo de $G^{(m)}$. Suponha que para toda aresta $ab$ de $G$, e qualquer subconjuntos $X,Y$ contidos no \textit{blow-up} de $a$ e $b$, respectivamente, com $|X| \geq \frac{m}{x}$ e~$|Y| \geq \frac{m}{x}$, existe uma aresta entre $X$ e $Y$ em $H$. Então $\chi(H) > x$.
 \end{lema}
@@ -406,7 +406,7 @@ Se $x > (k+2)^2$, então
 e
 
 \begin{equation}\label{kncase1eq2}
-\frac{n}{x}+1 = 3+2z < (1+z)^{x/2}.
+\left(\frac{n}{x}+1\right)^{2k(2g-4)} = (3+2z)^{2k(2g-4)} < (1+z)^{x/2}.
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%% Era 10gk^2\log k
 Se $x \geq 14gk^2\log k$, então
@@ -435,23 +435,11 @@ Temos que $t = x/k$ e $k > 1/z$, então basta que
 
 \[\frac{x}{k} \geq k + 2.\]
 
-Como $x>(k+2)^2$, então $x/k > k+2$ e logo a desigualdade \ref{kncase1eq1} vale.
+Como $x>(k+2)^2$, então $x/k > k+2$ e logo a desigualdade \ref{kncase1eq1} vale.\vspace{1em}
 
-Para a desigualdade \ref{kncase1eq2}, como $1/k < z$ e para $k\geq 3$ temos que $3 < (1+1/k)^{\frac{(k+2)^2}{2}-1}$,
+Para a desigualdade \ref{kncase1eq2} temos que $(3+2z)^{2k(2g-4)} < 3^{4kg}(1+z)^{4kg}$, então se $x$ for suficientemente grande em termos de $k$ e $g$, teremos que $3^{4kg}(1+z)^{4kg} < (1+z)^{x/2}$.
 
-%Para a desigualdade \ref{kncase1eq2}, temos que $3+2z < 3(1+z)$, e como $x > (k+2)^2$, temos que $3 < (1+z)^{(k+2)^2/2 - 1} < (1+z)^{x/2 - 1}$ para $k \geq 3$.
-%%%%%%%%%%%%%%%%%%%%% Pra k > 2.6, (1+1/k)^(k^2) > 9
-
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-3 + 2z & < 3(1+z)\\
-& < \left(1+\frac{1}{k}\right)^{\frac{(k+2)^2}{2}-1}(1+z)\\
-& < (1+z)^{\frac{(k+2)^2}{2}-1}(1+z)\\
-& < (1+z)^{\frac{x}{2}-1}(1+z) \\
-& = (1+z)^{\frac{x}{2}}.
-\end{aligned}
-\end{equation*}
+Mais precisamente, a desigualdade vale se $3^{4kg} < (1+z)^{x/2 - 4kg}$.\vspace{1em}
 
 Para a desigualdade \ref{kncase1eq3}, como $e < (1+1/k)^{k+1}$,
 
@@ -468,28 +456,27 @@ Para $k \geq 3$, temos que $2k^2+3k+1<3.5k^2$, e como $\frac{1}{k} < z$, então 
 
 Usando as desigualdades \ref{kncase1eq1}, \ref{kncase1eq2} e \ref{kncase1eq3}, temos
 
-\begin{equation*}
-\setlength{\jot}{5pt}
-\begin{aligned}
-k(k\Delta)^{2g-4} & = k^{2g-3}\left(\frac{nk}{x}+k\right)^{2k(2g-4)} \\
- & \leq \left(\frac{(n-x)(t-1)/t}{x}\right)^x \\
- & < \binom{(n-x)(t-1)/t}{x} = m.
-\end{aligned}
-\end{equation*}
-
 % \begin{equation*}
+% \setlength{\jot}{5pt}
 % \begin{aligned}
 % k(k\Delta)^{2g-4} & = k^{2g-3}\left(\frac{nk}{x}+k\right)^{2k(2g-4)} \\
-%  & = k^{2g-3}k^{2k(2g-4)}\left(\frac{n}{x}+1\right)^{2k(2g-4)} \\
-%  & < k^{2g(2k+1) - 8k - 3}(1+z)^{x/2}\left(\frac{n}{x}+1\right)^{2k(2g-4)-1} \\
-%  & < (1+z)^{x/2}k^{-8k - 3}(1+z)^{x/2}\left(3+2z\right)^{2k(2g-4)-1} \\
-%  & = (1+z)^x\frac{1}{k^{8k + 3}}\left(3+2z\right)^{2k(2g-4)-1} \\
-%  & < \\
-%  & < (1+z)^x \\
 %  & \leq \left(\frac{(n-x)(t-1)/t}{x}\right)^x \\
 %  & < \binom{(n-x)(t-1)/t}{x} = m.
 % \end{aligned}
 % \end{equation*}
+
+\begin{equation*}
+\setlength{\jot}{5pt}
+\begin{aligned}
+k(k\Delta)^{2g-4} & = k^{2g-3}\left(\frac{nk}{x}+k\right)^{2k(2g-4)} \\
+ & = k^{2g-3}k^{2k(2g-4)}\left(\frac{n}{x}+1\right)^{2k(2g-4)} \\
+ & < k^{2g(2k+1)}\left(1+z\right)^{x/2}\\
+ & < (1+z)^{x/2}(1+z)^{x/2} \\
+ & = (1+z)^x \\
+ & \leq \left(\frac{(n-x)(t-1)/t}{x}\right)^x \\
+ & < \binom{(n-x)(t-1)/t}{x} = m.
+\end{aligned}
+\end{equation*}
 
 Caso $n \leq x/(\frac{1}{2} - \frac{1}{2k})$, então $n-2x \leq n/k$. Logo $KG(2n,n-2x)$ contém $KG(k,1) = K_k$ como subgrafo, pois como cada subconjunto de tamanho $n-2x$ é menor que um subconjunto de tamanho $n/k$, temos pelo menos $k$ subconjuntos disjuntos dois-a-dois. Ademais, se $x$ é grande, $KG(2n,n-2x)$ contém um \textit{blow-up} de~$K_k$ com potência grande.
 
