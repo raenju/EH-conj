@@ -1,0 +1,46 @@
+\chapter{Introdução}
+\label{cap:introducao}
+
+Uma possível abordagem para o estudo de grafos é por meio de seu número cromático e de sua cintura, os quais são parâmetros relacionados à distribuição de suas arestas.
+
+\begin{definicao}
+O número cromático de um grafo $G$, denotado por $\chi(G)$, é o menor número de cores necessárias para colorir os vértices de $G$ de forma que vértices adjacentes tenham cores distintas.
+\end{definicao}
+
+\begin{definicao}
+A cintura de um grafo $G$, denotada por $g(G)$, é o comprimento de um menor circuito de $G$.
+\end{definicao}
+
+Um exemplo fundamental de grafos com número cromático grande são os grafos completos, grafos em que todo par de vértices são adjacentes, e logo cada vértice precisa de uma cor única. De forma semelhante, uma forma simples de aumentar o número cromático de um grafo é inserir novas arestas, teremos que o número cromático se aproxima do número de vértices conforme o grafo se aproxima de um grafo completo.
+
+Dessa forma, parece natural que para um grafo ter número cromático grande, ele contenha uma grande concentração de arestas.
+
+Por outro lado, grafos com cintura grande têm baixa concentração de arestas, pois seus circuitos não podem conter cordas que gerem circuitos pequenos. Dessa forma temos que localmente, um grafo de cintura grande se assemelha a uma árvore.
+
+Pode parecer intuitivo que um grafo com número cromático grande tenha cintura pequena ou vice-versa. Porém tal intuição está incorreta, e temos que existem grafos com número cromático e cintura arbitrariamente grandes.
+
+Um primeiro passo para mostrar que existem grafos com número cromático e cintura arbitrariamente grandes é mostrar que existem grafos com número cromático arbitrariamente grande e livres de triângulos, ou seja, com cintura pelo menos $4$. Exemplos de construções de grafos livres de triângulos e com número cromático arbitrariamente grande incluem as construções de W. Tutte \cite{descartes1947three} e A. Zykov \cite{zykov1949some}, a construção de Mycielski \cite{mycielski1955coloriage}, e uma construção baseada em planos projetivos \cite{codenotti2000some}.
+
+%Erd\H{o}s mostrou que para todo par de inteiros positivos $k$ e $g$, existe um grafo $G$ com número cromático pelo menos $k$ e cintura pelo menos $g$ \cite{erdos1959graph}. Dessa forma, podemos estudar propriedades que garantam a existência de grafos com cintura e número cromático grandes como subgrafos de outros grafos.
+
+Erd\H{o}s mostrou que existem grafos com número cromático e cintura arbitrariamente grande \cite{erdos1959graph}.
+
+\begin{teorema}\label{teoerdos}
+Para todo par de inteiros $k,g > 0$, existe um grafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+\end{teorema}
+
+Uma forma de interpretar o teorema de Erd\H{o}s é, dado um inteiro $n_0 = n_0(k,g)$, todo $K_n$ com $n \geq n_0$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$. Temos então que se um grafo contém um clique de tamanho suficientemente grande, o grafo contém um subgrafo com número cromático e cintura grandes.
+
+Porém, garantir a existência de um clique como subgrafo não é simples, e diversos grafos de interesse não contém cliques grandes. Portanto, é interessante procurar outra condição que garanta a existência de subgrafos com número cromático e cintura grandes.
+
+Em \cite{erdos1969conj}, Erd\H{o}s e Hajnal propõem a seguinte conjectura.
+
+\begin{conjectura}[Erd\H{o}s e Hajnal, 1969]
+Para todo par de inteiros positivos $k$ e $g$, existe um inteiro $f(k,g)$ tal que todo grafo $G$ com $\chi(G) \geq f(k,g)$ contém um subgrafo $H$ com $\chi(H) \geq k$ e $g(H) \geq g$.
+\end{conjectura}
+
+Ou seja, para garantir a existência de um subgrafo com número cromático e cintura grandes, basta que o número cromático do grafo seja suficientemente grande.
+
+Podemos dizer que a conjectura é uma generalização do teorema de Erd\H{o}s, no sentido de que não precisamos de um clique grande para garantir a existência de um subgrafo com número cromático e cintura grandes, bastando apenas que o grafo ``se comporte como um clique'', ou seja, que tenha número cromático suficientemente grande para garantir a existência de um subgrafo com número cromático e cintura grandes.
+
+%A conjectura será o foco do trabalho. Serão apresentados alguns resultados parciais, para valores particulares de $k$ e $g$ para os quais a conjectura é verdadeira, assim como uma família de grafos para a qual a conjectura vale.

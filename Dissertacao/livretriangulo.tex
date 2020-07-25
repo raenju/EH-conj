@@ -1,0 +1,62 @@
+\chapter{Grafos Livres de Triângulos}
+\label{cap:livretriangulos}
+Em \cite{rodl1977chromatic} R\"{o}dl demonstrou o seguinte teorema.
+
+\begin{teorema}\label{rodlthm}
+Para todo inteiro positivo $k$, existe um inteiro $f(k)$ tal que todo grafo $G$ com $\chi(G) \geq f(k)$ contém um subgrafo livre de triângulos $H$ com $\chi(H) \geq k$.
+\end{teorema}
+
+Em termos da conjectura de Erd\H{o}s e Hajnal, o Teorema \ref{rodlthm} mostra que $f(k,4)$ existe para todo $k$.
+
+Mostraremos que para todo par de inteiros $m$ e $k$, existe $\phi(m,k)$ tal que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos com número cromático pelo menos $k$ ou contém um clique de tamanho $m$. 
+
+E pelo teorema de Erd\H{o}s, existe um $m$ tal que $K_m$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. Então tomando $m$ adequado, todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos e com número cromático $k$.
+
+\begin{lema}\label{livretriangulolema1}
+Para todo par de inteiros $m,k$, existe um inteiro $\phi(m,k)$ tal que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$, ou contém um clique de tamanho $m$.
+\end{lema}
+
+\begin{proof}(Lema \ref{livretriangulolema1})
+Provaremos por indução em $m$. Claramente $\phi(2,k) = 2$ para todo $k$, pois todo grafo com número cromático pelo menos $2$ contém um $K_2$.
+
+Dado um grafo $G = (V,E)$ e uma ordenação $<$ de seus vértices, seja $L(v,G)$ o grafo induzido pelos vizinhos à esquerda de $v$ em $G$, ou seja, induzido pelos vértices adjacentes a $v$ e menores que $v$ na ordenação.
+
+Suponha que $\phi(m-1,k)$ existe. Então seja $G_0$ um grafo tal que \[\chi(G_0) = (k-1)^{\phi(m-1,k)-1}+1 =: \phi(m,k).\]
+
+Se $G_0$ contém $K_m$ como subgrafo, concluímos a prova. Então suponha que $G_0$ não contém $K_m$ como subgrafo, e seja $<$ uma ordenação dos vértices de $G_0$. Note que para todo $v \in V(G_0)$ o grafo $L(v,G_0)$ não contém $K_{m-1}$, pois $v$ é adjacente a todos os vértices de $L(v,G_0)$, e logo um $K_{m-1}$ em $L(v,G_0)$ implica em $K_m$ ser um subgrafo de $G_0$.
+
+Consideraremos os dois seguintes casos, se $\chi(L(v,G_0)) \geq \phi(m-1,k)$ para algum $v$, e se $\chi(L(v,G_0)) \leq \phi(m-1,k) - 1$ para todo $v$.
+
+No caso de $\chi(L(v,G_0)) \geq \phi(m-1,k)$ para algum $v$, por hipótese de indução temos que para algum $v$, $L(v, G_0)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$, ou contém um clique de tamanho $m-1$.
+
+Se $L(v, G_0)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$, como $L(v,G_0)$ é subgrafo de $G_0$, temos que $G_0$ contém um subgrafo livre livre de triângulos e com número cromático pelo menos $k$. E se $L(v, G_0)$ contém um clique de tamanho $m-1$, como $v$ é adjacente a todo vértice de $L(v, G_0)$ em $G_0$, temos que $G_0$ contém um clique de tamanho $m$.
+
+No caso $\chi(L(v,G_0)) \leq \phi(m-1,k)-1$ para todo $v\in G_0$, considere uma $l$-coloração de cada $L(v, G_0)$, onde $l \leq \phi(m-1, k)$. Seja $B_i^v$ o conjunto de vértices de $L(v, G_0)$ de cor $i$, com $i \leq l$. Então $\cup_{i=1}^l B_i^v$ é a $l$-coloração de $L(v,G_0)$ considerada.
+
+Considere a seguinte partição de $E(G_0)$.
+
+\[E(G_0) = E_1 \cup \cdots \cup E_{\phi(m-1,k)-1},\]
+\[E_i = \{\{v_j,v\} : v_j \in B_i^v, v\in V(G_0)\}.\]
+
+Ou seja, uma aresta $\{v_j, v\}$, onde $v_j < v$, está na parte $E_i$ se $v_j$ recebeu a cor $i$ na $l$-coloração de $L(v, G_0)$.
+
+Mostraremos que $\chi(V(G_0),E_i) \geq k$ para algum $i$. Suponha por contradição que  $\chi(V(G_0),E_i) \leq k-1$ para todo $i$. Podemos colorir os vértices de $G_0$ usando o vetor das cores das partes, ou seja, um vértice $v$ de $G_0$ pode ser colorido com o vetor $w$, onde $w_i$ é a cor atribuída ao vértice $v$ na $(k-1)$-coloração de $\chi(V(G_0),E_i)$. Tal coloração de $G_0$ é própria, e usa no máximo $(k-1)^{\phi(m-1,k)-1}$ cores, contradição com o fato de que $\chi(G_0) = (k-1)^{\phi(m-1,k)-1}+1$. Portanto existe um $i$ tal que $\chi(V(G_0), E_i) \geq k$.
+
+Basta mostrar que $(V(G_0),E_i)$ é livre de triângulos. Suponha por contradição que os vértices $v_1,v_2,v_3$ formam um triângulo em $(V(G_0),E_i)$, sem perda de generalidade digamos que $v_1 < v_2 < v_3$. Como $v_1,v_2 < v_3$, temos que $v_1,v_2\in L(v_3, G_0)$, e como $v_1,v_2 \in (V(G_0),E_i)$, temos que $v_1$ e $v_2$ receberam a cor $i$ na coloração de $L(v_3, G_0)$, contradição pois a aresta $v_1v_2 \in L(v_3, G_0)$, e logo $v_1$ e $v_2$ não podem receber a mesma cor. Portanto $(V(G_0),E_i)$ é livre de triângulos.
+
+Logo para algum $i$, temos que $(V(G_0), E_i)$ é livre de triângulos e tem número cromático pelo menos $k$.
+
+Portanto, temos que para todo $m,k$, existe um inteiro $\phi(m,k)$ tal que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo com número cromático pelo menos $k$ ou contém um clique de tamanho $m$.
+\end{proof}
+
+\begin{proof}{(Teorema \ref{rodlthm})}
+
+Seja $k$ o parâmetro do teorema. Pelo teorema de Erd\H{o}s, existe um grafo livre de triângulos e com número cromático pelo menos $k$, então seja $m$ o tamanho de um menor tal grafo.
+
+Pelo Lema \ref{livretriangulolema1}, existe um inteiro $\phi(m,k)$ tal que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos com número cromático pelo menos $k$, ou contém um clique de tamanho $m$.
+
+Pela escolha de $m$, um clique de tamanho $m$ contém um subgrafo livre de triângulos com número cromático pelo menos $k$. Logo todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$.
+
+\end{proof}
+
+Temos então que a conjectura de Erd\H{o}s e Hajnal vale para $g=4$, ou seja, $f(k,4)$ existe para todo $k$. A conjectura está em aberto para $g > 4$.

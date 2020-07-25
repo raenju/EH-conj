@@ -1,0 +1,455 @@
+\chapter{Considerações Iniciais}
+\label{cap:consiniciais}
+
+\section{Construções livres de triângulos}
+
+%-----------------------------------
+% Texto reescrito
+%-----------------------------------
+A primeira construção citada foi provada independentemente por W. Tutte \cite{descartes1947three} e A. Zykov \cite{zykov1949some}.
+
+Seja $G$ um grafo livre de triângulos arbitrário, $n := |V(G)|$ e $k := \chi(G)$. Construiremos um grafo livre de triângulos e de número cromático $k+1$.
+
+Seja $S$ um conjunto de $k(n-1)+1$ vértices, e para cada subconjunto $C \subset S$, com $|C| = n$, adicionamos uma cópia isomorfa de $G$, digamos $G_C$, e criamos um emparelhamento arbitrário entre vértices de $G_C$ e os vértices de $C$.
+
+Claramente o novo grafo não contém triângulos, e cada cópia isomorfa de $G$ precisa de $k$ cores. Caso os vértices de $S$ sejam coloridos com $k$ cores, pelo princípio da casa dos pombos, existe um subconjunto $C \subset S$, com $|C| = n$, tal que $C$ é monocromático. Mas como $C$ está emparelhado com $G_C$ e algum vértice de $G_C$ está colorido com a mesma cor de $C$, tal coloração não é própria. Portanto são necessárias pelo menos $k+1$ cores, e note que $k+1$ cores são suficientes, pois basta colorir cada cópia isomorfa de $G$ com $k$ cores, e colorir $S$ com uma $(k+1)$-ésima cor.\\
+
+A próxima construção foi encontrada por J. Mycielski \cite{mycielski1955coloriage}. Seja $G$ um grafo livre de triângulos arbitrário, $k := \chi(G)$ e $V(G) = \{v_1, \cdots, v_n\}$. Para cada vértice $v_i$, adicionamos um novo vértice $w_i$, e $w_i$ é adjacente a $v_j$ se $v_i$ é adjacente a $v_j$, ou seja, $w_i$ tem a mesma vizinhança de $v_i$. E adicionamos um vértice $u$, adjacente a $w_1, \cdots, w_n$.
+
+O novo grafo é livre de triângulos, e sabemos que são necessárias $k$ cores para colorir os vértices $v_1, \cdots, v_n$. Suponha por contradição que podemos colorir os vértices $w_1,\cdots, w_n$ com $k-1$ cores, e seja $c$ a cor não usada. Para cada $v_i$ com cor $c$, podemos colorir $v_i$ com a cor de $w_i$, pois a vizinhança de $v_i$ é igual a vizinhança de $w_i$, dessa forma encontramos uma $(k-1)-$coloração dos vértices $v_1,\cdots,v_n$, contradição com o fato de $\chi(G) = k$. Logo, $w_1,\cdots,w_n$ precisa de pelo menos $k$ cores, e $k$ cores bastam, pois basta atribuir a cor de $v_i$ para $w_i$. E é necessária uma $(k+1)$-ésima cor para o vértice $u$. Logo o novo grafo tem número cromático $k+1$.\\
+
+A terceira construção citada foi encontrada por B. Codenotti, P. Pudlák, e G. Resta, por meio de planos projetivos \cite{codenotti2000some}.
+
+Um plano projetivo é definido por um conjunto de pontos distintos $P$  e um conjunto de retas $L$, tais que:
+
+\begin{enumerate}
+\item Dados dois pontos distintos de $P$, existe exatamente uma reta de $L$ que contém os dois pontos. 
+\item Dadas duas retas de $L$, existe exatamente um ponto de $P$ contido em ambas retas.
+\item Existe um conjunto de quatro pontos de $P$ tal que nenhuma reta de $L$ contém mais do que dois destes pontos.
+\end{enumerate}
+
+Dizemos que um plano projetivo é de ordem $n$ se cada ponto está contido em exatamente $n+1$ retas, e cada reta contém exatamente $n+1$ pontos. Note que um plano projetivo de ordem $n$ tem $n^2 + n + 1$ pontos e $n^2 + n + 1$ retas. Sabe-se que existem planos projetivos par qualquer ordem da forma $p^m$, onde $p$ é um primo.
+
+O grafo de incidência de um plano projetivo $(P,L)$ é um grafo bipartido com conjunto de vértices $P \cup L$ e arestas $(p,l)$, onde $p\in P$ é um ponto que pertence à reta $l \in L$. Note que não existem circuitos de comprimento $4$, de fato, o menor circuito do grafo de incidência de um plano projetivo tem comprimento $6$.
+
+A construção de um grafo $G$ livre de triângulos e com número cromático $k$ é feita da seguinte forma. Seja $(P,L)$ um plano projetivo com grafo de incidência $G_I$ e ordem $n$, o grafo $G$ tem os pares $(p,l)$, $p\in P, l\in L$, como vértices. Tomando uma ordenação total arbitrária dos vértices de $G$, dois vértices $(p,l)$ e $(p',l')$ são adjacentes se $p \neq p', l \neq l'$, $(p,l) < (p',l')$ e $p \in l'$. Mostraremos que $G$ é uma simetrização de um digrafo $D$, tal que o tamanho do maior conjunto independente de $D$ é limitado.
+
+O digrafo $D$ mencionado acima tem os pares $(p,l)$ como vértices, e existe um arco de $(p,l)$ para $(p',l')$ se $p \neq p', l \neq l'$ e $p\in l'$. Note que os triângulos de $D$ são circuitos dirigidos, pois caso contrário tais circuitos corresponderiam a circuitos de comprimento $4$ no grafo de incidência.
+
+Associamos ao digrafo $D$ uma matriz $M$ indexada pelos vértices $(p,l)$ em ordem crescente, onde
+
+\[ M_{(p,l),(p',l')} = \begin{cases} 
+      1 & (p,l) = (p',l') \\
+      -1 & ((p,l)(p',l')) \text{ é um arco} \\
+      0 & \text{caso contrário.}
+   \end{cases}
+\]
+
+Note que a diagonal principal de $M$ é composta apenas por entradas $1$, logo o posto de $M$ é maior ou igual ao tamanho do maior conjunto independente.
+
+Mostraremos que o posto de $M$ é limitado superiormente por $2(n^2 + n + 1)$. Escrevemos $M = AB$, onde $A$ e $B$ são matrizes, como definidas a seguir.
+
+A matriz $A$ tem linhas indexadas pelos vértices de $D$ e colunas indexadas pelos vértices de $G_I$, onde
+
+\[ A_{(p,l),v} = \begin{cases} 
+      1 & v = l \\
+      -1 & v = p \\
+      0 & \text{caso contrário.}
+   \end{cases}
+\]
+
+A matriz $B$ tem linhas indexadas pelos vértices de $G_I$ e colunas indexadas pelos vértices de $D$, onde
+
+\[ B_{v,(p,l)} = \begin{cases} 
+      1 & v = l \text{ ou } v\in l \setminus p\\
+      0 & \text{caso contrário.}
+   \end{cases}
+\]
+
+Temos então que 
+
+\[(AB)_{(p,l),(p',l')} = \sum\limits_{v \in V(G)} A_{(p,l),v} B_{v,(p',l')} = B_{l,(p',l')} - B_{p,(p',l')}.\]
+
+De fato, verifica-se que $M = AB$, então as colunas de $M$ são combinações lineares das colunas de $A$, e logo o posto de $M$ é limitado superiormente pelo número de colunas de $A$, que é igual a $|V(G_I)| = |P| + |L| = 2(n^2 + n + 1)$.
+
+Considere apenas o triângulo superior de $M$, e preencha o triângulo inferior de forma simétrica. Denotamos a nova por $M_G$, as linhas e colunas de $M_G$ são indexadas por $V(D) = V(G)$.
+
+Note que $M_G$ está associada ao grafo $G$ da seguinte forma
+
+\[ {M_G}_{(p,l), (p',l')} = \begin{cases} 
+      1 & (p,l) = (p',l')\\
+      -1 & (p,l)(p',l') \text{ é uma aresta}\\
+      0 & \text{caso contrário.}
+   \end{cases}
+\]
+
+E assim, $G$ é uma simetrização de um subgrafo de $D$. Suponha por contradição que $G$ contém triângulos, um triângulo de $G$ corresponde a um triângulo orientado em $D$, e logo existe um arco $(p',l')(p,l)$ em $D$ tal que $(p,l) < (p',l')$, e $(p,l)(p',l')$ é uma aresta de $G$, com $(p,l) < (p',l')$. O arco de $D$ mostra que $p,p' \in l$, e a aresta de $G$ mostra que $p,p' \in l'$, contradição. Portanto $G$ não contém triângulos.
+
+Ademais, as colunas de $M_G$ correspondentes a um conjunto independente de $G$ correspondem a colunas linearmente independentes de $M$. Então temos que $\alpha(G)$ é limitado superiormente pelo posto de $M$, que por sua vez, é limitado por $2(n^2+n+1)$.
+
+E como $|V(G)| = (n^2+n+1)(n+1)$, temos que $\chi(G) \geq (n+1)/2$. Então, basta tomar um plano projetivo de ordem $n = 2^{\ceil*{\text{log}_2 k}+1}$, e o grafo obtido pela construção tera número cromático pelo menos $k$.
+
+%-----------------------------------
+% Fim do texto reescrito
+%-----------------------------------
+
+% \subsection{Construção de W. Tutte e A. Zykov}
+
+% \subsection{Mycielskiano}
+
+% \subsection{Planos Projetivos}
+
+\section{Teorema de Erd\H{o}s}
+
+%-----------------------------------
+% Texto reescrito
+%-----------------------------------
+Para demonstrar o Teorema \ref{teoerdos}, será usado o método probabilístico, seguindo a prova de Bollobás \cite{bollobas2013modern}.
+
+Considere o espaço de probabilidade $\mathcal{G}_{n,p}$ dos grafos com $n$ vértices onde cada aresta ocorre independentemente com probabilidade $p$.
+
+Sejam $k$ e $g$ os parâmetros do teorema. Consideremos $k,g \geq 4$, pois claramente o teorema é verdadeiro para $k \leq 3$ e para $g \leq 3$. 
+
+Seja $n = k^{3g}$ e $p = 2k^{2-3g} = 2k^2/n$. Considere $G \in\mathcal{G}_{n,p}$ e seja $Z_c$ o número de circuitos de tamanho $c$ em $G$. Note que
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\bbe(Z_c) &= \frac{p^c(n)_c}{2c} \\
+&< \frac{(np)^c}{2c} \\
+&= \frac{2^ck^{2c}}{2c}.
+\end{aligned}
+\end{equation*}
+
+Temos então que o número esperado de circuitos de tamanho até $g-1$ em $G$ é
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\sum\limits_{c=3}^{g-1}\bbe_p(Z_c) &< \sum\limits_{c=3}^{g-1}\frac{2^ck^{2c}}{2c} \\
+&\leq \frac{k^{2(g-1)}}{6}\sum\limits_{c=3}^{g-1}2^c \\
+&< \frac{2^gk^{2(g-1)}}{6} &= \frac{2^{g-1}k^{2(g-1)}}{3}.
+\end{aligned}
+\end{equation*}
+
+Denote por $\Omega_1$ o conjunto dos grafos de $\mathbb(G)_{n,p}$ com no máximo $f := 2^{g-1}k^{2g-2}$ circuitos de comprimento menor ou igual a $g-1$.
+
+Seja $X$ o número de circuitos de comprimento até $g-1$ em $G$. Temos que $\bbp(\Omega_1) = \bbp(X < f)$, e $\bbp(\overline{\Omega_1}) = \bbp(X\geq f)$. Note que $\mathbb{E}(X) = \sum\limits_{c=3}^{g-1}\bbe(Z_c)$, e pela desigualdade de Markov temos que \[\mathbb{P}(X \geq f) \leq \frac{\mathbb{E}(X)}{f}.\]
+
+Temos então a seguinte desigualdade
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\sum\limits_{c=3}^{g-1}\bbe(Z_c) &= \bbe(X) \\ 
+&\geq \bbp(\overline{\Omega_1})f \\
+&= (1 - \bbp(\Omega_1))f.
+\end{aligned}
+\end{equation*}
+
+Temos também que
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\sum\limits_{c=3}^{g-1}\bbe(Z_c) &< \frac{2^{(g-1)}k^{(2g-2)}}{3} \\
+&= \frac{f}{3}.
+\end{aligned}
+\end{equation*}
+
+Logo $f/3 > (1-\mathbb{P}(\Omega_1))f$. Portanto, concluímos que
+
+\begin{equation}\label{teoerdosomega1}
+\bbp(\Omega_1) > \frac{2}{3}.  
+\end{equation}
+
+Seja $s = n/k = k^{3g-1}$, e seja $\Omega_2$ o conjunto dos grafos em $\mathcal{G}_{n,p}$ tais que para todo conjunto de $s$ vértices, o subgrafo induzido por estes vértices contém ao menos $f+1$ arestas. Seja $I_l$ o número de subconjuntos de $s$ vértices em $G$ que induzem exatamente $l$ arestas.
+
+Seja $I$ o número de subconjuntos de $s$ vértices em $G$ que induzem no máximo $f$ arestas, ou seja, \[I = \sum\limits_{l=0}^{f}I_l.\]
+
+Note que $\Omega_2$ é o conjunto dos grafos de $\mathcal{G}_{n,p}$ com $I = 0$. E temos que
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\bbe(I) &= \sum\limits_{m=0}^{\infty}\bbp(I = m)m \\
+&\geq \sum\limits_{m=1}^{\infty}\bbp(I = m) \\
+&= \bbp(I \geq 1) \\
+&= 1 - \bbp(I = 0) &= 1 - \bbp(\Omega_2).
+\end{aligned}
+\end{equation*}
+
+Mostraremos agora que para $l < f$, temos que
+
+\[\frac{\bbe(I_l)}{\bbe(I_{l+1})} < \frac{1}{2}.\]
+
+Para isso, 
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\frac{\bbe(I_l)}{\bbe(I_{l+1})} &= \frac{\binom{n}{s}p^l (1-p)^{\binom{s}{2}-l} \binom{\binom{s}{2}}{l}}{\binom{n}{s}p^{l+1} (1-p)^{\binom{s}{2}-l-1} \binom{\binom{s}{2}}{l+1}} \\
+&= \frac{(1-p)(l+1)}{p\left(\binom{s}{2}-l\right)}.
+\end{aligned}
+\end{equation*}
+
+Sabemos que $l < f$, $s = k^{3g-1}$, $f = 2^{g-1}k^{2g-1}$, $p = 2k^2/n$ e $n = k^{3g}$, portanto
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\frac{(1-p)(l+1)}{p\left(\binom{s}{2}-l\right)} &< \frac{(1-p)(f+1)}{p\left(\binom{s}{2}-f\right)} \\
+&= \frac{(1-\frac{2k^2}{n})(2^{g-1}k^{2g-2}+1)}{\frac{2k^2}{n}\left(\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\right)} \\
+&= \frac{(n-2k^2)(2^{g-1}k^{2g-2}+1)}{2k^2\left(\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\right)} \\
+&= \frac{(k^{3g}-2k^2)(2^{g-1}k^{2g-2}+1)}{2k^2\left(\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\right)} \\
+&= \frac{k^2(k^{3g-2}-2)(2^{g-1}k^{2g-2}+1)}{2k^2\left(\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\right)} \\
+&= \frac{1}{2} \times \frac{(k^{3g-2}-2)(2^{g-1}k^{2g-2}+1)}{\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}}.
+\end{aligned}
+\end{equation*}
+
+Basta mostrar que 
+
+\[\frac{(k^{3g-2}-2)(2^{g-1}k^{2g-2}+1)}{\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}} \leq 1.\]
+
+Equivalentemente, basta mostrar que %Note que E(I_l) >= 0
+
+%\[(k^{3g-2}-2)(2^{g-1}k^{2g-2}+1) \leq \frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\]
+
+\[k^{3g-2}2^{g-1}k^{2g-2}-2^{g-1}k^{2g-2} + k^{3g-2}-2 \leq \frac{k^{3g-1}(k^{3g-1}-1)}{2}.\]
+
+Temos que
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+k^{3g-2}2^{g-1}k^{2g-2}-2^{g-1}k^{2g-2} + k^{3g-2}-2 &< k^{3g-2}2^{g-1}k^{2g-2} + k^{3g-2} \\
+&= k^{3g-2}(2^{g-1}k^{2g-2}+1).
+\end{aligned}
+\end{equation*}
+
+Então basta mostrar que
+
+\[2^{g-1}k^{2g-2}+1 \leq \frac{k(k^{3g-1}-1)}{2}.\]
+
+Como $k>2$, valem as seguintes desigualdades:
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+k^{3g-1}-1 &< \frac{k(k^{3g-1}-1)}{2}, \\
+2^{g-1}k^{2g-2}+1 &< k^{3g-3}+1.
+\end{aligned}
+\end{equation*}
+
+Então basta que
+
+\[k^{3g-3}+1 \leq k^{3g-1}-1,\]
+
+ou equivalentemente, basta que
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+2 &\leq k^{3g-1} - k^{3g-3} \\
+&= k^{3g-3}(k^2 - 1).
+\end{aligned}
+\end{equation*}
+
+E como $k \geq 4$ e $g \geq 4$, a desigualdade acima claramente vale. Portanto
+
+\[\frac{\bbe(I_l)}{\bbe(I_{l+1})} < \frac{1}{2}.\]
+
+E assim temos que
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\bbe(I) &= \sum\limits_{l=0}^{f}\bbe(I_l) \\
+&< \sum\limits_{l=0}^{f} \bbe(I_f)\left(\frac{1}{2}\right)^{f-l} \\
+&= \bbe(I_f)\sum\limits_{l=0}^{f} \left(\frac{1}{2}\right)^{f-l} \\
+&< 2\bbe(I_f) \\
+&= 2p^f(1-p)^{\binom{s}{2}-f}\binom{n}{s}\binom{\binom{s}{2}}{f}.
+\end{aligned}
+\end{equation*}
+
+Usando as desigualdades $\binom{a}{b} \leq \left(\frac{ea}{b}\right)^b$ e  $(1-p) \leq e^{-p}$, escrevemos
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\bbe(I) &< 2p^f(1-p)^{\binom{s}{2}-f}\binom{n}{s}\binom{\binom{s}{2}}{f} \\
+&\leq 2e^{-p\left(\binom{s}{2}-f\right)}\left(\frac{en}{s}\right)^s\left(\frac{\binom{s}{2}e}{f}\right)^f p^f.
+\end{aligned}
+\end{equation*}
+
+Como $\binom{s}{2} \leq s^2/2$, $n/s = k$, $s = n/k$, $ps^2 = 2k^{3g}$, $ps = 2k$, $f = 2^{g-1}k^{2g-2}$ e $pf = 2^g k^{-g}$, temos que
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+2e^{-p\left(\binom{s}{2}-f\right)}\left(\frac{en}{s}\right)^s\left(\frac{\binom{s}{2}e}{f}\right)^f p^f &\leq 2(ek)^{\frac{n}{k}}\left(\frac{eps^2}{2f}\right)^f e^{-ps^2/2+ps/2+pf} \\
+&= 2(ek)^{\frac{n}{k}} \left(\frac{ek^{g+2}}{2^{g-1}}\right)^f e^{-n+k+2^{g}k^{-g}} \\
+&= 2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} \left(\frac{e}{2^{g-1}}\right)^f e^{k+2^g k^{-g}}.
+\end{aligned}
+\end{equation*}
+
+Note que $2^{g-1} > e^2$, logo
+
+\[\left(\frac{e}{2^{g-1}}\right)^f < \left(\frac{e}{e^2}\right)^f = e^{-f},\]
+
+e portanto
+
+\[2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} \left(\frac{e}{2^{g-1}}\right)^f e^{k+2^g k^{-g}} < 2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} e^{-f} e^{k+2^g k^{-g}}.\]
+
+Note também que $(2/k)^g < 1$, e logo
+
+\[2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} e^{k-f+2^g k^{-g}} < 2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} e^{k-f+1}.\]
+
+Temos que $f \geq 8k^6$, pois $f = 2^{g-1}k^{2g-2}$, e $k,g \geq 4$. Logo $e^{k-f+1} < e^0 = 1$. Concluímos então que
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\bbe(I) &< 2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} e^{k-f+1} \\ 
+&< 2(ek)^{\frac{n}{k}}k^{(g+2)f}e^{-n}.
+\end{aligned}
+\end{equation*}
+
+Para simplificar os cálculos, consideremos $\text{ln}(\bbe(I))$.
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\text{ln}(\bbe(I)) &< \text{ln}(2(ek)^{\frac{n}{k}}k^{(g+2)f}e^{-n})\\
+&= \text{ln}(2) -n\left(1 - \frac{1+\text{ln}(k)}{k} - \frac{(g+2)2^{g-1} \text{ln}(k)}{k^{g+2}}\right).
+\end{aligned}
+\end{equation*}
+
+Mostraremos que 
+
+\[-n\left(1 - \frac{1+\text{ln}(k)}{k} - \frac{(g+2)2^{g-1} \text{ln}(k)}{k^{g+2}}\right) < -\frac{n}{4}.\]
+
+Ou seja, mostraremos que
+
+\[\frac{1+\text{ln}(k)}{k} + \frac{(g+2)2^{g-1} \text{ln}(k)}{k^{g-1}k^3} < \frac{3}{4}.\]
+
+Como $(1+\text{ln}(k))/k$ e $\text{ln}(k)/k^3$ são decrescentes, e $k \geq 4$, temos
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\frac{1+\text{ln}(k)}{k} + \frac{(g+2)2^{g-1} \text{ln}(k)}{k^{g-1}k^3} &< \frac{1+\text{ln}(4)}{4} + \frac{(g+2)2^{g-1}}{k^{g-1}}\frac{\text{ln}(k)}{k^3}\\
+&< \frac{1+\text{ln}(4)}{4} + \frac{(g+2)2^{g-1}}{4^{g-1}}\frac{\text{ln}(4)}{4^3} \\
+&= \frac{1+\text{ln}(4)}{4} + \frac{(g+2)}{2^{g-1}}\frac{\text{ln}(4)}{4^3}.
+\end{aligned}
+\end{equation*}
+
+E como $(g+2)/2^{g-1} < 1$, 
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\frac{1+\text{ln}(4)}{4} + \frac{(g+2)}{2^{g-1}}\frac{\text{ln}(4)}{4^3} &< \frac{1+\text{ln}(4)}{4} + \frac{\text{ln}(4)}{4^3} \\
+&\approx 0.62 \\
+&< \frac{3}{4}.
+\end{aligned}
+\end{equation*}
+
+Portanto $\text{ln}(\bbe(I)) < \text{ln}(2) - n/4$, e logo
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\bbe(I) &< e^{\text{ln}(2)-n/4} \\
+&< \frac{1}{3}.
+\end{aligned}
+\end{equation*}
+
+E como temos que $\bbe(I) \geq 1 - \bbp(\Omega_2)$, concluímos que
+
+\begin{equation}\label{teoerdosomega2}
+\bbp(\Omega_2) > \frac{2}{3}.
+\end{equation}
+
+Por \ref{teoerdosomega1} e \ref{teoerdosomega2}, temos que $\Omega_1 \cap \Omega_2 \neq \emptyset$. Seja $G_0 \in \Omega_1 \cap \Omega_2$, removemos de $G_0$ uma aresta de cada circuito de comprimento menor que $g$. Temos então um grafo $G$ com cintura pelo menos $g$. Como $G_0 \in \Omega_1$, no máximo $f$ arestas foram removidas. Como $G_0 \in \Omega_2$, todo conjunto de $s$ vértices em $G_0$ induz ao menos $f+1$ arestas, e logo todo conjunto de $s$ vértices em $G$ induz ao menos uma aresta. Portanto o maior conjunto independente de $G$ tem tamanho no máximo $s-1$. E como $s = n/k$, temos
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\chi(G) &\geq \frac{n}{\alpha(G)} \\
+&\geq \frac{n}{(s-1)} \\
+&> \frac{n}{s}\\
+&= \frac{kn}{n} & = k.
+\end{aligned}
+\end{equation*}
+
+Logo $G$ tem número cromático pelo menos $k$ e cintura pelo menos $g$.
+
+%-----------------------------------
+% Fim do texto reescrito
+%-----------------------------------
+
+%\subsection{Prova Probabilística}
+
+%Começamos com o seguinte resultado. Seja $G = G_p$, $X_s = X_s(G)$ o número de subgrafos completos de ordem $s$ em G, e seja $X_s' = X_s(\overline{G})$, então
+
+%\[\mathbb{E}_p(X_s) = \binom{n}{s}p^S\]
+%\[\mathbb{E}_p(X_s') = \binom{n}{s}q^S\]
+
+%Sendo $S = \binom{s}{2}$ e $q = 1-p$. Temos que dado um conjunto de $s$ vértices em $G$, este conjunto é um subgrafo completo se todos os seus pares de vértices são adjacentes, isto ocorre com probabilidade $p^{\binom{s}{2}} = p^S$. Se considerarmos todas as possíveis escolhas de $s$ vértices, temos que o número esperado de subgrafos completos de ordem $s$ em $G$ é $\binom{n}{s}p^S$.
+
+%Analogamente, temos que o número de subgrafos completos em $\overline{G}$ é $\binom{n}{s}q^S$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Lema Local de Lovász}
+
+Um teorema que será usado em alguns dos próximos capítulos é o Lema Local de Lovász, um importante teorema probabilístico enunciado a seguir.
+
+\begin{teorema}[Lema Local de Lovász]\label{LLL}
+Seja $\mathcal{A} = \{A_1, \cdots, A_n\}$ um conjunto finito de eventos em um espaço de probabilidade $\Omega$. Para cada $A\in \mathcal{A}$, seja $\Gamma(A)$ o conjunto dos elementos de $\mathcal{A}\setminus A$ que não são independentes de $A$. Se existe uma função real $y : \mathcal{A} \rightarrow (0,1)$ tal que
+\[\bbp(A)\leq y(A) \prod_{B\in \Gamma(A)}(1-y(B))\ \forall A\in \mathcal{A}\]
+então 
+\[\bbp(\overline{A_1}\ \wedge \cdots \wedge \overline{A_n}) \geq \prod_{A\in\mathcal{A}}(1-y(A)).\]
+Ou seja, a probabilidade de nenhum evento de $\mathcal{A}$ ocorrer é positiva.
+\end{teorema}
+
+\begin{proof}{(Teorema \ref{LLL})}
+Provaremos por indução em $|S|$ que para todo $A \in \mathcal{A}$ e todo $S \subset \mathcal{A}$ tal que $A\not\in S$, vale que \[\bbp\left(A\ |\bigwedge\limits_{B\in S} \overline{B}\right) \leq y(A).\]
+
+O caso base $|S| = 0$ vale, pois $\bbp(A) \leq y(A)$. Então seja $S_1 = S \cap \Gamma(A)$ e $S_2 = S\setminus S_1$. Temos que
+
+\[\bbp\left(A\ |\bigwedge\limits_{B\in S}\overline{B}\right) = \frac{\bbp\left(A \bigwedge\limits_{B \in S_1} \overline{B}\ | \bigwedge\limits_{B \in S_2} \overline{B}\right)}{\bbp\left(\bigwedge\limits_{B \in S_1} \overline{B}\ | \bigwedge\limits_{B \in S_2} \overline{B}\right)}.\]
+
+Como $A$ é independente dos eventos de $S_2$, temos que
+\begin{equation}\label{llleq1}
+\bbp\left(A \bigwedge\limits_{B \in S_1} \overline{B}\ | \bigwedge\limits_{B \in S_2} \overline{B}\right) \leq \bbp\left(A\ | \bigwedge\limits_{B \in S_2} \overline{B}\right) = \bbp(A) \leq y(A)\prod_{B\in \Gamma(A)}(1-y(B)).
+\end{equation}
+
+Digamos que $S_1 = \{B_{j1}, B_{j2}, \cdots, B_{jl}\}$. Considere a seguinte expansão
+\[\bbp\left(\bigwedge\limits_{B \in S_1} \overline{B}\ | \bigwedge\limits_{B \in S_2} \overline{B}\right) = \bbp\left( \overline{B_{j1}}\ | \bigwedge\limits_{k=2}^l \overline{B_{jk}} \wedge \bigwedge\limits_{B \in S_2} \overline{B}\right) \bbp\left( \overline{B_{j2}}\ | \bigwedge\limits_{k=3}^l \overline{B_{jk}} \wedge \bigwedge\limits_{B \in S_2} \overline{B} \right) \cdots \bbp\left(\overline{B_{jl}}\ | \bigwedge\limits_{B \in S_2} \overline{B}\right).\]
+
+Podemos aplicar a hipótese de indução em cada termo da expansão para concluir
+
+\begin{equation}\label{llleq2}
+\bbp\left(\bigwedge\limits_{B \in S_1} \overline{B}\ | \bigwedge\limits_{B \in S_2} \overline{B}\right) \geq \prod_{B \in S_1} (1 - y(B)).
+\end{equation}
+
+Usando as inequações \ref{llleq1} e \ref{llleq2}, temos que
+
+\[\bbp\left(A\ |\bigwedge\limits_{B\in S}\overline{B}\right) \leq y(A) \prod_{B\in \Gamma(G)\setminus S_1}(1 - y(B)) \leq y(A).\]
+
+Assim, concluímos a indução. E equivalentemente temos que
+
+\begin{equation}\label{llleq3}
+\bbp\left(\overline{A}\ |\bigwedge\limits_{B\in S}\overline{B}\right) \geq 1 - y(A).
+\end{equation}
+
+Então basta tomar a expansão
+
+\[\bbp(\overline{A_1}\ \wedge \cdots \wedge \overline{A_n}) = \bbp(\overline{A_1}\ | \overline{A_2}\wedge \cdots \wedge \overline{A_n})\bbp(\overline{A_2}\ | \overline{A_3}\wedge \cdots \wedge \overline{A_n})\cdots \bbp(\overline{A_n})\]
+
+e aplicar a inequação \ref{llleq3} em cada termo para obtermos
+
+\[\bbp(\overline{A_1}\ \wedge \cdots \wedge \overline{A_n}) \geq \prod_{A\in\mathcal{A}}(1-y(A)).\]
+\end{proof}

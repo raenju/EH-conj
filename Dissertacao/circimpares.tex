@@ -1,0 +1,65 @@
+\chapter{Grafos com Circuitos Ímpares}
+\label{cap:circimpares}
+Outra possível abordagem é demonstrar que $f(3,g)$ existe para todo $g$, ou seja, que para todo inteiro positivo $g$, existe um inteiro $f(3,g)$ tal que todo grafo $G$ com $\chi(G)\geq f(3,g)$ contém um circuito ímpar de comprimento pelo menos $g$.
+
+\begin{definicao}
+Seja $G$ um grafo. Denotamos por $L(G)$ o conjunto de comprimentos de circuitos ímpares de $G$.
+\end{definicao}
+
+Usaremos o seguinte resultado de Gyárfás \cite{gyarfas1992graphs}.
+
+\begin{teorema}\label{gyarfasthm}
+Se $G$ é um grafo $2$-conexo com grau mínimo pelo menos $2k+1$, então $|L(G)|=k\geq1$ implica que $G = K_{2k+2}$.
+\end{teorema}
+
+\begin{corolario}\label{gyarfascor}
+Se $G$ é um grafo e $k := |L(G)|$, então $G$ pode ser colorido com até $2k+1$ cores, exceto no caso de $G$ conter um bloco isomorfo a $K_{2k+2}$, neste caso $G$ pode ser colorido com $2k+2$ cores.
+\end{corolario}
+
+Pelo corolário, se um grafo $G$ tem número cromático pelo menos $2g+1$, então $G$ contém pelo menos $g$ comprimentos de circuito ímpar distintos. Logo $G$ contém um circuito ímpar de tamanho pelo menos $2g+1$. Assim, temos que $f(3,g)$ existe para todo $g$.
+
+\begin{proof}{(Corolário \ref{gyarfascor})}
+Seja G um grafo, e seja $k := |L(G)|$. É bem conhecido que o número cromático de um grafo é igual ao maior dentre os números cromáticos de seus blocos, portanto basta mostrar que cada bloco $2$-conexo de $G$ pode ser colorido com até $2k+1$ cores ou é isomorfo a $K_{2k+2}$ (e neste caso, pode ser colorido com $2k+2$ cores).
+
+Seja $H$ um bloco $2$-conexo de G, e seja $k' := |L(H)|$. Claramente $k' \leq k$. Vamos considerar os seguintes casos, Caso $(1)$: $\delta(H) \geq 2k'+1$ e Caso $(2)$: $\delta(H) \leq 2k'$.
+
+No Caso $(1)$, aplicando o Teorema temos que $H$ é isomorfo a $K_{2k'+2}$, e logo pode ser colorido com exatamente $2k'+2\leq 2k+2$ cores, e usando $2k+2$ cores apenas no caso $k' = k$, ou seja, no caso de $H$  isomorfo a $K_{2k+2}$.
+
+No Caso $(2)$, vamos mostrar que $H$ pode ser colorido com até $2k'+1$ cores.
+
+Suponha por contradição que existe um grafo $2$-conexo com $m$ comprimentos de circuito ímpar, grau mínimo no máximo $2m$ e número cromático pelo menos $2m+2$.
+
+Considere $m$ o menor possível valor tal que existe um grafo como descrito acima. Seja $H'$ um tal grafo com $|L(H')| = m$ e menor número de vértices.
+
+Temos que $H'$ não pode conter um $K_{2m+2}$ como subgrafo. Como $\delta(G) \leq 2m$, $H'$ não é isomorfo a~$K_{2m+2}$. E se $H'$ contém $K_{2m+2}$ como subgrafo próprio, como temos que $H'$ é $2$-conexo, existem dois caminhos disjuntos de um vértice de grau no máximo $2m$ até o clique. Com isso, podemos encontrar $m$ comprimentos de circuito ímpar dentro do clique, e um estritamente maior usando os dois caminhos, contradição.
+
+Seja $v$ tal que $d_{H'}(v) \le 2m$. Seja $H''$ o grafo induzido por $V(H') \setminus \{v\}$. Como $v$ tem grau no máximo~$2m$ e~$H'$ precisa de pelo menos $2m+2$ cores, então $H''$ precisa de $2m+2$ cores. Em particular, algum bloco~$2$-conexo $B$ de $H''$ precisa de $2m+2$ cores.
+
+Seja $m' := |L(B)|$. Se $m' = m$ então $B$ pode ser colorido com $2m+1$ cores, pois $B$ é um grafo com~$|L(B)| = m$ e com número de vértices estritamente menor que $H'$. Se $m' < m$ então $B$ pode ser colorido com $2m'+1 < 2m+1$ cores, pois $m$ é o menor valor para o qual existe um contra-exemplo. E se~$m' = 0$, então $B$ é bipartido, e logo pode ser colorido com até $2 < 3 \leq 2m+1$ cores. Portanto, $H'$ admite uma~$(2m+1)$-coloração. Temos uma contradição, logo $H'$ não existe. 
+
+Então todo grafo $H$ como descrito no caso $(2)$ pode ser colorido com $2k'+1$ cores.
+\end{proof}
+
+\textbf{Prova (mais) direta?}
+
+Seja $G$ um grafo com número cromático pelo menos $2g+1$, então $G$ contém um circuito ímpar de comprimento pelo menos $2g+1$.
+
+Como o número cromático de um grafo é o número cromático da maior componente $2$-conexa, então seja $G$ $2$-conexo, e com número cromático pelo menos $2g+1$.
+
+Se $i$ é o maior inteiro tal que $G$ contém um $C_{2i+1}$. Queremos mostrar que $i\geq g$.
+
+Vale para $g=1$, então suponha que vale para $g-1$.
+
+Seja $C$ um circuito de comprimento $2i+1$. E seja $H := G - C$. 
+
+Como o número cromático de $G$ é pelo menos $2g+1$, em particular é maior que $2(g-1)+1$, logo $G$ contém um circuito de tamanho pelo menos $2(g-1)+1$, então $i\geq g-1$. Como queremos que $i \geq g$, basta mostrar que $i \neq g-1$.
+
+Suponha então que $i = g-1$. O número cromático de $H$ claramente não é maior que de $G$, e é no máximo $3$ menor que de $G$ (pois podemos re-inserir $C$ e colorir com no máximo $3$ novas cores).
+
+Se o número cromático se reduz de $0, 1$ ou $2$, note que o número cromático de $H$ é pelo menos $2(g-1)+1$, e logo contém um circuito de comprimento $2(g-1)+1$, o que não pode ocorrer, pois o circuito removido tem o mesmo comprimento, logo existe um circuito impar de comprimento maior.
+
+Se o número cromático se reduz de $3$, então note que para re-adicionar o circuito removido, precisamos de três novas cores, ou seja, nenhuma cor usada em $H$ pode ser usada (pois se alguma cor de $H$ puder ser usada no circuito, podemos colorir o restante dos vértices com apenas $2$ novas cores).
+
+Note que cada vértice do circuito precisa ser adjacente a todas as cores em uma mesma componente de $H$, e como $G$ é $2$-conexo, cada componente de $H$ é adjacente a pelo menos $2$ vértices distintos do circuito.
+
+Basta mostrar que a vizinhança de cada vértice do circuito em cada componente de $H$ é um clique de tamanho $2g$, e podemos construir um circuito maior que $2g+1$ usando o circuito e duas das componentes. 
