@@ -21,9 +21,7 @@ Ademais, o digrafo linha $L(D)$ de um digrafo $D$ é definido da seguinte forma
 ou seja, os vértices de $L(D)$ são os arcos de $D$, e $vw$ é um arco em $L(D)$ se existe um vértice $x$ em $D$ tal que o arco $v$ entra em $x$, e o arco $w$ saia de $x$.
 \end{definicao}
 
-Seja $L^1(G) := L(G)$, e para $r>1$ seja $L^r(G) := L(L^{r-1}(G))$. Denotamos $S_n^0 := K_n$ e $L^0(G) := G$. %Seja $D$ um direcionamento topológico de $K_n$, ou seja, tome uma ordenação arbitrária dos vértices de $K_n$ e direcione cada aresta na direção do maior vértice, então denotamos $L^0(D) := D$.
-
-%Temos que $S_n$ é uma simetrização de $L(D)$. Ademais, $S_n^k$ é uma simetrização de $L^k(D)$. Denotamos $L^0(D) := D$.
+Seja $L^1(G) := L(G)$, e para $r>1$ seja $L^r(G) := L(L^{r-1}(G))$. Denotamos $S_n^0 := K_n$ e $L^0(G) := G$. 
 
 \begin{teorema}\label{shiftteo}
 A família dos \textit{shift graphs} de ordem $r$ respeita a conjectura de Erd\H{o}s e Hajnal.
@@ -31,7 +29,7 @@ A família dos \textit{shift graphs} de ordem $r$ respeita a conjectura de Erd\H
 
 \section{Esboço da prova}
 
-Seja $D$ um direcionamento topológico de $K_n$. Mostraremos que $L^r(D)$ é isomorfo a um direcionamento de $S_n^r$. Aplicando o Lema Local de Lovász, encontraremos em $S_n^r$ um subgrafo $H$ tal que $H$ tem cintura grande e contém pelo menos uma aresta de cada $K_{d,d}$ de $S_n^r$.
+Seja $D$ uma orientação transitiva de $K_n$. Mostraremos que $L^r(D)$ é isomorfo a um direcionamento de $S_n^r$. Aplicando o Lema Local de Lovász, encontraremos em $S_n^r$ um subgrafo $H$ tal que $H$ tem cintura grande e contém pelo menos uma aresta de cada $K_{d,d}$ de $S_n^r$.
 
 Queremos então mostrar que o número cromático de $H$ não é limitado por uma constante, ou seja, $\chi(H) \rightarrow \infty$ conforme $n \rightarrow \infty$.
 
@@ -42,11 +40,11 @@ Uma coloração própria de $H$ é uma coloração de $S_n^r$ sem $K_{d,d}$ mono
 \section{Prova do Teorema}
 
 \begin{afirmacao}\label{shiftafirm1}
-Seja $D$ um direcionamento topológico de $K_n$. Então $S_n^r$ é uma simetrização de $L^r(D)$.
+Seja $D$ uma orientação transitiva de $K_n$. Então $S_n^r$ é uma simetrização de $L^r(D)$.
 \end{afirmacao}
 
 \begin{proof}(Afirmação \ref{shiftafirm1})
-Seja $V(D) = \{1,2,\cdots, n\}$, com ordem topológica trivial, ou seja, existe um arco de $i$ para $j$ se $i < j$. Mostraremos que a simetrização de $L(D)$ é isomorfa a $S_n^1$.
+Seja $V(D) = \{1,2,\cdots, n\}$, onde para cada $i < j$, existe um arco de $i$ para $j$. Mostraremos que a simetrização de $L(D)$ é isomorfa a $S_n^1$.
 
 Denotemos por $(i,j)$ os arcos de $D$, onde $i < j$. Logo os vértices de $L(D)$ são os pares $(i,j)$ com $i < j$. E para cada $1 \leq i < j < k \leq n$, existe em $D$ um arco de $i$ para $j$ e um arco de $j$ para $k$. Logo em $L(D)$ existe um arco de $(i,j)$ para $(j,k)$. Temos então que
 
@@ -116,182 +114,332 @@ Existe um subgrafo $H$ de $S_n^r$ com cintura pelo menos $g$ e contendo pelo men
 \end{lema}
 
 \begin{proof}(Lema \ref{shiftlema2})
-Demonstraremos usando o Lema Local de Lovász. Seja $\lambda = 1/4g$ e $p = d^{\lambda-1}$. Seja $H$ um subgrafo aleatório de $S_n^r$ onde cada aresta é escolhida com probabilidade $p$.
+Seja $\lambda = 1/4g$, $\theta = (g-2)/(g-1.75)$, $d = n^\theta$ e $p = d^{\lambda-1}$. Seja $H$ um subgrafo aleatório de $S_n^r$ em que cada aresta é escolhida com probabilidade $p$, e seja $\Delta = \Delta(S_n^r) = n-r-1$.
+Demonstraremos usando o Lema Local de Lovász que com probabilidade positiva $H$ tem cintura pelo menos $g$ e contém uma aresta de cada $K_{d,d}$.
 
 Para cada circuito $C$ de $S_n^r$ com $|C| \leq g$, seja $A_C$ o evento de todas as arestas de $C$ estarem em $H$. Então temos que \[\bbp(A_C) = p^{|C|}.\]
 
 Para cada subgrafo $B$ isomorfo a $K_{d,d}$ de $S_n^r$, seja $A_B$ o evento de nenhuma aresta de $B$ estar em $H$. Então \[\bbp(A_B) = (1-p)^{d^2} \leq e^{pd^2} = e^{-d^{1+\lambda}}.\]
 
-E cada circuito $C$ compartilha aresta com no máximo $|C|\Delta^{j-2}$ circuitos de comprimento $j$, e compartilha aresta com no máximo $|C|\binom{\Delta}{d}^2$ subgrafos $B$ isomorfos a $K_{d,d}$.
+Cada circuito $C$ compartilha aresta com no máximo $|C|\Delta^{j-2}$ circuitos de comprimento $j$, e compartilha aresta com no máximo $|C|\binom{\Delta}{d}^2$ subgrafos $B$ isomorfos a $K_{d,d}$.
 
-Cada subgrafo $B$ compartilha aresta com no máximo $d^2\Delta^{j-2}$ circuitos de comprimento $j$, e compartilh aresta com no máximo $\binom{\Delta}{d}^2$ subgrafos isomorfos a $K_{d,d}$.
+Cada subgrafo $B$ compartilha aresta com no máximo $d^2\Delta^{j-2}$ circuitos de comprimento $j$, e compartilha aresta com no máximo $\binom{\Delta}{d}^2$ subgrafos isomorfos a $K_{d,d}$.
 
 Sejam $y_{|C|} = \bbp(A_C)^{1-\lambda}$ e $y_0 = y(B) = e^{-0.5d^{1+\lambda}}$. Queremos mostrar que
 
-\begin{equation}\label{shiftllleq1}
+\begin{equation*}
 \bbp(A_C) \leq y_{|C|}\left(\prod_{3\leq j\leq g}(1-y_j)^{|C|\Delta^{j-2}}\right)(1-y_0)^{|C|\binom{\Delta}{d}^2},
+\end{equation*}
+\begin{equation*}
+\bbp(A_B)\leq y_0 \left(\prod_{3\leq j\leq g}(1-y_j)^{d^2\Delta^{j-2}}\right)(1-y_0)^{\binom{\Delta}{d}^2}.
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Temos que $\Delta < n$, portanto basta mostrar que
+
+\begin{equation}\label{shiftllleq1}
+\bbp(A_C) \leq y_{|C|}\left(\prod_{3\leq j\leq g}(1-y_j)^{|C|n^{j-2}}\right)(1-y_0)^{|C|\binom{n}{d}^2},
 \end{equation}
 \begin{equation}\label{shiftllleq2}
-\bbp(A_B)\leq y_0 \left(\prod_{3\leq j\leq g}(1-y_j)^{d^2\Delta^{j-2}}\right)(1-y_0)^{\binom{\Delta}{d}^2}.
+\bbp(A_B)\leq y_0 \left(\prod_{3\leq j\leq g}(1-y_j)^{d^2n^{j-2}}\right)(1-y_0)^{\binom{n}{d}^2}.
 \end{equation}
 
 Para mostrar a inequação (\ref{shiftllleq1}), tomamos seu logaritmo
 
-\[\log(\bbp(A_C)) \leq \log(\bbp(A_C)^{1-\lambda}) + \sum\limits_{3\leq j\leq g}|C|\Delta^{j-2}\log(1-y_j)+|C|\binom{\Delta}{d}^2\log(1-y_0).\]
+\[\log(\bbp(A_C)) \leq \log(\bbp(A_C)^{1-\lambda}) + \sum\limits_{3\leq j\leq g}|C|n^{j-2}\log(1-y_j)+|C|\binom{n}{d}^2\log(1-y_0).\]
 
 Então basta mostrar que
 
-\[|C|(\lambda-1)\log(d) \leq -(1-\lambda)^2|C|\log(d) + \sum\limits_{3\leq j\leq g}|C|\Delta^{j-2}\log(1-y_j)+|C|\binom{\Delta}{d}^2\log(1-y_0).\]
+\[|C|(\lambda-1)\log(d) \leq -(1-\lambda)^2|C|\log(d) + \sum\limits_{3\leq j\leq g}|C|n^{j-2}\log(1-y_j)+|C|\binom{n}{d}^2\log(1-y_0).\]
 
 Podemos dividir todos os termos por $|C|$ para obter
 
-\[(\lambda-1)\log(d) \leq -(1-\lambda)^2\log(d) + \sum\limits_{3\leq j\leq g}\Delta^{j-2}\log(1-y_j)+\binom{\Delta}{d}^2\log(1-y_0).\]
+\[(\lambda-1)\log(d) \leq -(1-\lambda)^2\log(d) + \sum\limits_{3\leq j\leq g}n^{j-2}\log(1-y_j)+\binom{n}{d}^2\log(1-y_0).\]
 
 E reorganizando os termos, obtemos
 
-\[(\lambda-\lambda^2)\log(d) \geq -\sum\limits_{3\leq j\leq g}\Delta^{j-2}\log(1-y_j)-\binom{\Delta}{d}^2\log(1-y_0).\]
+\[(\lambda-\lambda^2)\log(d) \geq -\sum\limits_{3\leq j\leq g}n^{j-2}\log(1-y_j)-\binom{n}{d}^2\log(1-y_0).\]
 
 Como $0.9\log(1-z) > -z$ para $z$ pequeno, então $-\log(1-z)<z/0.9$ para $z$ pequeno, então basta mostrar que
 
-\[\lambda(1-\lambda)\log(d) \geq \sum\limits_{3\leq j \leq g}\Delta^{j-2}\frac{y_j}{0.9} + \binom{\Delta}{d}^2\frac{y_0}{0.9},\]
+\[\lambda(1-\lambda)\log(d) \geq \sum\limits_{3\leq j \leq g}n^{j-2}\frac{y_j}{0.9} + \binom{n}{d}^2\frac{y_0}{0.9},\]
 
 ou seja,
 
-
-\[0.9\lambda(1-\lambda)\log(d) \geq \sum\limits_{3\leq j \leq g}\Delta^{j-2}d^{-(1-\lambda)^2j} +\binom{\Delta}{d}^2e^{-0.5d^{1+\lambda}}.\]
+\[0.9\lambda(1-\lambda)\log(d) \geq \sum\limits_{3\leq j \leq g}n^{j-2}d^{-(1-\lambda)^2j} +\binom{n}{d}^2e^{-0.5d^{1+\lambda}}.\]
 
 Como $d^{-(1-\lambda)^2j} < d^{(2\lambda-1)j}$, temos
 
 \begin{equation}\label{shiftllleq3}
-0.9\lambda(1-\lambda)\log(d) \geq \sum\limits_{3\leq j \leq g}\Delta^{j-2}d^{(2\lambda-1)j}+\binom{\Delta}{d}^2e^{-0.5d^{1+\lambda}}.
+0.9\lambda(1-\lambda)\log(d) \geq \sum\limits_{3\leq j \leq g}n^{j-2}d^{(2\lambda-1)j}+\binom{n}{d}^2e^{-0.5d^{1+\lambda}}.
 \end{equation}
 
-Portanto, para mostrar a inequação \ref{shiftllleq1}, basta mostrar a inequação \ref{shiftllleq3}. Consideraremos separadamente os dois termos do lado direito da inequação \ref{shiftllleq3}.
+Portanto, para mostrar a inequação (\ref{shiftllleq1}), basta mostrar a inequação (\ref{shiftllleq3}). Consideraremos separadamente os dois termos do lado direito da inequação (\ref{shiftllleq3}).
 
-Como temos que $\binom{\Delta}{d}^2 < (\frac{e\Delta}{d})^{2d}$, então
+Como temos que $\binom{n}{d}^2 < (\frac{en}{d})^{2d}$, então
+
+% $g-2+\theta/2-g\theta \leq -1$
+
+% $2g - 4 + \theta(1-2g) \leq -2$
+
+% $\theta(1-2g) \leq -2g+2$
+
+% $\theta(2g-1) \geq 2g-2$
+
+% %% or
+% $(g-2)/\theta + 1/4 - g \leq -1.5$ 
+
+% $(g-2)/\theta \leq g-1.5-1/4$
+
+% $(g-2)/(g-1.75) \leq \theta$
 
 \begin{equation*}
 \setlength{\jot}{6pt}
 \begin{aligned}
-\binom{\Delta}{d}^2e^{-0.5d^{1+\lambda}} &< \left(\frac{e\Delta}{d}\right)^{2d}e^{-0.5d^{1+\lambda}}\\ 
-&= \left(\frac{e^2\Delta^2}{d^2}e^{-0.5d^\lambda}\right)^d.
+\binom{n}{d}^2e^{-0.5d^{1+\lambda}} &< \left(\frac{en}{d}\right)^{2d}e^{-0.5d^{1+\lambda}}\\ 
+&= \left(\frac{e^2n^2}{d^2}e^{-0.5d^\lambda}\right)^d.
 \end{aligned}
 \end{equation*}
 
-Se $d \geq \Delta/2$, temos
+Como $d = n^\theta$, temos que
 
 \begin{equation*}
 \setlength{\jot}{6pt}
 \begin{aligned}
-\left(\frac{e^2\Delta^2}{d^2}e^{-0.5d^\lambda}\right)^d 
-&\leq \left(\frac{2^2e^2\Delta^2}{\Delta^2}e^{-0.5d^\lambda}\right)^d \\
-&= \left(4e^2e^{-0.5d^\lambda}\right)^d\\ 
-&= \left(\frac{4e^2}{e^{0.5d^\lambda}}\right)^d \\ 
-&< \left(\frac{36}{e^{0.5d^\lambda}}\right)^d.
+\left(\frac{e^2n^2}{d^2}e^{-0.5d^\lambda}\right)^d 
+&= \left(\frac{e^2n^2}{n^{2\theta}}e^{-0.5d^\lambda}\right)^d \\
+&= \left(e^2(n^{1-\theta})^2e^{-0.5d^\lambda}\right)^d\\ 
+&= \left(\frac{n^{2-2\theta}}{e^{0.5d^\lambda-2}}\right)^d. 
+%&< \left(\frac{36}{e^{0.5d^\lambda}}\right)^d.
 \end{aligned}
 \end{equation*}
 
-Como $\lambda$ é uma constante positiva, para $d$ for suficientemente grande temos que $e^{0.5d^\lambda} \geq 36$, e logo temos que
+Como $g\geq 3$, temos que $\theta \geq 0.8$, logo
 
-\[\left(\frac{36}{e^{0.5d^\lambda}}\right)^d < 1^d = 1.\]
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\left(\frac{n^{2-2\theta}}{e^{0.5d^\lambda-2}}\right)^d 
+&\leq \left(\frac{n^{0.4}}{e^{0.5d^\lambda-2}}\right)^d\\
+&= \left(\frac{n^{0.4}}{e^{0.5n^{\theta\lambda}-2}}\right)^d
+\end{aligned}
+\end{equation*}
+
+Se $n$ é tal que
+
+\[\theta\lambda = \frac{g-2}{4g(g-1.75)} \geq \frac{\log(\log(n))}{\log(n)},\]
+
+então 
+
+\[e^{0.5n^{\theta\lambda}-2} \geq n^{0.4}.\]
+
+Pois temos que
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+n^{\theta\lambda} &\geq \log(n)\\
+&= 0.8\log(n) + 0.2\log(n).
+\end{aligned}
+\end{equation*}
+
+E note que para tal $n$, temos que $0.2\log(n) \geq 4$, logo
+
+\[n^{\theta\lambda} \geq 0.8\log(n) + 4.\]
+
+Ou seja, temos que
+
+\[0.5n^{\theta\lambda} - 2 \geq 0.4\log(n),\]
+
+e logo temos que
+
+\[e^{0.5n^{\theta\lambda}-2} \geq n^{0.4}.\]
+
+Então
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+\left(\frac{n^{0.4}}{e^{0.5n^{\theta\lambda}-2}}\right)^d
+&\leq 1^d\\
+&= 1.
+\end{aligned}
+\end{equation*}
+
+% Logo, para $n$ suficientemente grande, temos que
+
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \left(\frac{n^{0.4}}{e^{0.5n^{\theta\lambda}-2}}\right)^d &
+% \leq 1^d\\
+% &= 1.
+% \end{aligned}
+% \end{equation*}
 
 Portanto, concluímos que
 
 \begin{equation}\label{shiftlllaux1}
-\binom{\Delta}{d}^2e^{-0.5d^{1+\lambda}} < 1.
+\binom{n}{d}^2e^{-0.5d^{1+\lambda}} < 1.
 \end{equation}
 
-Como $\lambda g = 1/4$ e $d \geq \Delta/2$, temos também que
+% Em particular, basta que
+
+% \[0.5n^{\theta\lambda}-2 \geq 0.4\log(n).\]
+
+% Equivalentemente, basta que
+
+% \[n^{\theta\lambda} \geq 0.8\log(n) + 4.\]
+
+% Se $0.2\log(n) \geq 4$, ou seja, se $n \geq e^{20}$, basta que $n$ seja tal que
+
+% \[n^{\theta\lambda} \geq \log(n).\]
+
+% Logo, basta que
+
+% \[\theta\lambda\log(n) \geq \log(\log(n)).\]
+
+% Então, se 
+
+%Em particular, como $n^c \leq e^n$ para todo $n>0$ e $c\in (0,1)$, para que a desigualdade (\ref{shiftlllaux1}) seja verdadeira basta que
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Se n^c <= e^n, pra n >= 0 e c in (0,1), basta que 0.5d^\lambda - 2 > 0.
+%% Não parece estar certo.....
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Como $\lambda g = 1/4$ e $n = d^{1/\theta}$, temos também que
 
 \begin{equation*}
 \setlength{\jot}{6pt}
 \begin{aligned}
-\sum\limits_{3\leq j \leq g}\Delta^{j-2}d^{(2\lambda-1)j} 
-&\leq \Delta^{g-2}d^{(2\lambda-1)g} \\
-&\leq (2d)^{g-2}d^{(2\lambda-1)g} \\
-&< 2^gd^{g-2}d^{(2\lambda-1)g} \\
-&= 2^gd^{-2}d^{2\lambda g} \\
-&= 2^gd^{-2}d^{0.5} \\
-&= 2^gd^{-1.5}.
+\sum\limits_{3\leq j \leq g}n^{j-2}d^{(2\lambda-1)j} 
+&< gn^{g-2}d^{(2\lambda-1)g} \\
+&\leq gd^{(g-2)/\theta}d^{(2\lambda-1)g} \\
+&= gd^{g-1.75}d^{2\lambda g-g} \\
+&= gd^{-1.75}d^{2\lambda g} \\
+&= gd^{-1.75}d^{0.5} \\
+&= gd^{-1.25}.
 \end{aligned}
 \end{equation*}
+
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \sum\limits_{3\leq j \leq g}\Delta^{j-2}d^{(2\lambda-1)j} 
+% &\leq \Delta^{g-2}d^{(2\lambda-1)g} \\
+% &\leq (2d)^{g-2}d^{(2\lambda-1)g} \\
+% &< 2^gd^{g-2}d^{(2\lambda-1)g} \\
+% &= 2^gd^{-2}d^{2\lambda g} \\
+% &= 2^gd^{-2}d^{0.5} \\
+% &= 2^gd^{-1.5}.
+% \end{aligned}
+% \end{equation*}
 
 Então concluímos que
 
 \begin{equation}\label{shiftlllaux2}
-\sum\limits_{3\leq j \leq g}\Delta^{j-2}d^{(2\lambda-1)j} < 2^gd^{-1.5}.
+\sum\limits_{3\leq j \leq g}n^{j-2}d^{(2\lambda-1)j} < gd^{-1.25}.
 \end{equation}
 
-Por \ref{shiftlllaux1} e \ref{shiftlllaux2}, para mostrar a inequação \ref{shiftllleq3}, basta que
+Aplicando (\ref{shiftlllaux1}) e (\ref{shiftlllaux2}) na inequação  (\ref{shiftllleq3}), basta que
 
-\[0.9\lambda(1-\lambda)\log(d) \geq 2^gd^{-1.5} + 1.\]
+\[0.9\lambda(1-\lambda)\log(d) \geq gd^{-1.25} + 1.\]
 
-Como $2^g$ e $0.9\lambda(1-\lambda)$ são constantes, note que o lado esquerdo da inequação é crescente (com limite tendendo a infinito), e o lado direito é decrescente, então com $d$ suficientemente grande, a inequação vale. Então temos que a inequação \ref{shiftllleq1} vale.
+Como $d^{-1.25} \leq 1$ para todo $d\geq 1$, basta que
 
-De forma semelhante, para mostrar \ref{shiftllleq2}, tomamos o logaritmo
+\[0.9\lambda(1-\lambda)\log(d) \geq g + 1.\]
 
-\[\log(\bbp(A_B))\leq \log(y_0) + \sum\limits_{3\leq j \leq g}d^2\Delta^{j-2}\log(1-y_j)+ \binom{\Delta}{d}^2\log(1-y_0).\]
+Logo, se também temos que
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+n &\geq \exp\left(\frac{g-1}{0.9\lambda(1-\lambda)\theta}\right)\\
+&= \exp\left(\frac{(g-1)(g-1.75)16g^2}{0.9(g-2)(4g-1)}\right),
+\end{aligned}
+\end{equation*}
+então a desigualdade (\ref{shiftllleq1}) é verdadeira.
+
+De forma semelhante, para mostrar (\ref{shiftllleq2}), tomamos o logaritmo
+
+\[\log(\bbp(A_B))\leq \log(y_0) + \sum\limits_{3\leq j \leq g}d^2n^{j-2}\log(1-y_j)+ \binom{n}{d}^2\log(1-y_0).\]
 
 Então basta mostrar que
 
-\[-d^{1+\lambda} \leq -0.5d^{1+\lambda} + \sum\limits_{3\leq j \leq g}d^2\Delta^{j-2}\log(1-y_j)+ \binom{\Delta}{d}^2\log(1-y_0).\]
+\[-d^{1+\lambda} \leq -0.5d^{1+\lambda} + \sum\limits_{3\leq j \leq g}d^2n^{j-2}\log(1-y_j)+ \binom{n}{d}^2\log(1-y_0).\]
 
 Reordenando os termos, obtemos
 
-\[0.5d^{1+\lambda} \geq - \sum\limits_{3\leq j \leq g}d^2\Delta^{j-2}\log(1-y_j)- \binom{\Delta}{d}^2\log(1-y_0).\]
+\[0.5d^{1+\lambda} \geq - \sum\limits_{3\leq j \leq g}d^2n^{j-2}\log(1-y_j)- \binom{n}{d}^2\log(1-y_0).\]
 
 Como $-\log(1-z) < z/0.9$ para $z$ pequeno, temos
 
-\[0.5d^{1+\lambda} \geq \sum\limits_{3\leq j \leq g}d^2\Delta^{j-2}\frac{y_j}{0.9} + \binom{\Delta}{d}^2\frac{y_0}{0.9},\]
+\[0.5d^{1+\lambda} \geq \sum\limits_{3\leq j \leq g}d^2n^{j-2}\frac{y_j}{0.9} + \binom{n}{d}^2\frac{y_0}{0.9},\]
 
 ou seja,
 
 %\[0.45d^{1+\lambda} \geq \sum\limits_{3\leq j \leq g}d^2\Delta^{j-2}y_j + \binom{\Delta}{d}^2y_0.\]
 
-\[0.45d^{1+\lambda} \geq \sum\limits_{3\leq j \leq g}d^2\Delta^{j-2}d^{-(1-\lambda)^2j} + \binom{\Delta}{d}^2e^{-0.5d^{1+\lambda}}.\]
+\[0.45d^{1+\lambda} \geq \sum\limits_{3\leq j \leq g}d^2n^{j-2}d^{-(1-\lambda)^2j} + \binom{n}{d}^2e^{-0.5d^{1+\lambda}}.\]
 
 Como $d^{-(1-\lambda)^2j} < d^{(2\lambda-1)j}$, temos
 
 \begin{equation}\label{shiftllleq4}
-0.45d^{1+\lambda} \geq \sum\limits_{3\leq j \leq g}d^2\Delta^{j-2}d^{(2\lambda-1)j} + \binom{\Delta}{d}^2e^{-0.5d^{1+\lambda}}.
+0.45d^{1+\lambda} \geq \sum\limits_{3\leq j \leq g}d^2n^{j-2}d^{(2\lambda-1)j} + \binom{n}{d}^2e^{-0.5d^{1+\lambda}}.
 \end{equation}
 
-Logo para mostrar \ref{shiftllleq2}, basta mostrar que \ref{shiftllleq4} vale.
+Logo para mostrar (\ref{shiftllleq2}), basta mostrar que (\ref{shiftllleq4}) vale.
 
-Por \ref{shiftlllaux2}, temos que
-
-\[\sum\limits_{3\leq j \leq g}\Delta^{j-2}d^{(2\lambda-1)j} \leq 2^gd^{-1.5},\]
-
-e logo temos que 
+Por (\ref{shiftlllaux2}), temos que
 
 \begin{equation*}
 \setlength{\jot}{6pt}
 \begin{aligned}
-\sum\limits_{3\leq j \leq g}d^2\Delta^{j-2}d^{(2\lambda-1)j} &\leq d^22^gd^{-1.5} \\
-&= 2^gd^{0.5}.
+\sum\limits_{3\leq j \leq g}d^2n^{j-2}d^{(2\lambda-1)j} &= d^2\sum\limits_{3\leq j \leq g}n^{j-2}d^{(2\lambda-1)j} \\
+&\leq d^2gd^{-1.25} \\
+&= gd^{0.75}.
 \end{aligned}
 \end{equation*}
 
-E por \ref{shiftlllaux1}, temos que
+E por (\ref{shiftlllaux1}), temos que
 
-\[\binom{\Delta}{d}^2e^{-0.5d^{1+\lambda}} < 1.\]
+\[\binom{n}{d}^2e^{-0.5d^{1+\lambda}} < 1.\]
 
-Então para mostrar \ref{shiftllleq4}, basta que 
+Então para mostrar (\ref{shiftllleq4}), basta que 
 
-\[0.45d^{1+\lambda} \geq 2^gd^{0.5} + 1.\]
+\[0.45d^{1+\lambda} \geq gd^{0.75} + 1.\]
 
-Como $2^g$ é constante, note que o lado esquerdo da inequação tem crescimento maior do que o lado direito, e logo para $d$ suficientemente grande a inequação vale. 
+Como $d^{0.75} \geq 1$ para todo $d \geq 1$, então basta que
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+0.45d^{1+\lambda} &\geq gd^{0.75} + d^{0.75}\\
+&= (g+1)d^{0.75}.
+\end{aligned}
+\end{equation*}
+
+Logo, se
+
+\[d^{0.25+\lambda} = n^{\theta(0.25+\lambda)} \geq \frac{g+1}{0.45},\]
+
+então a inequação (\ref{shiftllleq2}) é verdadeira.
+
+%Como $2^g$ é constante, note que o lado esquerdo da inequação tem crescimento maior do que o lado direito, e logo para $d$ suficientemente grande a inequação vale. 
 
 %E como o lado esquerdo da inequação é crescente com limite tendendo para infinito, e o lado direito é decrescente, para $d$ suficientemente grande, a inequação vale.
 
-Logo, \ref{shiftllleq1} e \ref{shiftllleq2} são verdadeiras para $d$ grande.
+Logo temos que (\ref{shiftllleq1}) e (\ref{shiftllleq2}) são verdadeiras para $n$ suficientemente grande.
 
 Portanto, pelo Lema Local de Lovász, a probabilidade de nenhum evento $A_C$ e nenhum evento $A_B$ ocorrerem é positiva, ou seja, existe um subgrafo de $S_n^r$ com cintura maior que $g$ e com pelo menos uma aresta de cada $K_{d,d}$.
 
 \end{proof}
 
 \begin{proof}(Teorema \ref{shiftteo})
-Seja $D$ um direcionamento topológico de $K_n$, e sejam $k,g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal. %, e considere a sequência $D = L^0(D), L(D), L^2(D), \cdots, L^r(D)$.
+Seja $D$ uma orientação transitiva de $K_n$, e sejam $k,g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal. %, e considere a sequência $D = L^0(D), L(D), L^2(D), \cdots, L^r(D)$.
 
 Note que $S_{n-1}^r$ é subgrafo de $S_n^r$, logo $\chi(S_{n-1}^r) \leq \chi(S_n^r)$, então basta mostrar que existe algum $n_0 := n_0(k,g)$ tal que $S_{n_0}^r$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
 
