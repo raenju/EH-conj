@@ -1,5 +1,8 @@
 \chapter{Grafos Livres de Triângulos}
 \label{cap:livretriangulos}
+
+\section{Grafos Livres de Triângulos}
+
 Em \cite{rodl1977chromatic} R\"{o}dl demonstrou o seguinte teorema.
 
 \begin{teorema}\label{rodlthm}
@@ -60,3 +63,51 @@ Pela escolha de $m$, um clique de tamanho $m$ contém um subgrafo livre de triâ
 \end{proof}
 
 Temos então que a conjectura de Erd\H{o}s e Hajnal vale para $g=4$, ou seja, $f(k,4)$ existe para todo $k$. A conjectura está em aberto para $g > 4$.
+
+\section{Circuitos Ímpares}
+
+Resultado de \cite{erdHos1966chromatic}, prova de Bollobás em \cite{bollobas2004extremal}
+
+\begin{teorema}\label{teocircimpar}
+Se todo circuito ímpar de um grafo $G$ tem comprimento no máximo $2r-1$, então $\chi(G) \leq 2r$.
+\end{teorema}
+
+\begin{lema}\label{lemacircimpar}
+Seja $G$ um grafo $2$-conexo contendo um circuito ímpar. Seja $C$ um circuito par em $G$. Então existem vértices $x,y \in C$ e um caminho $P$ entre $x$ e $y$ independente de $C$ tal que $d_C(x,y) \not\equiv d_P(x,y)$ (mod $2$), onde $d_H(x,y)$ denota a distância entre $x$ e $y$ em $H$.
+\end{lema}
+
+\begin{proof}(Lema \ref{lemacircimpar})
+Note que existe um circuito ímpar que intersecta $C$ em pelo menos $2$ vértices. Denote um tal circuito por $D = x_1, x_2, \cdots, x_{2l+1}$.
+
+Tome
+
+\[V(C) \cap V(D) = \{x_{i_1}, x_{i_2}, \cdots, x_{i_r} : 1\leq i_1 < \cdots < i_r \leq 2l+1 \},\ r\geq 2.\]
+
+Suponha que a afirmação do lema seja falsa. Então temos
+
+\[d_C(x_{i_j}, x_{i_{j+1}}) \equiv i_{j+1} - i_j\ (\text{mod } 2),\ 1\leq j< r,\]
+
+e
+
+\[d_C(x_{i_r}, x_{i_1}) \equiv i_1 - i_r + 1\ (\text{mod } 2).\]
+
+Somando as congruências acima, temos que o lado esquerdo é $0$, pois $C$ é um circuito par, e o lado direito é $1$. 
+
+Portanto, para algum par de vértices $x,y$ de $C$ e algum caminho $P$ entre $x$ e $y$ independente de $C$, temos que $d_C(x,y) \not\equiv d_P(x,y)$ (mod $2$).
+\end{proof}
+
+\begin{proof}(Teorema \ref{teocircimpar})
+A prova será feita por indução na ordem de $G$. Suponha que $\chi(G) > 2r$ mas o teorema é verdadeiro apenas para grafos de ordem menor que $|G|$.
+
+Note que para todo vértice $x\in V(G)$ temos que $\chi(G - x) = 2r$, logo $\delta(G) \geq 2r$. Seja $Q = x_1,x_2,\cdots,x_q$ um caminho mais longo em $G$. Logo $\Gamma(x_1) \subset \{x_2,x_3,\cdots, x_q\}$. Sejam
+\[J = \{i : x_i \in \Gamma(x_1)\},\]
+\[j = \max(J).\]
+
+Então $|J| \geq 2r$, e para todo $i\geq r$, temos que $2i+1\not\in J$ e $j-2i+1\not\in J$. Logo $j\geq 4r$. O grafo $G$ contém o circuito $C=x_1,x_2,\cdots,x_j$, logo $j$ é par.
+
+Pelo lema \ref{lemacircimpar}, existe um caminho $P$ de comprimento $p$ entre $x_1$ e $x_l$, e $p \not\equiv l$ (mod $2$). Então $x_1 x_2 \cdots x_l P x_1$ e $x_l x_{l+1} \cdots x_1 P x_l$ são circuitos ímpares, e a soma de seus comprimentos é pelo menos $4r+2$, logo algum dos circuitos ímpares tem comprimento pelo menos $2r+1$, uma contradição.
+\end{proof}
+
+Pelo teorema \ref{teocircimpar}, todo grafo $G$ com $\chi(G) \geq 2r+1$ contém um circuito ímpar de comprimento pelo menos $2r+1$. Então em termos da conjectura de Erd\H{o}s e Hajnal, temos que $f(3,2r+1) \leq 2r+1$.
+
+De fato, $f(3,2r+1) = 2r+1$ pois claramente $K_{2r}$ não contém um circuito de comprimento $2r+1$.

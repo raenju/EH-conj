@@ -6,19 +6,36 @@
 %-----------------------------------
 % Texto reescrito
 %-----------------------------------
-A primeira construção citada foi provada independentemente por W. Tutte \cite{descartes1947three} e A. Zykov \cite{zykov1949some}.
+
+\subsection{Construção de Tutte}
+
+A primeira construção citada foi provada por W. Tutte \cite{descartes1947three}.
 
 Seja $G$ um grafo livre de triângulos arbitrário, $n := |V(G)|$ e $k := \chi(G)$. Construiremos um grafo livre de triângulos e de número cromático $k+1$.
 
 Seja $S$ um conjunto de $k(n-1)+1$ vértices, e para cada subconjunto $C \subset S$, com $|C| = n$, adicionamos uma cópia isomorfa de $G$, digamos $G_C$, e criamos um emparelhamento arbitrário entre vértices de $G_C$ e os vértices de $C$.
 
-Claramente o novo grafo não contém triângulos, e cada cópia isomorfa de $G$ precisa de $k$ cores. Caso os vértices de $S$ sejam coloridos com $k$ cores, pelo princípio da casa dos pombos, existe um subconjunto $C \subset S$, com $|C| = n$, tal que $C$ é monocromático. Mas como $C$ está emparelhado com $G_C$ e algum vértice de $G_C$ está colorido com a mesma cor de $C$, tal coloração não é própria. Portanto são necessárias pelo menos $k+1$ cores, e note que $k+1$ cores são suficientes, pois basta colorir cada cópia isomorfa de $G$ com $k$ cores, e colorir $S$ com uma $(k+1)$-ésima cor.\\
+Claramente o novo grafo não contém triângulos, e cada cópia isomorfa de $G$ precisa de $k$ cores. Caso os vértices de $S$ sejam coloridos com $k$ cores, pelo princípio da casa dos pombos, existe um subconjunto $C \subset S$, com $|C| = n$, tal que $C$ é monocromático. Mas como $C$ está emparelhado com $G_C$ e algum vértice de $G_C$ está colorido com a mesma cor de $C$, tal coloração não é própria. Portanto são necessárias pelo menos $k+1$ cores, e note que $k+1$ cores são suficientes, pois basta colorir cada cópia isomorfa de $G$ com $k$ cores, e colorir $S$ com uma $(k+1)$-ésima cor.
+
+\subsection{Construção de Zykov}
+
+A próxima construção foi proposta por A. Zykov \cite{zykov1949some}.
+
+Seja $G$ um grafo livre de triângulos, $n:=|V(G)|$ e $k:= \chi(G)$. Tome $k$ cópias disjuntas de $G$ e seja $S$ um conjunto independente de vértices, onde $|S| = n^k$.
+
+Considere os conjuntos de vértices $\{v_1,\cdots,v_k\}$ tais que cada vértice $v_i$ pertence a uma cópia distinta de $G$. Para cada conjunto, atribua um vértice distinto de $S$, e adicione arestas entre tal vértice de $S$ e os vértices do conjunto.
+
+Temos que o novo grafo é livre de triângulos, pois cada cópia de $G$ é livre de triângulos, e o conjunto $S$ é independente. Temos também que o novo grafo tem número cromático $k+1$. Suponha que o novo grafo pode ser colorido com apenas $k$ cores. Sabemos que cada cópia de $G$ precisa de $k$ cores, em particular temos que a $i$-ésima cópia de $G$ contém um vértice de cor $i$, e logo temos um conjunto $\{v_1,\cdots,v_k\}$, onde $v_i$ é um vértice da $i$-ésima cópia de $G$ e $v_i$ tem cor $i$. Por construção, existe um vértice de $S$ adjacente a todo vértice de tal conjunto, e logo tal vértice não pode receber uma das $k$ cores.
+
+\subsection{Construção de Mycielski}
 
 A próxima construção foi encontrada por J. Mycielski \cite{mycielski1955coloriage}. Seja $G$ um grafo livre de triângulos arbitrário, $k := \chi(G)$ e $V(G) = \{v_1, \cdots, v_n\}$. Para cada vértice $v_i$, adicionamos um novo vértice $w_i$, e $w_i$ é adjacente a $v_j$ se $v_i$ é adjacente a $v_j$, ou seja, $w_i$ tem a mesma vizinhança de $v_i$. E adicionamos um vértice $u$, adjacente a $w_1, \cdots, w_n$.
 
-O novo grafo é livre de triângulos, e sabemos que são necessárias $k$ cores para colorir os vértices $v_1, \cdots, v_n$. Suponha por contradição que podemos colorir os vértices $w_1,\cdots, w_n$ com $k-1$ cores, e seja $c$ a cor não usada. Para cada $v_i$ com cor $c$, podemos colorir $v_i$ com a cor de $w_i$, pois a vizinhança de $v_i$ é igual a vizinhança de $w_i$, dessa forma encontramos uma $(k-1)-$coloração dos vértices $v_1,\cdots,v_n$, contradição com o fato de $\chi(G) = k$. Logo, $w_1,\cdots,w_n$ precisa de pelo menos $k$ cores, e $k$ cores bastam, pois basta atribuir a cor de $v_i$ para $w_i$. E é necessária uma $(k+1)$-ésima cor para o vértice $u$. Logo o novo grafo tem número cromático $k+1$.\\
+O novo grafo é livre de triângulos, e sabemos que são necessárias $k$ cores para colorir os vértices $v_1, \cdots, v_n$. Suponha por contradição que podemos colorir os vértices $w_1,\cdots, w_n$ com $k-1$ cores, e seja $c$ a cor não usada. Para cada $v_i$ com cor $c$, podemos colorir $v_i$ com a cor de $w_i$, pois a vizinhança de $v_i$ é igual a vizinhança de $w_i$, dessa forma encontramos uma $(k-1)-$coloração dos vértices $v_1,\cdots,v_n$, contradição com o fato de $\chi(G) = k$. Logo, $w_1,\cdots,w_n$ precisa de pelo menos $k$ cores, e $k$ cores bastam, pois basta atribuir a cor de $v_i$ para $w_i$. E é necessária uma $(k+1)$-ésima cor para o vértice $u$. Logo o novo grafo tem número cromático $k+1$.
 
-A terceira construção citada foi encontrada por B. Codenotti, P. Pudlák, e G. Resta, por meio de planos projetivos \cite{codenotti2000some}.
+\subsection{Planos Projetivos}
+
+A quarta construção citada foi encontrada por B. Codenotti, P. Pudlák, e G. Resta, por meio de planos projetivos \cite{codenotti2000some}.
 
 Um plano projetivo é definido por um conjunto de pontos distintos $P$  e um conjunto de retas $L$, tais que:
 
@@ -89,21 +106,9 @@ Ademais, as colunas de $M_G$ correspondentes a um conjunto independente de $G$ c
 
 E como $|V(G)| = (n^2+n+1)(n+1)$, temos que $\chi(G) \geq (n+1)/2$. Então, basta tomar um plano projetivo de ordem $n = 2^{\ceil*{\text{log}_2 k}+1}$, e o grafo obtido pela construção tera número cromático pelo menos $k$.
 
-%-----------------------------------
-% Fim do texto reescrito
-%-----------------------------------
-
-% \subsection{Construção de W. Tutte e A. Zykov}
-
-% \subsection{Mycielskiano}
-
-% \subsection{Planos Projetivos}
 
 \section{Teorema de Erd\H{o}s}
 
-%-----------------------------------
-% Texto reescrito
-%-----------------------------------
 Para demonstrar o Teorema \ref{teoerdos}, será usado o método probabilístico, seguindo a prova de Bollobás \cite{bollobas2013modern}.
 
 Considere o espaço de probabilidade $\mathcal{G}_{n,p}$ dos grafos com $n$ vértices onde cada aresta ocorre independentemente com probabilidade $p$.
@@ -404,7 +409,7 @@ Logo $G$ tem número cromático pelo menos $k$ e cintura pelo menos $g$.
 
 \section{Lema Local de Lovász}
 
-Um teorema que será usado em alguns dos próximos capítulos é o Lema Local de Lovász, um importante teorema probabilístico enunciado a seguir.
+Um teorema que será usado em alguns dos próximos capítulos é o Lema Local de Lovász, um importante teorema probabilístico enunciado a seguir, e demonstrado com base na prova de Alon e Spencer \cite{alon2004probabilistic}.
 
 \begin{teorema}[Lema Local de Lovász]\label{LLL}
 Seja $\mathcal{A} = \{A_1, \cdots, A_n\}$ um conjunto finito de eventos em um espaço de probabilidade $\Omega$. Para cada $A\in \mathcal{A}$, seja $\Gamma(A)$ o conjunto dos elementos de $\mathcal{A}\setminus A$ que não são independentes de $A$. Se existe uma função real $y : \mathcal{A} \rightarrow (0,1)$ tal que
