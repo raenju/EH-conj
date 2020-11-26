@@ -9,11 +9,120 @@
 Um grafo de Kneser de parâmetros $n$ e $r$, denotado $KG(n,r)$, é um grafo cujos vértices são todos os $r$-subconjuntos de $[n]$, e dois vértices $v$ e $w$ são adjacentes se $v \cap w = \emptyset$.
 \end{definicao}
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.5\textwidth]{figuras/ch_kneser/pts-kneser-nt.png}};
+    % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
+    % \node at (9.55,6.3) {\textbf{texto}};
+    \node at (3.95,7.2) {\LARGE$1,2$};
+    \node at (3.97,5.1) {\LARGE$3,4$};
+    \node at (0.62,5.03) {\LARGE$4,5$};
+    \node at (7.45,4.85) {\LARGE$3,5$};
+    \node at (2.55,4.2) {\LARGE$2,3$};
+    \node at (5.4,4.15) {\LARGE$1,4$};
+    \node at (2.95,2.35) {\LARGE$2,5$};
+    \node at (5,2.4) {\LARGE$1,5$};
+    \node at (1.55,0.8) {\LARGE$1,3$};
+    \node at (6.4,0.7) {\LARGE$2,4$};
+\end{tikzpicture}
+\caption{Grafo de Kneser $KG(5,2)$, isomorfo ao grafo de Petersen.}
+\label{fig:kneserpetersen}
+\end{figure}
+
 Mohar e Wu demonstraram em \cite{mohar2015triangle} que a conjectura de Erd\H{o}s e Hajnal é verdadeira para os grafos de Kneser.
 
 \begin{definicao}
 Seja $G$ um grafo. O \textit{blow-up} de $G$ de potência $m$, denotado por $G^{(m)}$, é um grafo obtido de~$G$ substituindo cada vértice por um conjunto independente de tamanho $m$ (chamado de \textit{blow-up} do vértice), e para cada aresta $xy$ de $G$, o \textit{blow-up} de $x$ e de $y$ formam um grafo bipartido completo $K_{m,m}$. O grafo bipartido completo obtido a partir de uma aresta é chamado de \textit{blow-up} da aresta.
 \end{definicao}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.5\textwidth]{figuras/ch_kneser/kneser-blowup-nt.png}};
+    % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
+    % \node at (9.55,6.3) {\textbf{texto}};
+    \node at (0.71,4.8) {\LARGE$v$};
+    \node at (0.71,1.6) {\LARGE$w$};
+    \node at (4.4,4.8) {\LARGE$v_1$};
+    \node at (4.4,1.5) {\LARGE$w_1$};
+    \node at (5.93,4.8) {\LARGE$v_2$};
+    \node at (5.93,1.5) {\LARGE$w_2$};
+    \node at (7.46,4.8) {\LARGE$v_3$};
+    \node at (7.46,1.5) {\LARGE$w_3$};
+    \node at (0.71,0.4) {\LARGE$K_2$};
+    \node at (5.93,0.4) {\LARGE$K_2^{(3)}$};
+\end{tikzpicture}
+\caption{\textit{Blow-up} de $K_2$ de potência $3$.}
+\label{fig:kneserblowup}
+\end{figure}
+
+\section{Número cromático}
+
+\begin{afirmacao}\label{kneseraffchromatic}
+O número cromático de $KG(n,r) = n-2r+2$ se $n\geq 2r$, e $1$ caso contrário.
+\end{afirmacao}
+
+Se $n < 2r$, quaisquer dois $r$-subconjuntos de $[n]$ contém um elemento em comum, e logo o grafo $KG(n,r)$ não contém arestas. Portanto $\chi(KG(n,r)) = 1$.
+
+Se $n\geq 2r$, podemos colorir $KG(n,r)$ com $n-2r+2$ cores da seguinte forma, para cada vértice $v$ atribua a cor $\min(v)$ se $\min(v) < n-2r+2$, e caso $\min(v) \geq n-2r+2$, atribua a cor $n-2r+2$. Temos portanto que $\chi(KG(n,r)) \leq n-2r+2$.
+
+Kneser conjecturou que $\chi(KG(n,r)) = n-2r+2$ \cite{kneser1955aufgabe}, e a conjectura foi provada por Lovász \cite{lovasz1978kneser}, por meio do teorema de Borsuk-Ulam \cite{borsuk1933drei}.
+
+\begin{teorema}[Borsuk-Ulam]\label{thborsukulam}
+Para toda função contínua $f: S^d \rightarrow\mathbb{R}^d$ da $d$-esfera para o $d$-espaço, existem pontos antípodas $x^*$ e $-x^*$ que são mapeados no mesmo ponto $f(x^*) = f(-x^*)$.
+\end{teorema}
+
+A prova será baseada na versão em Aigner e Ziegler \cite{aigner2010proofs}, e faz uso do seguinte seguinte versão do teorema, de Lyustemik-Shnirel'man \cite{lyusternik1947topological}.
+
+\begin{teorema}\label{thlyustemikshnirelman}
+Se a $d$-esfera $S^d$ é coberta por $d+1$ conjuntos $U_1, U_2, \cdots, U_{d+1}$, tal que os primeiros $d$ conjuntos $U_1,\cdots,U_d$ são aberto ou fechado, então algum dos $d+1$ conjuntos contém pontos antípodas $x^*$ e $-x^*$.
+\end{teorema}
+
+Seja $d = n - 2r$. Considere $2r+d$ pontos em posição geral na esfera $S^{d+1}$, e seja $V(n,r)$ o conjunto de todos os $r$-subconjuntos dos $2r+d$ pontos na esfera. Suponha que os elementos de $V(n,r)$ estejam particionados em $d+1$ classes, $V(n,r) = V_1 \dot\cup \cdots \dot\cup V_{d+1}$.
+
+Para $i=1,\cdots,d+1$, tome \[O_i = \{x\in S^{d+1} : \text{ O hemisfério aberto } H_x \text{ com polo } x \text{ contém algum } r\text{-conjunto de } V_i\}.\]
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.45\textwidth]{figuras/ch_kneser/kneser-sphere-hemisphere-nt.png}};
+    % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
+    % \node at (9.55,6.3) {\textbf{texto}};
+    \node at (4.05,3.9) {\LARGE$x$};
+\end{tikzpicture}
+\caption{Hemisfério aberto $H_x$ em $S^2$.}
+\label{fig:kneserhemisphere}
+\end{figure}
+
+Note que cada $O_i$ é um conjunto aberto, e o conjunto fechado $C = S^{d+1}\setminus (O_1\cup \cdots \cup O_{d+1})$, junto com os conjuntos $O_i, i=1,\cdots,d+1$ cobrem $S^{d+1}$. Por \ref{thlyustemikshnirelman}, algum dos conjuntos $O_i$ ou $C$ contém pontos antípodas $x^*$ e $-x^*$.
+
+Mostraremos que o conjunto $C$ não pode conter pontos antípodas. Suponha que $C$ contenha pontos antípodas $x^*$ e $-x^*$. Pela definição do conjunto $C$, os hemisfério $H_{x^*}$ contém no máximo $r-1$ pontos, pois caso contrário o hemisfério com polo $x^*$ conteria um $r$-conjunto de $V_i$ para algum $i$, e logo $x^* \not\in C$. De mesma forma, o hemisfério $H_{-x^*}$ contém no máximo $r-1$ pontos.
+
+Portanto, temos que pelo menos $n - 2r + 2 = d+2$ pontos estão em $\overline{H_{x^*}}\cap\overline{H_{-x^*}}$, ou seja, $d+2$ pontos estão em um mesmo plano que contém a origem, uma contradição, pois os pontos estão em posição geral.
+
+Portanto, algum conjunto $O_i$ contém pontos antípodas $x^*$ e $-x^*$, e logo existem $r$-conjuntos $A,B \in V_i$, com $A\in H_{x^*}$ e $B\in H_{-x^*}$, e como $H_{x^*}$ e $H_{-x^*}$ são disjuntos, temos que $A$ e $B$ são disjuntos.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.4\textwidth]{figuras/ch_kneser/kneser-sphere-AB-nt.png}};
+    % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
+    % \node at (9.55,6.3) {\textbf{texto}};
+    \node at (3.8,5.9) {\LARGE$x^*$};
+    \node at (3.8,0.7) {\LARGE$-x^*$};
+    \node at (2.3,4.6) {\LARGE$A$};
+    \node at (2.75,1.9) {\LARGE$B$};
+\end{tikzpicture}
+\caption{Hemisférios disjuntos $H_{x^*}$ e $H_{-x^*}$ contendo os $r$-conjuntos $A$ e $B$, respectivamente.}
+\label{fig:knesersphereAB}
+\end{figure}
+
+% O número cromático de um grafo de Kneser $KG(n,r)$ é $n-2r+2$ se $n \geq 2r$, e $1$ caso contrário \cite{lovasz1978kneser}.
+
+%%%%%%%%%%%%%%%%%%%%
+%% Escrever sobre %%
+%%%%%%%%%%%%%%%%%%%%
 
 \section{Esboço da Prova}
 
@@ -44,6 +153,19 @@ Para cada vértice $a$ de $G$, seja $a_H$ o \textit{blow-up} de $a$, ou seja, $a
 Suponha por contradição que $H$ pode ser colorido com até $k$ cores, e fixe uma $k$ coloração de $H$. Como $a_H$ tem $m$ vértices e $H$ pode ser colorido com $k$ cores, pelo princípio da casa dos pombos alguma cor é usada pelo menos $m/k$ vezes em cada $a_H$. Então para cada vértice $a$ de $G$, seja $c(a)$ uma cor que ocorre pelo menos $m/k$ vezes em $a_H$ na coloração fixada.
 
 Para cada aresta $ab$ de $G$, seja $A$ o conjunto de vértices de $a_H$ de cor $c(a)$ e seja $B$ o conjunto de vértices de $b_H$ de cor $c(b)$. Então temos que $|A| \geq m/k$ e $|B| \geq m/k$, e logo pela escolha de $H$, existe uma aresta entre $A$ e $B$. Logo $c(a)$ é diferente de $c(b)$.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.6\textwidth]{figuras/ch_kneser/kneser-colorsets-nt.png}};
+    % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
+    % \node at (9.55,6.3) {\textbf{texto}};
+    \node at (2.5,2.65) {\large$\geq$\LARGE{$\frac{m}{k}$}};
+    \node at (7.4,3.4) {\large$\geq$\LARGE{$\frac{m}{k}$}};
+\end{tikzpicture}
+\caption{O \textit{blow-up} de cada vértice contém alguma cor que ocorre pelo menos $m/k$ vezes.}
+\label{fig:knesercolorsets}
+\end{figure}
 
 Temos portanto que para cada aresta $ab$ de $G$, a cor $c(a)$ é diferente da cor $c(b)$, então podemos colorir cada vértice $a$ de $G$ com a cor $c(a)$ e obteremos uma $k$-coloração de $G$. Contradição, pois $\chi(G) > k$.
 
@@ -225,7 +347,48 @@ Sejam $n,r,t$ e $x$ inteiros não-negativos tais que $0 < r < n$ e $x < rt$. O g
 \end{teorema}
 
 \begin{proof}{(Teorema \ref{moharwukn})}
-Seja $G = KG(nt, rt-x)$ e $H = KG(n,r)$. Podemos entender os vértices de $G$ como os subconjuntos de tamanho $(rt-x)$ de $[n]\times [t]$, e os vértices de $H$ como os subconjuntos de tamanho~$r$ de $[n]$. Dado um vértice $A\in V(G)$, seja $f(A) = \{a\in [n] : (a,b)\in A \text{ para algum }b\in [t]\}$, ou seja,~$f(A)$ é a projeção de $A$ em $[n]$.
+Seja $G = KG(nt, rt-x)$ e $H = KG(n,r)$. Podemos entender os vértices de $G$ como os subconjuntos de tamanho $(rt-x)$ de $[n]\times [t]$, e os vértices de $H$ como os subconjuntos de tamanho~$r$ de $[n]$. 
+
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=0.75\textwidth]{figuras/ch_kneser/kneser-knt.png}
+% \caption{Um vértice de $G$ (esquerda), e um vértice de $H$ (direita).}
+% \label{fig:kneserknt}
+% \end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.75\textwidth]{figuras/ch_kneser/kneser-knt-nt.png}};
+    % \draw[red,ultra thick,rounded corners] (7.5,5.3) rectangle (9.4,6.2);
+    % \node at (9.55,6.3) {\textbf{texto}};
+    \node at (0.65,1.3) {$1$};
+    \node at (1.35,1.3) {$2$};
+    \node at (2.05,1.3) {$3$};
+    \node at (2.75,1.3) {$4$};
+    \node at (5.5,1.3) {$n$};
+    \node at (6.35,1.3) {$1$};
+    \node at (7,1.3) {$2$};
+    \node at (7.7,1.3) {$3$};
+    \node at (11.6,1.3) {$n$};
+    \node at (0.2,1.85) {$1$};
+    \node at (0.2,2.5) {$2$};
+    \node at (0.2,3.2) {$3$};
+    \node at (0.2,3.9) {$4$};
+    \node at (0.2,7.3) {$t$};
+\end{tikzpicture}
+\caption{Um vértice de $G$ (esquerda), e um vértice de $H$ (direita).}
+\label{fig:kneserknt}
+\end{figure}
+
+Dado um vértice $A\in V(G)$, seja $f(A) = \{a\in [n] : (a,b)\in A \text{ para algum }b\in [t]\}$, ou seja,~$f(A)$ é a projeção de $A$ em $[n]$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{figuras/ch_kneser/kneser-projection.png}
+\caption{Projeção de um vértice de $KG(nt,rt-x)$ em $[n]$.}
+\label{fig:kneserprojection}
+\end{figure}
 
 Note que se para dois vértices $A,B$ de $G$, temos que $f(A)\cap f(B) = \emptyset$, então $A\cap B = \emptyset$. Logo, se~$|f(A)| = |f(B)| = r$ e $f(A)$ e $f(B)$ são adjacentes em $H$, então $A$ e $B$ são adjacentes em $G$. Para cada vértice $X\in V(H)$, se $f(A) = X$ para algum vértice $A$ de $G$, então $A$ é um subconjunto de $X \times [t]$.
 
@@ -241,7 +404,10 @@ A conjectura de Erd\H{o}s e Hajnal é verdadeira para os grafos de Kneser.
 \end{corolario}
 
 \begin{proof}{(Corolário \ref{knesercor})}
-Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, e seja $G = KG(2n,n-2x)$ um grafo de Kneser com número cromático grande. O número cromático de um grafo de Kneser $KG(n,r)$ é igual a $n-2r+2$ se $n \geq 2r$ \cite{lovasz1978kneser}, e $1$ caso contrário, logo para $x\geq 0$ o número cromático de $G$ é $4x+2$. 
+Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, e seja $G = KG(2n,n-2x)$ um grafo de Kneser com número cromático grande. Claramente $2n \geq 2(n-2x)$, logo temos que $\chi(KG(2n,n-2x)) = 4x+2$.
+ 
+
+%Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, e seja $G = KG(2n,n-2x)$ um grafo de Kneser com número cromático grande. O número cromático de um grafo de Kneser $KG(n,r)$ é igual a $n-2r+2$ se $n \geq 2r$ \cite{lovasz1978kneser}, e $1$ caso contrário, logo para $x\geq 0$ o número cromático de $G$ é $4x+2$. 
 
 Seja $t = x/k$. Pelo Teorema \ref{moharwukn}, temos que $G$ contém o \textit{blow-up} de $H := KG(2n/t, (n-x)/t)$ com potência~$m = \binom{(n-x)(t-1)/t}{x}$. Por simplicidade, vamos assumir que o resultado das divisões são inteiros. Cada vértice de $H$ tem grau $\binom{(n+x)/t}{(n-x)/t} = \binom{(n+x)/t}{2x/t}$, que é limitado superiormente por
 

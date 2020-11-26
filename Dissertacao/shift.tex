@@ -5,9 +5,37 @@
 Um \textit{shift graph} de parâmetro $n$, denotado $S_n$, é um grafo cujos vértices são os pares ordenados $(a,b)$, onde $1 \leq a < b \leq n$, e dois vértices $(a,b)$ e $(c,d)$ são adjacentes se $b = c$ ou se $a = d$.
 \end{definicao}
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.5\textwidth]{figuras/ch_shift/shift-shift1.png}};
+    \node at (1,3.6) {\large{$(1,2)$}};
+    \node at (1,2.2) {\large{$(1,3)$}};
+    \node at (1,0.8) {\large{$(1,4)$}};
+    \node at (4.35,3.6) {\large{$(2,3)$}};
+    \node at (4.35,2.2) {\large{$(2,4)$}};
+    \node at (7.35,0.8) {\large{$(3,4)$}};
+\end{tikzpicture}
+\caption{O \textit{shift graph} $S_4$}
+\label{fig:shiftgraph}
+\end{figure}
+
 \begin{definicao}
 Um \textit{shift graph} de parâmetro $n$ e ordem $r$, denotado $S_n^r$, é um grafo cujos vértices são as $(r+1)$-uplas $(a_0, a_1, a_2, \cdots, a_r)$, onde $1 \leq a_0 < a_1 < \cdots < a_r \leq n$, e dois vértices $a = (a_0, \cdots, a_r)$ e $b = (b_0, \cdots, b_r)$ são adjacentes se $a\setminus a_0 = b\setminus b_r$ ou $a\setminus a_r = b\setminus b_0$, ou seja, se os $r$ primeiros elementos de um vértice coincidem com os $r$ últimos elementos do outro vértice.
 \end{definicao}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.6\textwidth]{figuras/ch_shift/shift-shiftorder2.png}};
+    \node at (0.87,2.95) {$(1,2,3)$};
+    \node at (4.9,2.95) {$(2,3,4)$};
+    \node at (4.9,1.25) {$(2,3,5)$};
+    \node at (8.7,2.95) {$(3,4,5)$};
+\end{tikzpicture}
+\caption{Alguns vértices de $S_5^{2}$}
+\label{fig:shiftgraphorder2}
+\end{figure}
 
 \begin{definicao}
 Dado um grafo $G$, o grafo linha de $G$, denotado por $L(G)$, é o grafo definido da seguinte forma
@@ -21,11 +49,75 @@ Ademais, o digrafo linha $L(D)$ de um digrafo $D$ é definido da seguinte forma
 ou seja, os vértices de $L(D)$ são os arcos de $D$, e $vw$ é um arco em $L(D)$ se existe um vértice $x$ em $D$ tal que o arco $v$ entra em $x$, e o arco $w$ saia de $x$.
 \end{definicao}
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.85\textwidth]{figuras/ch_shift/shift-linegraph.png}};
+    \node at (0.68,2.75) {\Large$v_1$};
+    \node at (2.88,2.75) {\Large$v_2$};
+    \node at (5.1,2.75) {\Large$v_3$};
+    \node at (5.1,0.75) {\Large$v_4$};
+    \node at (5.1,4.75) {\Large$v_5$};
+    \node at (1.78,3.1) {\Large$e_1$};
+    \node at (3.99,3.1) {\Large$e_2$};
+    \node at (5.5,1.75) {\Large$e_3$};
+    \node at (5.5,3.75) {\Large$e_4$};
+    \node at (9.5,2.75) {\Large$e_1$};
+    \node at (11.45,2.75) {\Large$e_2$};
+    \node at (13.25,1.33) {\Large$e_3$};
+    \node at (13.25,4.15) {\Large$e_4$};
+\end{tikzpicture}
+\caption{Um grafo $G$ (esquerda) e seu grafo linha $L(G)$ (direita).}
+\label{fig:shiftlinegraph}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0.02,-0.07) {\includegraphics[width=0.85\textwidth]{figuras/ch_shift/shift-linedigraph.png}};
+    \node at (0.68,2.75) {\Large$v_1$};
+    \node at (2.88,2.75) {\Large$v_2$};
+    \node at (5.1,2.75) {\Large$v_3$};
+    \node at (5.1,0.75) {\Large$v_4$};
+    \node at (5.1,4.75) {\Large$v_5$};
+    \node at (1.78,3.1) {\Large$a_1$};
+    \node at (3.99,3.1) {\Large$a_2$};
+    \node at (5.5,1.75) {\Large$a_3$};
+    \node at (5.5,3.75) {\Large$a_4$};
+    \node at (9.5,2.75) {\Large$a_1$};
+    \node at (11.45,2.75) {\Large$a_2$};
+    \node at (13.25,1.33) {\Large$a_3$};
+    \node at (13.25,4.15) {\Large$a_4$};
+\end{tikzpicture}
+\caption{Um digrafo $D$ (esquerda) e seu digrafo linha $L(D)$ (direita).}
+\label{fig:shiftlinedigraph}
+\end{figure}
+
 Seja $L^1(G) := L(G)$, e para $r>1$ seja $L^r(G) := L(L^{r-1}(G))$. Denotamos $S_n^0 := K_n$ e $L^0(G) := G$. 
 
 \begin{teorema}\label{shiftteo}
-A família dos \textit{shift graphs} de ordem $r$ respeita a conjectura de Erd\H{o}s e Hajnal.
+A família dos \textit{shift graphs} de ordem $r$ respeita a conjectura de Erd\H{o}s e Hajnal. \cite{gabor2018cepa}
 \end{teorema}
+
+\section{Número Cromático}
+
+\begin{afirmacao}\label{shiftchraff1}
+O número cromático do \textit{shift graph} $S_n$ é $\ceil{\log_2(n)}$.
+\end{afirmacao}
+
+\begin{proof}(Afirmação \ref{shiftchraff1})
+Seja $D$ uma orientação transitiva de $K_n$. Temos que $S_n$ é uma simetrização de $L(D)$. Para mostrar que $\chi(S_n) \geq \ceil{\log_2(n)}$, suponha que $S_n$ pode ser colorido com $\ceil{\log_2(n)} - 1$ cores e tome uma $(\ceil{\log_2(n)} -1)$-coloração de $S_n$. Tal coloração dos vértices de $S_n$ corresponde a uma $(\ceil{\log_2(n)}-1)$-coloração dos arcos de $D$. Para cada vértice de $D$ atribua um vetor binário tal que cada entrada corresponda a uma das $\ceil{\log_2(n)}-1$ cores dos arcos, e cada entrada tem valor $1$ se algum arco da cor correspondente chega no vértice, e $0$ caso contrário. 
+
+Temos que tal coloração é própria, pois caso exista um arco $vw$ monocromático em $D$, temos que existe um arco que chega em $v$ com a mesma cor do arco entre $v$ e $w$, o que não é possível, pois tal configuração é um arco monocromático em $L(D)$. 
+
+E temos que tal coloração usa $2^{(\ceil{\log_2(n)}-1)} < n$ cores, contradição, pois $D$ é um digrafo completo, e logo precisa de $n$ cores.
+\end{proof}
+
+O número cromático de $S_n$ é $\ceil{\log_2(n)}$. De forma geral, o número cromático de $S_n^r$ é $(1+o(1))\log_2 \log_2 \cdots \log_2 (n)$, onde o logaritmo é tomado $r$ vezes \cite{erdos1968chromatic}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ^ Escrever onde quer chegar com isso
+%%%%
 
 \section{Esboço da prova}
 
@@ -96,6 +188,18 @@ Considere uma $t$-coloração de $L(D)$ sem $K_{d,d}$ monocromático. Tal colora
 
 Considere a seguinte coloração dos vértices de $D$. Cada vértice é colorido com um vetor binário de $t$ entradas, correspondentes às $t$ cores dos arcos, onde cada entrada é $1$ caso entrem pelo menos $d$ arcos da cor correspondente, e $0$ caso contrário.
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0.02,-0.07) {\includegraphics[width=0.85\textwidth]{figuras/ch_shift/shift-arccoloringtovertex.png}};
+    \node at (10.85,1.6) {\large$(\cdots, 1, \cdots)$};
+    \node at (10.85,1.0) {\large$i$};
+    \draw [decorate,decoration={brace,amplitude=10pt},xshift=0pt,yshift=0pt](4.0,1.6) -- (0.8,1.6) node [black,midway,yshift=-0.6cm] {$\geq d$ arcos de cor $i$.};
+\end{tikzpicture}
+\caption{A $i$-ésima entrada da cor de um vértice é $1$ se nele entram pelo menos $d$ arcos de cor $i$.}
+\label{fig:shiftarccoloringtovertex}
+\end{figure}
+
 Mostraremos que esta coloração é tal como descrita pelo lema. 
 
 Claramente, temos no máximo $2^t$ cores. Então basta mostrar que tal coloração não contém $K_{td,td}$ monocromático.
@@ -105,6 +209,17 @@ Suponha por contradição que existe $K_{td,td}$ monocromático de cor $v$, e di
 Como temos $|A| = td$ e $td(td - k(d-1))$ arcos com uma das cores de entrada $1$, pelo principio da casa dos pombos, de algum vértice de $A$ saem pelo menos $td - k(d-1) = d(t-k) + k$ arcos com uma das cores de entrada $1$. E como temos $t-k$ cores com entrada $1$, alguma delas ocorre pelo menos $d + k/(t-k)$ vezes. 
 
 Temos portanto que de algum vértice de $A$ saem pelo menos $d$ arcos com uma cor de entrada $1$, e entram pelo menos $d$ arcos da mesma cor (pois tal cor tem entrada $1$ em $v$). Tal configuração corresponde a um $K_{d,d}$ monocromático em $L(D)$, contradição.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.75\textwidth]{figuras/ch_shift/shift-kdd.png}};
+    \node at (2.2,1) {\large$D$};
+    \node at (9.2,1) {\large$L(D)$};
+\end{tikzpicture}
+\caption{Um vértice de $D$ com $d$ arcos de mesma cor entrando e saindo corresponde a um $K_{d,d}$ monocromático em $L(D)$.}
+\label{fig:shiftkdd}
+\end{figure}
 
 Note que $t=k$ (ou seja, $v$ é composto apenas de zeros) não ocorre, pois em cada vértice de $B$ entram $td$ arcos de $t$ possíveis cores, logo alguma cor ocorre pelo menos $d$ vezes, contradizendo o fato de que $v$ é composto apenas de zeros.
 \end{proof}
@@ -451,16 +566,28 @@ Pelo Lema \ref{shiftlema1}, existe uma $2^t$-coloração de $L^{r-1}(D)$ sem $K_
 
 Então, aplicando o lema $r$ vezes temos que existe uma $t'$-coloração de $L^0(D)$ sem $K_{d',d'}$ monocromático, para algum $t'$ e algum $d'$. 
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.95\textwidth]{figuras/ch_shift/shift-sequence.png}};
+    \node at (2.3,5.8) {\large$D$};
+    \node at (5.8,5.8) {\large$L^1(D)$};
+    \node at (13.25,5.8) {\large$L^r(D)$};
+    \node at (13.1,1.9) {\large$H$};
+    \node at (9.52,5.8) {\Large$\cdots$};
+    \draw[->](11.9,2.1) to [bend left,looseness=1.2] node [left]{Coloração} (11.9,5.6);
+    \draw[->](5.3,7) to [bend right,looseness=1] node [above]{Lema} (2.8,7);
+    \draw[->](8.8,7) to [bend right,looseness=1] node [above]{Lema} (6.3,7);
+    \draw[->](12.75,7) to [bend right,looseness=1] node [above]{Lema} (10.25,7);
+\end{tikzpicture}
+\caption{A coloração de $H$ corresponde a uma $t$-coloração de $L^r(D)$ sem $K_{d,d}$ monocromático, e por meio de aplicações sucessivas do Lema, obtemos uma $t'$-coloração de $D$ sem $K_{t',t'}$ monocromático.}
+\label{fig:shiftsequence}
+\end{figure}
+
 Mas $L^0(D) = D$, e note que todo conjunto de $2d'$ vértices de $D$ é um $K_{d',d'}$, então concluímos que existe uma $t'$ coloração de $D$ tal que nenhuma cor ocorre $2d'$ vezes, uma contradição pois se $n \geq t'(2d'-1)+1$, pelo princípio da casa dos pombos, alguma cor ocorre pelo menos $2d'$ vezes.
 
 Portanto o número cromático de $H$ não é limitado por constante.
 \end{proof}
-
-O número cromático de $S_n$ é $\ceil{\log_2(n)}$. De forma geral, o número cromático de $S_n^r$ é $(1+o(1))\log_2 \log_2 \cdots \log_2 (n)$, onde o logaritmo é tomado $r$ vezes \cite{erdos1968chromatic}.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% ^ Escrever onde quer chegar com isso
-%%%%
 
 \section{Consideração Final}
 
