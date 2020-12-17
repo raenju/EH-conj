@@ -589,9 +589,170 @@ Mas $L^0(D) = D$, e note que todo conjunto de $2d'$ vértices de $D$ é um $K_{d
 Portanto o número cromático de $H$ não é limitado por constante.
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Talvez escrever type graphs em um capítulo separado?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{\textit{Type Graphs}}
+
+\begin{definicao}
+Sejam $A_1, A_2$ $m$-subconjuntos de $[n]$. O \textit{type} do par $(A_1,A_2)$, denotado $\tau(A_1,A_2)$, é a sequência $(z_1, z_2,\cdots,z_l)$, onde $l := |A_1\cup A_2|$ e
+
+\[ z_i = \begin{cases} 
+      1 & \text{se } z_i \in A_1\setminus A_2\\
+      2 & \text{se } z_i \in A_2\setminus A_1\\
+      3 & \text{se } z_i \in A_1\cap A_2.
+   \end{cases}
+\]
+
+Dizemos que $l$ é o comprimento e $m$ é a largura do \textit{type}.
+\end{definicao}
+
+Note que $m = |\{i : z_i \in \{1,3\}\}| = |\{i : z_i \in \{2,3\}\}|$.
+
+\begin{definicao}
+Um \textit{type graph} $G(n,\tau)$, onde $\tau$ é um \textit{type} de comprimento $l$ e largura $m$, é um grafo cujos vértices são os $m$-subconjuntos de $[n]$, e dois vértices $v$ e $w$ são adjacentes se e somente se $\tau(v,w) = \tau$.
+\end{definicao}
+
+O \textit{type graph} $G(n,(1,3,2))$ é isomorfo ao \textit{shift graph} $S_n$, e o \textit{type graph} $G(n, (1,3,\cdots,3,2))$, com $r$ números $3$, é isomorfo ao \textit{shift graph} de ordem $r$ $S_n^r$.
+
+Uma generalização natural dos \textit{shift graphs}, proposta em \cite{avart2014generalized}, são os \textit{type graphs} cujos \textit{types} são como o definido a seguir.
+
+\begin{definicao}
+O \textit{type} $\sigma_{a,b}$ é a sequência composta por $a$ números $1$, seguidos por $b$ números $3$, seguidos por $a$ números $2$.
+\end{definicao}
+
+Note que o \textit{type} $\sigma_{a,b}$ tem comprimento $2a+b$ e largura $a+b$.
+
+\begin{definicao}
+Seja $A$ um conjunto. Denote por $min_i(A)$ o conjunto dos $i$ menores elementos de $A$.
+
+Analogamente, denote por $max_i(A)$ o conjunto dos $i$ maiores elementos de $A$.
+\end{definicao}
+
+\begin{teorema}\label{typetheorem1}
+Se $a\geq b$, o \textit{type graph} $G(a(n-1)+b, \sigma_{a,b})$ contém o \textit{shift graph} $S_n$ como subgrafo.
+\end{teorema}
+%%%%%%%%%%%%%%%%%
+% Talvez G(an, sigma) basta
+%%%%%%%%%%%%%%%%%
+
+\begin{proof}(Teorema \ref{typetheorem1})
+Sejam $a,b$ fixos, $a \geq b$, e seja $G = G(a(n-1)+b, \sigma_{a,b})$. Considere as sequências
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+s_i &= (i-1)a+1,\ (i-1)a+2,\ \cdots,\ (i-1)a+b, & i\in [1,n] \\
+t_i &= (i-1)a+b+1,\ (i-1)a+b+2,\ \cdots,\ ia, & i\in [1,n-1].
+\end{aligned}
+\end{equation*}
+
+Denote por $(s_i,s_j)$, para $1\leq i < j \leq n$, os vértices de $G$ da forma \[s_i,t_i,s_j = ((i-1)a+1,\cdots, ia, (j-1)a+1,\cdots, (j-1)a+b).\]
+
+Seja $H$ o subgrafo induzido pelos vértices $(s_i,s_j), 1\leq i<j\leq n$. Note que dois vértices $(s_i,s_j)$ e $(s_k,s_l)$ são adjacentes se $s_i = s_l$ ou $s_j = s_k$, ou seja, se $i=l$ ou $j=k$.
+
+Temos que $H$ é um grafo da seguinte forma
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+V(H) &= \{(s_i,s_j) : 1\leq i<j\leq n\}\\
+E(H) &= \{vw : v,w\in V(H), max(v) = min(w)\}.
+\end{aligned}
+\end{equation*}
+
+%Lembre que o \textit{shift graph} $S_n$ tem como conjunto de vértices os pares $(i,j)$, com $1\leq i < j \leq n$, e dois vértices $(i,j)$ e $(k,l)$ são adjacentes se $i=l$ ou $j=k$. 
+
+%Note que dois vértices $(s_i,s_j)$ e $(s_k,s_l)$ são adjacentes em $H$ se e somente se os vértices $(i,j)$ e $(k,l)$ são adjacentes em $S_n$, portanto temos que $H$ é isomorfo ao \textit{shift graph} $S_n$.
+
+E note que o \textit{shift graph} $S_n$ é da forma
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+V(H) &= \{(i,j) : 1\leq i<j\leq n\}\\
+E(H) &= \{vw : v,w\in V(H), max(v) = min(w)\}.
+\end{aligned}
+\end{equation*}
+
+Temos então que $H$ é isomorfo a $S_n$. Logo, temos que $G$ contém o \textit{shift graph} $S_n$ como subgrafo.
+\end{proof}
+
+\begin{corolario}\label{typecor1}
+Se $a\geq b$, a família dos \textit{type graphs} com \textit{type} $\sigma_{a,b}$ respeita a conjectura de Erd\H{o}s e Hajnal.
+\end{corolario}
+
+\begin{proof}(Corolário \ref{typecor1})
+Sejam $k,g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal. Seja~$n_0$ o menor inteiro tal que $S_{n_0}$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+
+Tome $\sigma_{a,b}$ fixo, com $a\geq b$, e seja $n := a(n_0-1)+b$. Pelo Teorema \ref{typetheorem1}, o \textit{type graph} $G(n,\sigma_{a,b})$ contém $S_{n_0}$ como subgrafo, e logo contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+
+E note que para qualquer \textit{type} $\tau$, $G(m,\tau)$ contém $G(m-1,\tau)$ como subgrafo, logo todo grafo~$G(N,\sigma_{a,b})$ com $N \geq n$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+\end{proof}
+
+\begin{teorema}\label{typetheorem2}
+Se $d$ é divisor comum de $a$ e $b$, então o \textit{type graph} $G(dn,\sigma_{a,b})$ contém o \textit{type graph}~$G(n,\sigma_{a/d,b/d})$ como subgrafo.
+\end{teorema}
+
+\begin{proof}(Teorema \ref{typetheorem2})
+Sejam $a,b$ e $d$ inteiros fixos, onde $d$ é divisor comum de $a$ e $b$, e seja~$G = G(dn,\sigma_{a,b})$.
+
+Considere as sequências
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+s_i &= (i-1)d+1,\ (i-1)d+2,\ \cdots,\ id, & i\in [1,n].
+\end{aligned}
+\end{equation*}
+
+Seja $H$ o subgrafo induzido pelos vértices da forma $(s_{i_1}, \cdots, s_{i_t})$, onde $i_1 < i_2 < \cdots < i_t$ e~$t = (a+b)/d$.
+
+Note que dois vértices $(s_{i_1}, \cdots, s_{i_t})$ e $(s_{j_1}, \cdots, s_{j_t})$ são adjacentes se os $b/d$ maiores elementos de um vértice coincidem com os $b/d$ maiores elementos do outro vértice.
+
+%Equivalentemente, o conjunto de vértices de $H$ são os $t$-subconjuntos de $[n]$, e dois vértices $v$ e $w$ são adjacentes se os $b/d$ maiores elementos de $v$ coincidem com os $b/d$ menores elementos de $w$.
+
+Equivalentemente, temos que $H$ é um grafo da seguinte forma.
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+V(H) &= \binom{[n]}{t}\\
+E(H) &= \{vw : v,w\in V(H), max_{b/d}(v) = min_{b/d}(w)\}.
+\end{aligned}
+\end{equation*}
+
+E note que o \textit{type graph} $G(n,\sigma_{a/d,b/d})$ é da forma
+
+\begin{equation*}
+\setlength{\jot}{6pt}
+\begin{aligned}
+V(H) &= \binom{[n]}{\frac{a+b}{d}} = \binom{[n]}{t}\\
+E(H) &= \{vw : v,w\in V(H), max_{b/d}(v) = min_{b/d}(w)\}.
+\end{aligned}
+\end{equation*}
+
+Portanto, temos que $H$ é isomorfo ao \textit{type graph} $G(n,\sigma_{a/d,b/d})$.
+\end{proof}
+
+\begin{corolario}\label{typecor2}
+Se $a$ divide $b$, então a família dos \textit{type graphs} com \textit{type} $\sigma_{a,b}$ respeita a conjectura de Erd\H{o}s e Hajnal.
+\end{corolario}
+
+\begin{proof}(Corolário \ref{typecor2})
+Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, tome~$a$ e $b$ fixos, onde $a$ divide $b$, seja $r:= b/a$, e seja $n_0$ o menor inteiro tal que $S_{n_0}^{r-1}$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+
+Pelo Teorema \ref{typetheorem2}, o \textit{type graph} $G(an_0, \sigma_{a,b})$ contém o \textit{type graph} $G(n_0, \sigma_{a/a,b/a}) = G(n_0,\sigma_{1,r})$ como subgrafo.
+
+Note que $G(n_0,\sigma_{1,r})$ é o \textit{shift graph} $S_{n_0}^{r-1}$, e logo pela escolha de $n_0$, temos que $G(n_0,\sigma_{1,r})$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+
+Portanto, $G(an_0, \sigma_{a,b})$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$. E como todo \textit{type graph} $G(m,\tau)$ contém $G(m-1,\tau)$ como subgrafo, temos que todo \textit{type graph} $G(n,\sigma_{a,b})$ com $n \geq an_0$ contém $G(an_0, \sigma_{a,b})$ como subgrafo, e consequentemente contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+\end{proof}
+
 \section{Consideração Final}
 
-A demonstração anterior faz uso do fato que a família dos \textit{shift graphs} de ordem $r$ são grafos linha direcionados da família dos \textit{shift graphs} de ordem $r-1$. No caso de grafos linha não direcionados, podemos mostrar de forma geral que se uma família respeita a conjectura de Erd\H{o}s e Hajnal, então a família dos grafos linha também respeita a conjectura de Erd\H{o}s e Hajnal.
+A demonstração do Teorema \ref{shiftteo} faz uso do fato que a família dos \textit{shift graphs} de ordem $r$ são grafos linha direcionados da família dos \textit{shift graphs} de ordem $r-1$. No caso de grafos linha não direcionados, podemos mostrar de forma geral que se uma família respeita a conjectura de Erd\H{o}s e Hajnal, então a família dos grafos linha também respeita a conjectura de Erd\H{o}s e Hajnal.
 
 \begin{fato}\label{shiftconsfinal1}
 Seja $\mathcal{L}$ uma família de grafos que respeita a conjectura de Erd\H{o}s e Hajnal. Então a família de grafos $L(\mathcal{L}) := \{L(G) : G\in\mathcal{L}\}$ respeita a conjectura de Erd\H{o}s e Hajnal.
