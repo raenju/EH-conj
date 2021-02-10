@@ -24,6 +24,33 @@ Provaremos por indução em $m$. Claramente $\phi(2,k) = 2$ para todo $k$, pois 
 
 Dado um grafo $G = (V,E)$ e uma ordenação $<$ de seus vértices, seja $L(v,G)$ o grafo induzido pelos vizinhos à esquerda de $v$ em $G$, ou seja, induzido pelos vértices adjacentes a $v$ e menores que $v$ na ordenação.
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.2 cm}]
+    \node[circle, draw=black] (V) at (7,0) {$v$};
+    
+    \draw (0,0) circle (0.3);
+    \draw (1,0) circle (0.3);
+    \draw (2,0) circle (0.3);
+    \draw (4,0) circle (0.3);
+    
+    \draw[dotted] (2,0) ellipse (3 and 0.7);
+    
+    \draw[-] (V) to [bend right=70] (0,0.3);
+    \draw[-] (V) to [bend right=55] (1,0.3);
+    \draw[-] (V) to [bend right=40] (2,0.3);
+    \draw[-] (V) to [bend right=25] (4,0.3);
+    
+    \node at (2,-1.1) {$L(v,G)$};
+    
+    \draw[-] (V) to [bend left] (8,0.5);
+    \draw[-] (V) to [bend left] (8,1.3);
+
+\end{tikzpicture}
+\caption{Para cada vértice $v$, definimos o subgrafo $L(v,G)$}
+\label{fig:leftneighbor}
+\end{figure}
+
 Suponha que $\phi(m-1,k)$ existe. Então seja $G_0$ um grafo tal que \[\chi(G_0) = (k-1)^{\phi(m-1,k)-1}+1 =: \phi(m,k).\]
 
 Se $G_0$ contém $K_m$ como subgrafo, concluímos a prova. Então suponha que $G_0$ não contém $K_m$ como subgrafo, e seja $<$ uma ordenação dos vértices de $G_0$. Note que para todo $v \in V(G_0)$ o grafo $L(v,G_0)$ não contém $K_{m-1}$, pois $v$ é adjacente a todos os vértices de $L(v,G_0)$, e logo um $K_{m-1}$ em $L(v,G_0)$ implica em $K_m$ ser um subgrafo de $G_0$.
@@ -43,9 +70,40 @@ Considere a seguinte partição de $E(G_0)$.
 
 Ou seja, uma aresta $\{v_j, v\}$, onde $v_j < v$, está na parte $E_i$ se $v_j$ recebeu a cor $i$ na $l$-coloração de $L(v, G_0)$.
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.2 cm}]
+    \node[circle, draw=black] (V) at (5,0) {$v$};
+    \node[circle, draw=black, fill=red, fill opacity=0.5] (A) at (0,0) {$v_1$};
+    \node[circle, draw=black, fill=blue, fill opacity=0.5] (B) at (2,0) {$v_2$};
+    
+    \draw[-, color=red] (V) to [bend right=70] (A);
+    \draw[-, color=blue] (V) to [bend right=55] (B);
+
+\end{tikzpicture}
+\caption{Cada aresta entre $v$ e $v_i\in L(v,G)$ recebe a cor de $v_i$ na coloração de $L(v,G)$.}
+\label{fig:trianglefree-edgecolor}
+\end{figure}
+
 Mostraremos que $\chi(V(G_0),E_i) \geq k$ para algum $i$. Suponha por contradição que  $\chi(V(G_0),E_i) \leq k-1$ para todo $i$. Podemos colorir os vértices de $G_0$ usando o vetor das cores das partes, ou seja, um vértice $v$ de $G_0$ pode ser colorido com o vetor $w$, onde $w_i$ é a cor atribuída ao vértice $v$ na $(k-1)$-coloração de $\chi(V(G_0),E_i)$. Tal coloração de $G_0$ é própria, e usa no máximo $(k-1)^{\phi(m-1,k)-1}$ cores, contradição com o fato de que $\chi(G_0) = (k-1)^{\phi(m-1,k)-1}+1$. Portanto existe um $i$ tal que $\chi(V(G_0), E_i) \geq k$.
 
 Basta mostrar que $(V(G_0),E_i)$ é livre de triângulos. Suponha por contradição que os vértices $v_1,v_2,v_3$ formam um triângulo em $(V(G_0),E_i)$, sem perda de generalidade digamos que $v_1 < v_2 < v_3$. Como $v_1,v_2 < v_3$, temos que $v_1,v_2\in L(v_3, G_0)$, e como $v_1,v_2 \in (V(G_0),E_i)$, temos que $v_1$ e $v_2$ receberam a cor $i$ na coloração de $L(v_3, G_0)$, contradição pois a aresta $v_1v_2 \in L(v_3, G_0)$, e logo $v_1$ e $v_2$ não podem receber a mesma cor. Portanto $(V(G_0),E_i)$ é livre de triângulos.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.2 cm}]
+    \node[circle, draw=black] (V) at (5,0) {$v_3$};
+    \node[circle, draw=black, fill=red, fill opacity=0.5] (A) at (0,0) {$v_1$};
+    \node[circle, draw=black, fill=red, fill opacity=0.5] (B) at (2.5,0) {$v_2$};
+    
+    \draw[-, color=red] (V) to [bend right=70] (A);
+    \draw[-, color=red] (V) to [bend right=55] (B);
+    \draw[-, color=red] (A) to (B);
+
+\end{tikzpicture}
+\caption{Se $v_1v_2v_3$ é um triângulo em $(V(G_0),E_i)$, os vértices $v_1$ e $v_2$ recebem a mesma cor em $L(v_3, G_0)$, e logo $v_1v_2$ é uma aresta monocromática em $L(v_3, G_0)$.}
+\label{fig:trianglefree-trianglefree}
+\end{figure}
 
 Logo para algum $i$, temos que $(V(G_0), E_i)$ é livre de triângulos e tem número cromático pelo menos $k$.
 
@@ -104,6 +162,35 @@ Note que para todo vértice $x\in V(G)$ temos que $\chi(G - x) = 2r$, logo $\del
 \[j = \max(J).\]
 
 Então $|J| \geq 2r$, e para todo $i\geq r$, temos que $2i+1\not\in J$ e $j-2i+1\not\in J$. Logo $j\geq 4r$. O grafo $G$ contém o circuito $C=x_1,x_2,\cdots,x_j$, logo $j$ é par.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.2 cm}]
+    \node[circle, draw=black, label=below:{$x_1$}] (x1) at (0,0) {};
+    \node[circle, draw=black, label=below:{$x_2$}] (x2) at (2,0) {};
+    \node[circle, draw=black, label=below:{$x_{2i}$}] (xi) at (6,0) {};
+    \node[circle, draw=black, label=below:{$x_{2i+1}$}] (xi1) at (8,0) {};
+    \node (dot) at (4,0) {$\cdots$};
+    
+    \node[circle, draw=black, label=below:{$x_1$}] (y1) at (0,-3) {};
+    \node[circle, draw=black, label=below:{$x_{j-2i+1}$}] (yj1) at (4,-3) {};
+    \node[circle, draw=black, label=below:{$x_j$}] (yj) at (8,-3) {};
+    \node (ydot) at (6, -3) {$\cdots$};
+    
+    \draw[-] (x1) to [bend left=55] (xi1);
+    \draw[-] (x1) to (x2);
+    \draw[-] (xi) to (xi1);
+    \draw[-] (dot) to (x2);
+    \draw[-] (dot) to (xi);
+    
+    \draw[-] (y1) to [bend left=55] (yj);
+    \draw[-] (y1) to [bend left=35] (yj1);
+    \draw[-] (ydot) to (yj);
+    \draw[-] (ydot) to (yj1);
+\end{tikzpicture}
+\caption{Se $2i+1\in J$ ou $j-2i+1\in J$, podemos determinar um circuito ímpar de comprimento pelo menos $2r+1$.}
+\label{fig:circimpar-j2r}
+\end{figure}
 
 Pelo lema \ref{lemacircimpar}, existe um caminho $P$ de comprimento $p$ entre $x_1$ e $x_l$, e $p \not\equiv l$ (mod $2$). Então $x_1 x_2 \cdots x_l P x_1$ e $x_l x_{l+1} \cdots x_1 P x_l$ são circuitos ímpares, e a soma de seus comprimentos é pelo menos $4r+2$, logo algum dos circuitos ímpares tem comprimento pelo menos $2r+1$, uma contradição.
 \end{proof}

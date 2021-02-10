@@ -15,6 +15,42 @@ Seja $G$ um grafo livre de triângulos arbitrário, $n := |V(G)|$ e $k := \chi(G
 
 Seja $S$ um conjunto de $k(n-1)+1$ vértices, e para cada subconjunto $C \subset S$, com $|C| = n$, adicionamos uma cópia isomorfa de $G$, digamos $G_C$, e criamos um emparelhamento arbitrário entre vértices de $G_C$ e os vértices de $C$.
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.5 cm}]
+    \node[circle, draw=black] at (0,3) {};
+    \node[circle, draw=black] at (1,3) {};
+    \node at (2,3) {$\cdots$};
+    \node[circle, draw=black] at (3,3) {};
+    \node[circle, draw=black] at (4,3) {};
+    \node[circle, draw=black] at (5,3) {};
+    \node[circle, draw=black] at (6,3) {};
+    \node at (7,3) {$\cdots$};
+    \node at (9,3) {$\cdots$};
+    
+    \node at (-1,3) {$S$};
+    
+    \draw (2,3) ellipse (2.5 and 0.6);
+    \draw (6,3) ellipse (2.5 and 0.6);
+    
+    \node at (2,5) {$G$};
+    \node at (6,5) {$G$};
+    
+    \draw[-] (0,3.5) to (1.6,4.5);
+    \draw[-] (1,3.5) to (1.8,4.5);
+    \draw[-] (2,3.5) to (2,4.5);
+    \draw[-] (3,3.5) to (2.2,4.5);
+    \draw[-] (3.9,3.5) to (2.4,4.5);
+    \draw[-] (4.1,3.5) to (5.6,4.5);
+    \draw[-] (5,3.5) to (5.8,4.5);
+    \draw[-] (6,3.5) to (6,4.5);
+    \draw[-] (7,3.5) to (6.2,4.5);
+    \draw[-] (8,3.5) to (6.4,4.5);
+\end{tikzpicture}
+\caption{Construção de Tutte partindo de um grafo $G$.}
+\label{fig:tutteexample}
+\end{figure}
+
 Claramente o novo grafo não contém triângulos, e cada cópia isomorfa de $G$ precisa de $k$ cores. Caso os vértices de $S$ sejam coloridos com $k$ cores, pelo princípio da casa dos pombos, existe um subconjunto $C \subset S$, com $|C| = n$, tal que $C$ é monocromático. Mas como $C$ está emparelhado com $G_C$ e algum vértice de $G_C$ está colorido com a mesma cor de $C$, tal coloração não é própria. Portanto são necessárias pelo menos $k+1$ cores, e note que $k+1$ cores são suficientes, pois basta colorir cada cópia isomorfa de $G$ com $k$ cores, e colorir $S$ com uma $(k+1)$-ésima cor.
 
 \subsection{Construção de Zykov}
@@ -25,19 +61,72 @@ Seja $G$ um grafo livre de triângulos, $n:=|V(G)|$ e $k:= \chi(G)$. Tome $k$ c�
 
 Considere os conjuntos de vértices $\{v_1,\cdots,v_k\}$ tais que cada vértice $v_i$ pertence a uma cópia distinta de $G$. Para cada conjunto, atribua um vértice distinto de $S$, e adicione arestas entre tal vértice de $S$ e os vértices do conjunto.
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.5 cm}]
+    \node[circle, draw=black] at (1,3) {};
+    \node[circle, draw=black] (A) at (2,3) {};
+    \node[circle, draw=black] at (3,3) {};
+    \node at (4,3) {$\cdots$};
+    \node at (-0.5,3) {$S$};
+    
+    \node[circle, draw=black] (B) at (-3,5) {$v_1$};
+    \node[circle, draw=black] (C) at (0,5) {$v_2$};
+    \node[circle, draw=black] (D) at (7,5) {$v_k$};
+    
+    \draw[dotted] (-3.5,5.5) circle (1.5);
+    \draw[dotted] (0.5,5.5) circle (1.5);
+    \draw[dotted] (7,5.5) circle (1.5);
+    
+    \node at (4,5.5) {$\cdots$};
+    
+    \node at (-3.5,7.5) {$G$};
+    \node at (0.5,7.5) {$G$};
+    \node at (7,7.5) {$G$};
+    
+    \draw[-] (A) to (B);
+    \draw[-] (A) to (C);
+    \draw[-] (A) to (D);
+\end{tikzpicture}
+\caption{Adjacência de um vértice de $S$ na construção de Zykov partindo de um grafo $G$.}
+\label{fig:zykovexample}
+\end{figure}
+
 Temos que o novo grafo é livre de triângulos, pois cada cópia de $G$ é livre de triângulos, e o conjunto $S$ é independente. Temos também que o novo grafo tem número cromático $k+1$. Suponha que o novo grafo pode ser colorido com apenas $k$ cores. Sabemos que cada cópia de $G$ precisa de $k$ cores, em particular temos que a $i$-ésima cópia de $G$ contém um vértice de cor $i$, e logo temos um conjunto $\{v_1,\cdots,v_k\}$, onde $v_i$ é um vértice da $i$-ésima cópia de $G$ e $v_i$ tem cor $i$. Por construção, existe um vértice de $S$ adjacente a todo vértice de tal conjunto, e logo tal vértice não pode receber uma das $k$ cores.
 
 \subsection{Construção de Mycielski}
 
 A próxima construção foi encontrada por J. Mycielski \cite{mycielski1955coloriage}. Seja $G$ um grafo livre de triângulos arbitrário, $k := \chi(G)$ e $V(G) = \{v_1, \cdots, v_n\}$. Para cada vértice $v_i$, adicionamos um novo vértice $w_i$, e $w_i$ é adjacente a $v_j$ se $v_i$ é adjacente a $v_j$, ou seja, $w_i$ tem a mesma vizinhança de $v_i$. E adicionamos um vértice $u$, adjacente a $w_1, \cdots, w_n$.
 
-O novo grafo é livre de triângulos, e sabemos que são necessárias $k$ cores para colorir os vértices $v_1, \cdots, v_n$. Suponha por contradição que podemos colorir os vértices $w_1,\cdots, w_n$ com $k-1$ cores, e seja $c$ a cor não usada. Para cada $v_i$ com cor $c$, podemos colorir $v_i$ com a cor de $w_i$, pois a vizinhança de $v_i$ é igual a vizinhança de $w_i$, dessa forma encontramos uma $(k-1)-$coloração dos vértices $v_1,\cdots,v_n$, contradição com o fato de $\chi(G) = k$. Logo, $w_1,\cdots,w_n$ precisa de pelo menos $k$ cores, e $k$ cores bastam, pois basta atribuir a cor de $v_i$ para $w_i$. E é necessária uma $(k+1)$-ésima cor para o vértice $u$. Logo o novo grafo tem número cromático $k+1$.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.2 cm}]
+    \node[circle, draw=black] (A) at (0,2) {$v_1$};
+    \node[circle, draw=black] (B) at (0,0) {$v_2$};
+    \node[circle, draw=black] (C) at (3,2) {$v_1$};
+    \node[circle, draw=black] (D) at (3,0) {$v_2$};
+    \node[circle, draw=black] (E) at (4.5,2) {$w_1$};
+    \node[circle, draw=black] (F) at (4.5,0) {$w_2$};
+    \node[circle, draw=black] (G) at (6,1) {$u$};
+    
+    \draw[-] (A) to (B);
+    \draw[-] (C) to (D);
+    \draw[-] (C) to (F);
+    \draw[-] (D) to (E);
+    \draw[-] (E) to (G);
+    \draw[-] (F) to (G);
+\end{tikzpicture}
+\caption{O grafo completo $K_2$ (esquerda), e a construção de Mycielski partindo de $K_2$ (direita).}
+\label{fig:mycielskiexample}
+\end{figure}
+
+O novo grafo é livre de triângulos, e sabemos que são necessárias $k$ cores para colorir os vértices~$v_1, \cdots, v_n$. Suponha por contradição que podemos colorir os vértices $w_1,\cdots, w_n$ com $k-1$ cores, e seja $c$ a cor não usada. Para cada $v_i$ com cor $c$, podemos colorir $v_i$ com a cor de $w_i$, pois a vizinhança de $v_i$ é igual a vizinhança de $w_i$, dessa forma encontramos uma $(k-1)-$coloração dos vértices $v_1,\cdots,v_n$, contradição com o fato de $\chi(G) = k$. Logo, $w_1,\cdots,w_n$ precisa de pelo menos $k$ cores, e $k$ cores bastam, pois basta atribuir a cor de $v_i$ para $w_i$. E é necessária uma $(k+1)$-ésima cor para o vértice $u$. Logo o novo grafo tem número cromático $k+1$.
 
 \subsection{Planos Projetivos}
 
 A quarta construção citada foi encontrada por B. Codenotti, P. Pudlák, e G. Resta, por meio de planos projetivos \cite{codenotti2000some}.
 
-Um plano projetivo é definido por um conjunto de pontos distintos $P$  e um conjunto de retas $L$, tais que:
+Um plano projetivo é definido por um conjunto de pontos distintos $P$  e um conjunto de retas~$L$, tais que:
 
 \begin{enumerate}
 \item Dados dois pontos distintos de $P$, existe exatamente uma reta de $L$ que contém os dois pontos. 
@@ -45,11 +134,33 @@ Um plano projetivo é definido por um conjunto de pontos distintos $P$  e um con
 \item Existe um conjunto de quatro pontos de $P$ tal que nenhuma reta de $L$ contém mais do que dois destes pontos.
 \end{enumerate}
 
-Dizemos que um plano projetivo é de ordem $n$ se cada ponto está contido em exatamente $n+1$ retas, e cada reta contém exatamente $n+1$ pontos. Note que um plano projetivo de ordem $n$ tem $n^2 + n + 1$ pontos e $n^2 + n + 1$ retas. Sabe-se que existem planos projetivos par qualquer ordem da forma $p^m$, onde $p$ é um primo.
+Dizemos que um plano projetivo é de ordem $n$ se cada ponto está contido em exatamente $n+1$ retas, e cada reta contém exatamente $n+1$ pontos. Note que um plano projetivo de ordem $n$ tem~$n^2 + n + 1$ pontos e $n^2 + n + 1$ retas. Sabe-se que existem planos projetivos par qualquer ordem da forma $p^m$, onde $p$ é um primo.
 
-O grafo de incidência de um plano projetivo $(P,L)$ é um grafo bipartido com conjunto de vértices $P \cup L$ e arestas $(p,l)$, onde $p\in P$ é um ponto que pertence à reta $l \in L$. Note que não existem circuitos de comprimento $4$, de fato, o menor circuito do grafo de incidência de um plano projetivo tem comprimento $6$.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.2 cm}]
+    \draw (0,0) circle (2);
+    \draw[-] (-3.46,-2) to (3.46,-2);
+    \draw[-] (-3.46,-2) to (0,4);
+    \draw[-] (3.46,-2) to (0,4);
+    \draw[-] (0,-2) to (0,4);
+    \draw[-] (-3.46,-2) to (1.73,1);
+    \draw[-] (3.46,-2) to (-1.73,1);
+    \draw[fill=black] (0,0) circle (0.2);
+    \draw[fill=black] (0,4) circle (0.2);
+    \draw[fill=black] (-3.46,-2) circle (0.2);
+    \draw[fill=black] (3.46,-2) circle (0.2);
+    \draw[fill=black] (0,-2) circle (0.2);
+    \draw[fill=black] (1.73,1) circle (0.2);
+    \draw[fill=black] (-1.73,1) circle (0.2);
+\end{tikzpicture}
+\caption{O plano projetivo de ordem $2$, conhecido como o plano de Fano.}
+\label{fig:fanoexample}
+\end{figure}
 
-A construção de um grafo $G$ livre de triângulos e com número cromático $k$ é feita da seguinte forma. Seja $(P,L)$ um plano projetivo com grafo de incidência $G_I$ e ordem $n$, o grafo $G$ tem os pares $(p,l)$, $p\in P, l\in L$, como vértices. Tomando uma ordenação total arbitrária dos vértices de $G$, dois vértices $(p,l)$ e $(p',l')$ são adjacentes se $p \neq p', l \neq l'$, $(p,l) < (p',l')$ e $p \in l'$. Mostraremos que $G$ é uma simetrização de um digrafo $D$, tal que o tamanho do maior conjunto independente de $D$ é limitado.
+O grafo de incidência de um plano projetivo $(P,L)$ é um grafo bipartido com conjunto de vértices~$P \cup L$ e arestas $(p,l)$, onde $p\in P$ é um ponto que pertence à reta $l \in L$. Note que não existem circuitos de comprimento $4$, de fato, o menor circuito do grafo de incidência de um plano projetivo tem comprimento $6$.
+
+A construção de um grafo $G$ livre de triângulos e com número cromático $k$ é feita da seguinte forma. Seja $(P,L)$ um plano projetivo com grafo de incidência $G_I$ e ordem $n$, o grafo $G$ tem os pares $(p,l)$, $p\in P, l\in L$, como vértices. Tomando uma ordenação total arbitrária dos vértices de~$G$, dois vértices $(p,l)$ e $(p',l')$ são adjacentes se $p \neq p', l \neq l'$, $(p,l) < (p',l')$ e $p \in l'$. Mostraremos que~$G$ é uma simetrização de um digrafo $D$, tal que o tamanho do maior conjunto independente de $D$ é limitado.
 
 O digrafo $D$ mencionado acima tem os pares $(p,l)$ como vértices, e existe um arco de $(p,l)$ para $(p',l')$ se $p \neq p', l \neq l'$ e $p\in l'$. Note que os triângulos de $D$ são circuitos dirigidos, pois caso contrário tais circuitos corresponderiam a circuitos de comprimento $4$ no grafo de incidência.
 
@@ -87,7 +198,7 @@ Temos então que
 
 \[(AB)_{(p,l),(p',l')} = \sum\limits_{v \in V(G)} A_{(p,l),v} B_{v,(p',l')} = B_{l,(p',l')} - B_{p,(p',l')}.\]
 
-De fato, verifica-se que $M = AB$, então as colunas de $M$ são combinações lineares das colunas de $A$, e logo o posto de $M$ é limitado superiormente pelo número de colunas de $A$, que é igual a $|V(G_I)| = |P| + |L| = 2(n^2 + n + 1)$.
+De fato, verifica-se que $M = AB$, então as colunas de $M$ são combinações lineares das colunas de $A$, e logo o posto de $M$ é limitado superiormente pelo número de colunas de $A$, que é igual a~$|V(G_I)| = |P| + |L| = 2(n^2 + n + 1)$.
 
 Considere apenas o triângulo superior de $M$, e preencha o triângulo inferior de forma simétrica. Denotamos a nova por $M_G$, as linhas e colunas de $M_G$ são indexadas por $V(D) = V(G)$.
 
@@ -100,7 +211,7 @@ Note que $M_G$ está associada ao grafo $G$ da seguinte forma
    \end{cases}
 \]
 
-E assim, $G$ é uma simetrização de um subgrafo de $D$. Suponha por contradição que $G$ contém triângulos, um triângulo de $G$ corresponde a um triângulo orientado em $D$, e logo existe um arco $(p',l')(p,l)$ em $D$ tal que $(p,l) < (p',l')$, e $(p,l)(p',l')$ é uma aresta de $G$, com $(p,l) < (p',l')$. O arco de $D$ mostra que $p,p' \in l$, e a aresta de $G$ mostra que $p,p' \in l'$, contradição. Portanto $G$ não contém triângulos.
+E assim, $G$ é uma simetrização de um subgrafo de $D$. Suponha por contradição que $G$ contém triângulos, um triângulo de $G$ corresponde a um triângulo orientado em $D$, e logo existe um arco~$(p',l')(p,l)$ em $D$ tal que $(p,l) < (p',l')$, e $(p,l)(p',l')$ é uma aresta de $G$, com $(p,l) < (p',l')$. O arco de $D$ mostra que $p,p' \in l$, e a aresta de $G$ mostra que $p,p' \in l'$, contradição. Portanto $G$ não contém triângulos.
 
 Ademais, as colunas de $M_G$ correspondentes a um conjunto independente de $G$ correspondem a colunas linearmente independentes de $M$. Então temos que $\alpha(G)$ é limitado superiormente pelo posto de $M$, que por sua vez, é limitado por $2(n^2+n+1)$.
 
@@ -168,7 +279,7 @@ Logo $f/3 > (1-\mathbb{P}(\Omega_1))f$. Portanto, concluímos que
 \bbp(\Omega_1) > \frac{2}{3}.  
 \end{equation}
 
-Seja $s = n/k = k^{3g-1}$, e seja $\Omega_2$ o conjunto dos grafos em $\mathcal{G}_{n,p}$ tais que para todo conjunto de $s$ vértices, o subgrafo induzido por estes vértices contém ao menos $f+1$ arestas. Seja $I_l$ o número de subconjuntos de $s$ vértices em $G$ que induzem exatamente $l$ arestas.
+Seja $s = n/k = k^{3g-1}$, e seja $\Omega_2$ o conjunto dos grafos em $\mathcal{G}_{n,p}$ tais que para todo conjunto de~$s$ vértices, o subgrafo induzido por estes vértices contém ao menos $f+1$ arestas. Seja $I_l$ o número de subconjuntos de $s$ vértices em $G$ que induzem exatamente $l$ arestas.
 
 Seja $I$ o número de subconjuntos de $s$ vértices em $G$ que induzem no máximo $f$ arestas, ou seja, \[I = \sum\limits_{l=0}^{f}I_l.\]
 
@@ -376,7 +487,7 @@ E como temos que $\bbe(I) \geq 1 - \bbp(\Omega_2)$, concluímos que
 \bbp(\Omega_2) > \frac{2}{3}.
 \end{equation}
 
-Por \ref{teoerdosomega1} e \ref{teoerdosomega2}, temos que $\Omega_1 \cap \Omega_2 \neq \emptyset$. Seja $G_0 \in \Omega_1 \cap \Omega_2$, removemos de $G_0$ uma aresta de cada circuito de comprimento menor que $g$. Temos então um grafo $G$ com cintura pelo menos $g$. Como $G_0 \in \Omega_1$, no máximo $f$ arestas foram removidas. Como $G_0 \in \Omega_2$, todo conjunto de $s$ vértices em $G_0$ induz ao menos $f+1$ arestas, e logo todo conjunto de $s$ vértices em $G$ induz ao menos uma aresta. Portanto o maior conjunto independente de $G$ tem tamanho no máximo $s-1$. E como $s = n/k$, temos
+Por \ref{teoerdosomega1} e \ref{teoerdosomega2}, temos que $\Omega_1 \cap \Omega_2 \neq \emptyset$. Seja $G_0 \in \Omega_1 \cap \Omega_2$, removemos de $G_0$ uma aresta de cada circuito de comprimento menor que $g$. Temos então um grafo $G$ com cintura pelo menos $g$. Como~$G_0 \in \Omega_1$, no máximo $f$ arestas foram removidas. Como $G_0 \in \Omega_2$, todo conjunto de $s$ vértices em $G_0$ induz ao menos $f+1$ arestas, e logo todo conjunto de $s$ vértices em $G$ induz ao menos uma aresta. Portanto o maior conjunto independente de $G$ tem tamanho no máximo $s-1$. E como~$s = n/k$, temos
 
 \begin{equation*}
 \setlength{\jot}{6pt}
