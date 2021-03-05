@@ -95,13 +95,11 @@ ou seja, os vértices de $L(D)$ são os arcos de $D$, e $vw$ é um arco em $L(D)
 
 Seja $L^1(G) := L(G)$, e para todo $r>1$ seja $L^r(G) := L(L^{r-1}(G))$. Denotamos $S_n^0 := K_n$ e~$L^0(G) := G$. 
 
+Em busca de um contraexemplo para conjectura de Erd\H{o}s e Hajnal, Gábor Tardos pesquisou os \textit{shift graphs} de ordem $r$, porém concluindo que não são um contraexemplo. Portanto, temos o seguinte teorema.
+
 \begin{teorema}\label{shiftteo}
 A família dos \textit{shift graphs} de ordem $r$ respeita a conjectura de Erd\H{o}s e Hajnal. \cite{gabor2018cepa}
 \end{teorema}
-
-%------------------------------------
-% Citar Tardos em um paragrafo, não em um teorema
-%------------------------------------
 
 \section{Número Cromático}
 
@@ -109,8 +107,70 @@ A família dos \textit{shift graphs} de ordem $r$ respeita a conjectura de Erd\H
 O número cromático do \textit{shift graph} $S_n$ é $\ceil{\log_2(n)}$.
 \end{afirmacao}
 
+Para demonstrar a Afirmação \ref{shiftchraff1}, considere a seguinte afirmação.
+
+\begin{afirmacao}\label{shiftafirm1}
+Seja $D$ uma orientação transitiva de $K_n$. Então o \textit{shift graph} $S_n^r$ é uma simetrização de~$L^r(D)$.
+\end{afirmacao}
+
+\begin{proof}(Afirmação \ref{shiftafirm1})
+Seja $V(D) = \{1,2,\cdots, n\}$, onde para cada $i < j$, existe um arco de $i$ para $j$. Mostraremos que a simetrização de $L(D)$ é isomorfa a $S_n^1$.
+
+Denotemos por $(i,j)$ os arcos de $D$, onde $i < j$. Logo os vértices de $L(D)$ são os pares $(i,j)$ com~$i < j$. E para cada $1 \leq i < j < k \leq n$, existe em $D$ um arco de $i$ para $j$ e um arco de $j$ para~$k$. Logo em $L(D)$ existe um arco de $(i,j)$ para $(j,k)$. Temos então que
+
+\[V(L(D)) = \{(i,j) : 1\leq i < j \leq n\},\]
+\[A(L(D)) = \{(i,j)(j,k) : 1\leq i <j<k\leq n\}.\]
+
+E temos que $S_n^1$ tem como conjunto de vértices os pares $(i,j)$ com $1\leq i<j\leq n$. E dois vértices~$(a,b)$ e $(c,d)$ são adjacentes se $a = d$ ou $b = c$. Logo temos que
+
+\[V(S_n^1) = \{(i,j) : 1\leq i<j\leq n\},\]
+\[E(S_n^1) = \{(i,j)(j,k) : 1\leq i<j<k\leq n\}.\]
+
+Temos portanto que $L(D)$ e $S_n^1$ são ``quase isomorfos'', exceto pelo fato de que $L(D)$ é direcionado, portanto $S_n^1$ é uma simetrização de $L(D)$.
+
+De forma semelhante, mostraremos que $S_n^r$ é uma simetrização de $L^r(D)$ para $r>1$.
+
+Temos que $L^r(D) = L(L^{r-1}(D))$, e como $L^{r-1}(D)$ é um direcionamento de $S_n^{r-1}$, sabemos que os vértices de $L^{r-1}(D)$ são as $r$-uplas $(v_0,\cdots,v_{r-1})$, onde $1\leq v_0 < \cdots < v_{r-1} \leq n$, e temos que para cada escolha de $1\leq v_0 < \cdots < v_{r} \leq n$, existe um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$.
+
+Para cada sequência $1\leq v_0 < \cdots < v_{r} \leq n$, denote por $(v_0,\cdots,v_{r})$ o arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ em $L^{r-1}(D)$. Logo $L(L^{r-1}(D))$ tem como vértices as $(r+1)$-uplas $(v_0,\cdots,v_{r})$, onde $1\leq v_0 < \cdots < v_r \leq n$.
+
+Temos que para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$, existe em $L^{r-1}(D)$ um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ e um arco de $(v_1,\cdots,v_{r})$ para $(v_2,\cdots,v_{r+1})$. Logo em $L(L^{r-1}(D))$, para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$ existe um arco de $(v_0,\cdots,v_{r})$ para $(v_1,\cdots,v_{r+1})$. Logo
+
+\[V(L^r(D)) = \{(v_0,\cdots,v_{r}) : 1\leq v_0 < \cdots < v_r \leq n\},\]
+\[A(L^r(D)) = \{(v_0,\cdots,v_{r})(v_1,\cdots,v_{r+1}) : 1\leq v_0 < \cdots < v_{r+1} \leq n\}.\]
+
+E os vértices de $S_n^r$ são as $(r+1)$-uplas $(v_0, v_1, \cdots, v_r)$, onde $1\leq v_0 < v_1 < \cdots < v_r \leq n$. E para cada $1 \leq v_0 < v_1 <\cdots < v_r < v_{r+1} \leq n$, os vértices $(v_0, \cdots, v_r)$ e $(v_1, \cdots, v_{r+1})$ são adjacentes. Então 
+
+\[V(S_n^r) = \{(v_0, v_1, \cdots, v_r) : 1 \leq v_0 < \cdots < v_r \leq n\},\]
+\[E(S_n^r) = \{(v_0, v_1, \cdots, v_r)(v_1, v_2, \cdots, v_{r+1}) : 1 \leq v_0 < \cdots < v_{r+1} \leq n\}.\]
+
+Temos portanto que $S_n^r$ é uma simetrização de $L^r(D)$.
+\end{proof}
+
+Podemos então demonstrar que o número cromático de $S_n$ é $\ceil{\log_2(n)}$.
+
 \begin{proof}(Afirmação \ref{shiftchraff1})
-Seja $D$ uma orientação transitiva de $K_n$. Temos que $S_n$ é uma simetrização de $L(D)$. Para mostrar que $\chi(S_n) \geq \ceil{\log_2(n)}$, suponha que $S_n$ pode ser colorido com~$\ceil{\log_2(n)} - 1$ cores e tome uma $(\ceil{\log_2(n)} -1)$-coloração de $S_n$. Tal coloração dos vértices de~$S_n$ corresponde a uma $(\ceil{\log_2(n)}-1)$-coloração dos arcos de $D$. Para cada vértice de $D$ atribua um vetor binário tal que cada entrada corresponda a uma das $\ceil{\log_2(n)}-1$ cores dos arcos, e cada entrada tem valor $1$ se algum arco da cor correspondente chega no vértice, e $0$ caso contrário. 
+Seja $D$ uma orientação transitiva de $K_n$. Temos que $S_n$ é uma simetrização de $L(D)$. 
+
+Para mostrar que $\chi(S_n) \geq \ceil{\log_2(n)}$, suponha que $S_n$ pode ser colorido com~$\ceil{\log_2(n)} - 1$ cores e tome uma $(\ceil{\log_2(n)} -1)$-coloração de $S_n$. Tal coloração dos vértices de~$S_n$ corresponde a uma $(\ceil{\log_2(n)}-1)$-coloração dos arcos de $D$. Para cada vértice de $D$ atribua um vetor binário tal que cada entrada corresponda a uma das $\ceil{\log_2(n)}-1$ cores dos arcos, e cada entrada tem valor $1$ se algum arco da cor correspondente chega no vértice, e $0$ caso contrário. 
+
+\begin{figure}[H]
+\centering
+%\resizebox{2cm}{!}{
+\begin{tikzpicture}
+    \node[circle, draw=black] (A) at (0,0) {$v$};
+    
+    \draw[->] (-1.5,-1) to node[midway, below] {$i$} (A);
+    \draw[->] (-1.5,1) to node[midway, above] {$j$} (A);
+    
+    \node[right = of A] (B) {cor$(v) = \{\cdots,1,\cdots,1,\cdots\}$};
+    \node[above left = 0.1 and -2.9 of B] (C) {$i$};
+    \node[right = 0.7 of C] (D) {$j$};
+\end{tikzpicture}
+%}
+\caption{Arcos de cor $i$ e $j$ chegam em $v$, logo a cor de $v$ contém $1$ nas posições $i$ e $j$.}
+\label{fig:shiftchromaticvector}
+\end{figure}
 
 Temos que tal coloração é própria, pois caso exista um arco $vw$ monocromático em $D$, temos que existe um arco que chega em $v$ com a mesma cor do arco entre $v$ e $w$, o que não é possível, pois tal configuração é um arco monocromático em $L(D)$. 
 
@@ -121,6 +181,31 @@ E para mostrar que $\chi(S_n) \leq \ceil{\log_2(n)}$, considere a seguinte color
 Sejam $v_1, v_2,\cdots, v_n$ os vértices de $D$ em ordem topológica. E sejam $A_1, \cdots, A_m$ os subconjuntos de $[\ceil{\log_2(n)}]$ em ordem não-crescente de tamanho, ou seja, se $i > j$, então $|A_i| \leq |A_j|$.
 
 Para cada vértice $v_i$, atribua o conjunto $A_i$. Colorimos cada arco $v_iv_j$ de $D$ com um elemento de $A_i\setminus A_j$. Note que é sempre possível escolher um tal elemento, pois caso $|A_i| > |A_j|$, claramente existe algum elemento de $A_i$ que não pertence a $A_j$, e caso $|A_i| = |A_j|$, temos que $A_i \neq A_j$, e logo existe algum elemento em $A_i\setminus A_j$.
+
+\begin{figure}[H]
+\centering
+%\resizebox{2cm}{!}{
+\begin{tikzpicture}
+    \node[circle, draw=black] (A) at (0,0) {$v_1$};
+    \node[circle, draw=black] (B) at (4,0) {$v_2$};
+    \node[circle, draw=black] (C) at (8,0) {$v_3$};
+    
+    \draw[->] (A) to [bend left=20] (C);
+    \draw[->] (A) to (B);
+    \draw[->] (B) to (C);
+    \draw[->] (C) to (10,0);
+    \draw[->] (C) to [bend left=30] (9.5,1.3);
+    \draw[->] (B) to [bend left=30] (7.5,1.3);
+    \draw[->] (A) to [bend left=30] (3.5,1.3);
+    
+    \node at (0,-1) {$[\ceil{\log_2(n)}]$};
+    \node at (4,-1) {$[\ceil{\log_2(n)}]\setminus \{1\}$};
+    \node at (8,-1) {$[\ceil{\log_2(n)}]\setminus \{2\}$};
+\end{tikzpicture}
+%}
+\caption{Cada vértice de $D$ é colorido com um subconjunto distinto de $[\ceil{\log_2(n)}]$, atribuídos em ordem não-crescente de tamanho segundo a ordem dos vértices de $D$.}
+\label{fig:shiftchromaticsetcoloring}
+\end{figure}
 
 Note que em nenhum vértice entram e saem arcos de uma mesma cor, pois todo arco que entra em um vértice $v_i$ não pertence ao conjunto $A_i$, e todo arco que sai de $v_i$ pertence ao conjunto $A_i$.
 
@@ -147,53 +232,53 @@ Uma coloração própria de $H$ é uma coloração de $S_n^r$ sem $K_{d,d}$ mono
 
 \section{Prova do Teorema}
 
-\begin{afirmacao}\label{shiftafirm1}
-Seja $D$ uma orientação transitiva de $K_n$. Então o \textit{shift graph} $S_n^r$ é uma simetrização de~$L^r(D)$.
-\end{afirmacao}
+% \begin{afirmacao}\label{shiftafirm1}
+% Seja $D$ uma orientação transitiva de $K_n$. Então o \textit{shift graph} $S_n^r$ é uma simetrização de~$L^r(D)$.
+% \end{afirmacao}
 
-\begin{proof}(Afirmação \ref{shiftafirm1})
-Seja $V(D) = \{1,2,\cdots, n\}$, onde para cada $i < j$, existe um arco de $i$ para $j$. Mostraremos que a simetrização de $L(D)$ é isomorfa a $S_n^1$.
+% \begin{proof}(Afirmação \ref{shiftafirm1})
+% Seja $V(D) = \{1,2,\cdots, n\}$, onde para cada $i < j$, existe um arco de $i$ para $j$. Mostraremos que a simetrização de $L(D)$ é isomorfa a $S_n^1$.
 
-Denotemos por $(i,j)$ os arcos de $D$, onde $i < j$. Logo os vértices de $L(D)$ são os pares $(i,j)$ com~$i < j$. E para cada $1 \leq i < j < k \leq n$, existe em $D$ um arco de $i$ para $j$ e um arco de $j$ para~$k$. Logo em $L(D)$ existe um arco de $(i,j)$ para $(j,k)$. Temos então que
+% Denotemos por $(i,j)$ os arcos de $D$, onde $i < j$. Logo os vértices de $L(D)$ são os pares $(i,j)$ com~$i < j$. E para cada $1 \leq i < j < k \leq n$, existe em $D$ um arco de $i$ para $j$ e um arco de $j$ para~$k$. Logo em $L(D)$ existe um arco de $(i,j)$ para $(j,k)$. Temos então que
 
-\[V(L(D)) = \{(i,j) : 1\leq i < j \leq n\},\]
-\[A(L(D)) = \{(i,j)(j,k) : 1\leq i <j<k\leq n\}.\]
+% \[V(L(D)) = \{(i,j) : 1\leq i < j \leq n\},\]
+% \[A(L(D)) = \{(i,j)(j,k) : 1\leq i <j<k\leq n\}.\]
 
-E temos que $S_n^1$ tem como conjunto de vértices os pares $(i,j)$ com $1\leq i<j\leq n$. E dois vértices~$(a,b)$ e $(c,d)$ são adjacentes se $a = d$ ou $b = c$. Logo temos que
+% E temos que $S_n^1$ tem como conjunto de vértices os pares $(i,j)$ com $1\leq i<j\leq n$. E dois vértices~$(a,b)$ e $(c,d)$ são adjacentes se $a = d$ ou $b = c$. Logo temos que
 
-\[V(S_n^1) = \{(i,j) : 1\leq i<j\leq n\},\]
-\[E(S_n^1) = \{(i,j)(j,k) : 1\leq i<j<k\leq n\}.\]
+% \[V(S_n^1) = \{(i,j) : 1\leq i<j\leq n\},\]
+% \[E(S_n^1) = \{(i,j)(j,k) : 1\leq i<j<k\leq n\}.\]
 
-Temos portanto que $L(D)$ e $S_n^1$ são ``quase isomorfos'', exceto pelo fato de que $L(D)$ é direcionado, portanto $S_n^1$ é uma simetrização de $L(D)$.
+% Temos portanto que $L(D)$ e $S_n^1$ são ``quase isomorfos'', exceto pelo fato de que $L(D)$ é direcionado, portanto $S_n^1$ é uma simetrização de $L(D)$.
 
-%Denotemos por $(i,j)$ os arcos de $D$, onde $i < j$. Então os vértices de $L(D)$ são os pares $(i,j), i<j$. E os vértices de $S_n^1$ são os pares $(i,j), 1\leq i < j \leq n$. Claramente existe uma bijeção entre os vértices de $L(D)$ e os vértices de $S_n^1$.
+% %%Denotemos por $(i,j)$ os arcos de $D$, onde $i < j$. Então os vértices de $L(D)$ são os pares $(i,j), i<j$. E os vértices de $S_n^1$ são os pares $(i,j), 1\leq i < j \leq n$. Claramente existe uma bijeção entre os vértices de $L(D)$ e os vértices de $S_n^1$.
 
-%Para cada $1\leq i < j < k \leq n$, existe em $D$ um arco de $i$ para $j$ e um arco de $j$ para $k$, logo em $L(D)$ existe um arco de $(i,j)$ para $(j,k)$. E em $S_n^1$, para cada $1\leq i < j < k \leq n$ existe uma aresta entre $(i,j)$ e $(j,k)$. Claramente existe uma bijeção entre os arcos de $L(D)$ e as arestas de $S_n^1$. Temos portanto que $L(D)$ e $S_n^1$ são ``quase isomorfos'', exceto pelo fato de que $L(D)$ é direcionado, portanto $S_n^1$ é uma simetrização de $L(D)$.
+% %%Para cada $1\leq i < j < k \leq n$, existe em $D$ um arco de $i$ para $j$ e um arco de $j$ para $k$, logo em $L(D)$ existe um arco de $(i,j)$ para $(j,k)$. E em $S_n^1$, para cada $1\leq i < j < k \leq n$ existe uma aresta entre $(i,j)$ e $(j,k)$. Claramente existe uma bijeção entre os arcos de $L(D)$ e as arestas de $S_n^1$. Temos portanto que $L(D)$ e $S_n^1$ são ``quase isomorfos'', exceto pelo fato de que $L(D)$ é direcionado, portanto $S_n^1$ é uma simetrização de $L(D)$.
 
-De forma semelhante, mostraremos que $S_n^r$ é uma simetrização de $L^r(D)$ para $r>1$.
+% De forma semelhante, mostraremos que $S_n^r$ é uma simetrização de $L^r(D)$ para $r>1$.
 
-Temos que $L^r(D) = L(L^{r-1}(D))$, e como $L^{r-1}(D)$ é um direcionamento de $S_n^{r-1}$, sabemos que os vértices de $L^{r-1}(D)$ são as $r$-uplas $(v_0,\cdots,v_{r-1})$, onde $1\leq v_0 < \cdots < v_{r-1} \leq n$, e temos que para cada escolha de $1\leq v_0 < \cdots < v_{r} \leq n$, existe um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$.
+% Temos que $L^r(D) = L(L^{r-1}(D))$, e como $L^{r-1}(D)$ é um direcionamento de $S_n^{r-1}$, sabemos que os vértices de $L^{r-1}(D)$ são as $r$-uplas $(v_0,\cdots,v_{r-1})$, onde $1\leq v_0 < \cdots < v_{r-1} \leq n$, e temos que para cada escolha de $1\leq v_0 < \cdots < v_{r} \leq n$, existe um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$.
 
-Para cada sequência $1\leq v_0 < \cdots < v_{r} \leq n$, denote por $(v_0,\cdots,v_{r})$ o arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ em $L^{r-1}(D)$. Logo $L(L^{r-1}(D))$ tem como vértices as $(r+1)$-uplas $(v_0,\cdots,v_{r})$, onde $1\leq v_0 < \cdots < v_r \leq n$.
+% Para cada sequência $1\leq v_0 < \cdots < v_{r} \leq n$, denote por $(v_0,\cdots,v_{r})$ o arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ em $L^{r-1}(D)$. Logo $L(L^{r-1}(D))$ tem como vértices as $(r+1)$-uplas $(v_0,\cdots,v_{r})$, onde $1\leq v_0 < \cdots < v_r \leq n$.
 
-Temos que para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$, existe em $L^{r-1}(D)$ um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ e um arco de $(v_1,\cdots,v_{r})$ para $(v_2,\cdots,v_{r+1})$. Logo em $L(L^{r-1}(D))$, para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$ existe um arco de $(v_0,\cdots,v_{r})$ para $(v_1,\cdots,v_{r+1})$. Logo
+% Temos que para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$, existe em $L^{r-1}(D)$ um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ e um arco de $(v_1,\cdots,v_{r})$ para $(v_2,\cdots,v_{r+1})$. Logo em $L(L^{r-1}(D))$, para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$ existe um arco de $(v_0,\cdots,v_{r})$ para $(v_1,\cdots,v_{r+1})$. Logo
 
-\[V(L^r(D)) = \{(v_0,\cdots,v_{r}) : 1\leq v_0 < \cdots < v_r \leq n\},\]
-\[A(L^r(D)) = \{(v_0,\cdots,v_{r})(v_1,\cdots,v_{r+1}) : 1\leq v_0 < \cdots < v_{r+1} \leq n\}.\]
+% \[V(L^r(D)) = \{(v_0,\cdots,v_{r}) : 1\leq v_0 < \cdots < v_r \leq n\},\]
+% \[A(L^r(D)) = \{(v_0,\cdots,v_{r})(v_1,\cdots,v_{r+1}) : 1\leq v_0 < \cdots < v_{r+1} \leq n\}.\]
 
-E os vértices de $S_n^r$ são as $(r+1)$-uplas $(v_0, v_1, \cdots, v_r)$, onde $1\leq v_0 < v_1 < \cdots < v_r \leq n$. E para cada $1 \leq v_0 < v_1 <\cdots < v_r < v_{r+1} \leq n$, os vértices $(v_0, \cdots, v_r)$ e $(v_1, \cdots, v_{r+1})$ são adjacentes. Então 
+% E os vértices de $S_n^r$ são as $(r+1)$-uplas $(v_0, v_1, \cdots, v_r)$, onde $1\leq v_0 < v_1 < \cdots < v_r \leq n$. E para cada $1 \leq v_0 < v_1 <\cdots < v_r < v_{r+1} \leq n$, os vértices $(v_0, \cdots, v_r)$ e $(v_1, \cdots, v_{r+1})$ são adjacentes. Então 
 
-\[V(S_n^r) = \{(v_0, v_1, \cdots, v_r) : 1 \leq v_0 < \cdots < v_r \leq n\},\]
-\[E(S_n^r) = \{(v_0, v_1, \cdots, v_r)(v_1, v_2, \cdots, v_{r+1}) : 1 \leq v_0 < \cdots < v_{r+1} \leq n\}.\]
+% \[V(S_n^r) = \{(v_0, v_1, \cdots, v_r) : 1 \leq v_0 < \cdots < v_r \leq n\},\]
+% \[E(S_n^r) = \{(v_0, v_1, \cdots, v_r)(v_1, v_2, \cdots, v_{r+1}) : 1 \leq v_0 < \cdots < v_{r+1} \leq n\}.\]
 
-%Temos que $L^r(D) = L(L^{r-1}(D))$, e como $L^{r-1}(D)$ é um direcionamento de $S_n^{r-1}$, sabemos que os vértices de $L^{r-1}(D)$ são as $r$-uplas $(v_0,\cdots,v_{r-1})$, onde $1\leq v_0 < \cdots < v_{r-1} \leq n$, e temos que para cada escolha de $1\leq v_0 < \cdots < v_{r} \leq n$, existe um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$.
+% %%Temos que $L^r(D) = L(L^{r-1}(D))$, e como $L^{r-1}(D)$ é um direcionamento de $S_n^{r-1}$, sabemos que os vértices de $L^{r-1}(D)$ são as $r$-uplas $(v_0,\cdots,v_{r-1})$, onde $1\leq v_0 < \cdots < v_{r-1} \leq n$, e temos que para cada escolha de $1\leq v_0 < \cdots < v_{r} \leq n$, existe um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$.
 
-%Então para cada $1\leq v_0 < \cdots < v_{r} \leq n$, denote por $(v_0,\cdots,v_{r})$ o arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ em $L^{r-1}(D)$. Portanto temos uma bijeção entre os vértices de $L(L^{r-1}(D))$ e os vértices de $S_n^r$.
+% %%Então para cada $1\leq v_0 < \cdots < v_{r} \leq n$, denote por $(v_0,\cdots,v_{r})$ o arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ em $L^{r-1}(D)$. Portanto temos uma bijeção entre os vértices de $L(L^{r-1}(D))$ e os vértices de $S_n^r$.
 
-%E para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$, existe em $L^{r-1}(D)$ um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ e um arco de $(v_1,\cdots,v_{r})$ para $(v_2,\cdots,v_{r+1})$. Logo em $L(L^{r-1}(D))$, para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$ existe um arco de $(v_0,\cdots,v_{r})$ para $(v_1,\cdots,v_{r+1})$.
+% %%E para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$, existe em $L^{r-1}(D)$ um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ e um arco de $(v_1,\cdots,v_{r})$ para $(v_2,\cdots,v_{r+1})$. Logo em $L(L^{r-1}(D))$, para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$ existe um arco de $(v_0,\cdots,v_{r})$ para $(v_1,\cdots,v_{r+1})$.
 
-Temos portanto que $S_n^r$ é uma simetrização de $L^r(D)$.
-\end{proof}
+% Temos portanto que $S_n^r$ é uma simetrização de $L^r(D)$.
+% \end{proof}
 
 \begin{lema}\label{shiftlema1}
 Seja $D$ um grafo dirigido. Se $L(D)$ pode ser colorido com $t$ cores sem $K_{d,d}$ monocromático, então $D$ pode ser colorido com $2^t$ cores sem $K_{td,td}$ monocromático.
@@ -611,6 +696,8 @@ Portanto o número cromático de $H$ não é limitado por constante.
 
 \section{\textit{Type Graphs}}
 
+Os \textit{shift graphs} tem como vértices subconjuntos de $[n]$, e dois vértices são adjacentes se suas ``extremidades'' coincidem. Os \textit{type graphs} generalizam a regra de adjacência, de forma que dois vértices são adjacentes se os elementos de seus conjuntos respeitam algum padrão de pertinência, dizemos que tal padrão é um \textit{type}.
+
 \begin{definicao}
 Sejam $A_1, A_2$ $m$-subconjuntos de $[n]$. O \textit{type} do par $(A_1,A_2)$, denotado $\tau(A_1,A_2)$, é a sequência $(z_1, z_2,\cdots,z_l)$, onde $l := |A_1\cup A_2|$ e
 
@@ -724,6 +811,8 @@ t_i &= (i-1)a+b+1,\ (i-1)a+b+2,\ \cdots,\ ia, & i\in [1,n-1].
 \end{aligned}
 \end{equation*}
 
+Ou seja, $s_i$ é a sequência composta por todos os elementos entre $(i-1)a + 1$ até $(i-1)a+b$, e~$t_i$ é a sequência composta por todos os elementos entre $(i-1)a + b$ até $ia$.
+
 Denote por $(s_i,s_j)$, para $1\leq i < j \leq n$, os vértices de $G$ da forma \[s_i,t_i,s_j = ((i-1)a+1,\cdots, ia, (j-1)a+1,\cdots, (j-1)a+b).\]
 
 % \begin{figure}[H]
@@ -808,6 +897,8 @@ s_i &= (i-1)d+1,\ (i-1)d+2,\ \cdots,\ id, & i\in [1,n].
 \end{aligned}
 \end{equation*}
 
+Ou seja, $s_i$ é a sequência composta por todos os elementos de $(i-1)d+1$ até $id$.
+
 Seja $H$ o subgrafo induzido pelos vértices da forma $(s_{i_1}, \cdots, s_{i_t})$, onde $i_1 < i_2 < \cdots < i_t$ e~$t = (a+b)/d$.
 
 Note que dois vértices $(s_{i_1}, \cdots, s_{i_t})$ e $(s_{j_1}, \cdots, s_{j_t})$ são adjacentes se os $b/d$ maiores elementos de um vértice coincidem com os $b/d$ maiores elementos do outro vértice.
@@ -851,7 +942,7 @@ Note que $G(n_0,\sigma_{1,r})$ é o \textit{shift graph} $S_{n_0}^{r-1}$, e logo
 Portanto, $G(an_0, \sigma_{a,b})$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$. E como todo \textit{type graph} $G(m,\tau)$ contém $G(m-1,\tau)$ como subgrafo, temos que todo \textit{type graph} $G(n,\sigma_{a,b})$ com $n \geq an_0$ contém $G(an_0, \sigma_{a,b})$ como subgrafo, e consequentemente contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
 \end{proof}
 
-\section{Consideração Final}
+\section{Considerações Adicionais}
 
 A demonstração do Teorema \ref{shiftteo} faz uso do fato que a família dos \textit{shift graphs} de ordem $r$ são grafos linha direcionados da família dos \textit{shift graphs} de ordem $r-1$. No caso de grafos linha não direcionados, podemos mostrar de forma geral que se uma família respeita a conjectura de Erd\H{o}s e Hajnal, então a família dos grafos linha também respeita a conjectura de Erd\H{o}s e Hajnal.
 
