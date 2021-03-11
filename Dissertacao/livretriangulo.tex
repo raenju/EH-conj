@@ -1,15 +1,19 @@
 \chapter{Grafos Livres de Triângulos}
 \label{cap:livretriangulos}
 
+Um possível primeiro passo para o estudo da conjectura de Erd\H{o}s e Hajnal é fixar cada parâmetro com o valor não-trivial mais simples. No caso, consideraremos os casos em que $g=4$, ou seja, que os subgrafos que procuramos são livres de triângulos, e os casos em que $k=3$, ou seja, que os subgrafos contenham algum circuito ímpar.
+
 \section{Grafos Livres de Triângulos}
 
-Em \cite{rodl1977chromatic} R\"{o}dl demonstrou o seguinte teorema.
+Em \cite{rodl1977chromatic} R\"{o}dl demonstrou que para todo $k$, existe um número $f(k)$ tal que todo grafo com número cromático pelo menos $f(k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. 
 
 \begin{teorema}\label{rodlthm}
 Para todo inteiro positivo $k$, existe um inteiro $f(k)$ tal que todo grafo $G$ com $\chi(G) \geq f(k)$ contém um subgrafo livre de triângulos $H$ com $\chi(H) \geq k$.
 \end{teorema}
 
 Em termos da conjectura de Erd\H{o}s e Hajnal, o Teorema \ref{rodlthm} mostra que $f(k,4)$ existe para todo $k$.
+
+A prova de R\"{o}dl é bastante sucinta, feita por meio de apenas uma indução finita. Apresentaremos tal prova a seguir.
 
 Mostraremos que para todo par de inteiros $m$ e $k$, existe $\phi(m,k)$ tal que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos com número cromático pelo menos $k$ ou contém um clique de tamanho $m$. 
 
@@ -124,11 +128,15 @@ Temos então que a conjectura de Erd\H{o}s e Hajnal vale para $g=4$, ou seja, $f
 
 \section{Circuitos Ímpares}
 
-Resultado de \cite{erdHos1966chromatic}, prova de Bollobás em \cite{bollobas2004extremal}
+Outra possível forma de estudar a conjectura de Erd\H{o}s e Hajnal é fixar o valor de $k$. Em particular, consideraremos o caso em que $k=3$, ou seja, queremos garantir a existência de circuitos ímpares grandes como subgrafos.
+
+Considere o seguinte resultado de Erd\H{o}s \cite{erdHos1966chromatic}.
 
 \begin{teorema}\label{teocircimpar}
 Se todo circuito ímpar de um grafo $G$ tem comprimento no máximo $2r-1$, então $\chi(G) \leq 2r$.
 \end{teorema}
+
+Demonstraremos o Teorema \ref{teocircimpar} de acordo com a prova apresentada por Bollobás em \cite{bollobas2004extremal}.
 
 \begin{lema}\label{lemacircimpar}
 Seja $G$ um grafo $2$-conexo contendo um circuito ímpar. Seja $C$ um circuito par em $G$. Então existem vértices $x,y \in C$ e um caminho $P$ entre $x$ e $y$ independente de $C$ tal que $d_C(x,y) \not\equiv d_P(x,y)$ (mod $2$), onde $d_H(x,y)$ denota a distância entre $x$ e $y$ em $H$.
@@ -197,4 +205,6 @@ Pelo Lema \ref{lemacircimpar}, existe um caminho $P$ de comprimento $p$ entre $x
 
 Pelo Teorema \ref{teocircimpar}, todo grafo $G$ com $\chi(G) \geq 2r+1$ contém um circuito ímpar de comprimento pelo menos $2r+1$. Então em termos da conjectura de Erd\H{o}s e Hajnal, temos que $f(3,2r+1) \leq 2r+1$.
 
-De fato, $f(3,2r+1) = 2r+1$ pois claramente $K_{2r}$ não contém um circuito de comprimento $2r+1$.
+De fato, temos que $f(3,2r+1) = 2r+1$ pois claramente $K_{2r}$ não contém um circuito ímpar de comprimento pelo menos $2r+1$, portanto nem todo grafo com número cromático $2r$ contém um circuito ímpar de comprimento pelo menos $2r+1$.
+
+Note que ao tomar um valor par de $g$, queremos um circuito ímpar de comprimento pelo menos $2r$, o que é equivalente a procurar um circuito ímpar de comprimento pelo menos $2r+1$, logo temos que $f(3,2r) = f(3,2r+1)$.
