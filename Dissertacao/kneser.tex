@@ -73,9 +73,9 @@ Kneser conjecturou que $\chi(KG(n,r)) = n-2r+2$ \cite{kneser1955aufgabe}, e a co
 Para toda função contínua $f: S^d \rightarrow\mathbb{R}^d$ da $d$-esfera para o $d$-espaço, existem pontos antípodas $x^*$ e $-x^*$ que são mapeados no mesmo ponto $f(x^*) = f(-x^*)$.
 \end{teorema}
 
-A prova será baseada na versão em Aigner e Ziegler \cite{aigner2010proofs}, e faz uso do seguinte seguinte versão do teorema, de Lyustemik-Shnirel'man \cite{lyusternik1947topological}.
+A prova será baseada na versão em Aigner e Ziegler \cite{aigner2010proofs}, e faz uso do seguinte seguinte versão do teorema, de Greene \cite{greene2002new}.
 
-\begin{teorema}\label{thlyustemikshnirelman}
+\begin{teorema}\label{thgreene}
 Se a $d$-esfera $S^d$ é coberta por $d+1$ conjuntos $U_1, U_2, \cdots, U_{d+1}$, tal que os primeiros $d$ conjuntos $U_1,\cdots,U_d$ são aberto ou fechado, então algum dos $d+1$ conjuntos contém pontos antípodas $x^*$ e $-x^*$.
 \end{teorema}
 
@@ -95,7 +95,7 @@ Para $i=1,\cdots,d+1$, tome \[O_i = \{x\in S^{d+1} : \text{ O hemisfério aberto
 \label{fig:kneserhemisphere}
 \end{figure}
 
-Note que cada $O_i$ é um conjunto aberto, e o conjunto fechado $C = S^{d+1}\setminus (O_1\cup \cdots \cup O_{d+1})$, junto com os conjuntos $O_i, i=1,\cdots,d+1$ cobrem $S^{d+1}$. Por \ref{thlyustemikshnirelman}, algum dos conjuntos $O_i$ ou $C$ contém pontos antípodas $x^*$ e $-x^*$.
+Note que cada $O_i$ é um conjunto aberto, e o conjunto fechado $C = S^{d+1}\setminus (O_1\cup \cdots \cup O_{d+1})$, junto com os conjuntos $O_i, i=1,\cdots,d+1$ cobrem $S^{d+1}$. Por \ref{thgreene}, algum dos conjuntos $O_i$ ou $C$ contém pontos antípodas $x^*$ e $-x^*$.
 
 Mostraremos que o conjunto $C$ não pode conter pontos antípodas. Suponha que $C$ contenha pontos antípodas $x^*$ e $-x^*$. Pela definição do conjunto $C$, os hemisfério $H_{x^*}$ contém no máximo $r-1$ pontos, pois caso contrário o hemisfério com polo $x^*$ conteria um $r$-conjunto de $V_i$ para algum $i$, e logo $x^* \not\in C$. De mesma forma, o hemisfério $H_{-x^*}$ contém no máximo $r-1$ pontos.
 
@@ -342,7 +342,7 @@ Como a ordem de $\log s$ é maior que a ordem de $s^{-1}$, e a ordem de $s^{1+\l
 
 Mostraremos agora que grafos de Kneser contém \textit{blow-ups} de grafos de Kneser menores com potência grande \cite{mohar2016dichromatic}.
 
-\begin{teorema}[Mohar e Wu, 2016]\label{moharwukn}
+\begin{teorema}[Mohar e Wu \cite{mohar2016dichromatic}]\label{moharwukn}
 Sejam $n,r,t$ e $x$ inteiros não-negativos tais que $0 < r < n$ e $x < rt$. O grafo de Kneser KG$(nt, rt-x)$ contém o \textit{blow-up} de KG$(n,r)$ com potência $\binom{r(t-1)}{x}$ como subgrafo. Ademais se $x < t$, KG$(nt, rt-x)$ contém o \textit{blow-up} de KG$(n,r)$ com potência $\binom{rt}{x}$, e se $x = t$, contém o \textit{blow-up} de~KG$(n,r)$ com potência $\binom{rt}{x}-r$.
 \end{teorema}
 
