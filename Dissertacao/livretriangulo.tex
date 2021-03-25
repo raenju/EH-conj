@@ -126,6 +126,36 @@ Pela escolha de $m$, um clique de tamanho $m$ contém um subgrafo livre de triâ
 
 Temos então que a conjectura de Erd\H{o}s e Hajnal vale para $g=4$, ou seja, $f(k,4)$ existe para todo $k$. A conjectura está em aberto para $g > 4$.
 
+\section{Número cromático na demonstração de R\"{o}dl}
+
+Na seção anterior, mostramos que existe um inteiro $\phi(m,k)$ tal que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos com número cromático pelo menos $k$, ou contém um clique de tamanho $m$. E tomando um valor conveniente de $m$, mostramos que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$.
+
+Temos então que $f(k,4) \leq \phi(m,k)$. É interessante determinar o valor de $\phi(m,k)$, para termos um limitante superior para $f(k,4)$.
+
+Temos que $m$ deve ser tal que $K_m$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. Pelo teorema de Erd\H{o}s, temos que existe um grafo livre de triângulos e com número cromático pelo menos $k$ com $k^{3g}$ vértices, ou seja, podemos tomar $m := k^{12}$.
+
+Sabemos que $\phi(2,k) = 2$, e
+
+\[\phi(m,k) = (k-1)^{\phi(m-1,k)-1}+1.\]
+
+Note que ao expandir o expoente $\phi(m-1,k)-1$, temos
+
+\begin{equation*}
+\setlength{\jot}{5pt}
+\begin{aligned}
+\phi(m-1,k)-1 &= (k-1)^{\phi(m-2,k)-1}+1-1 \\
+&= (k-1)^{\phi(m-2,k)-1}.
+\end{aligned}
+\end{equation*}
+
+Logo, temos que 
+
+\[\phi(m,k) = (k-1)^{(k-1)^{\cdots^{(k-1)^{\phi(2,k)-1}}}}+1,\]
+
+onde $k-1$ ocorre $m-2$ vezes, e $\phi(2,k)-1 = 1$. Portanto, temos que $\phi(m,k) = 1+(k-1)\uparrow\uparrow m-2$, usando a notação de Knuth.
+
+Temos então que $f(k,4) \leq 1+ (k-1) \uparrow\uparrow (k^{12}-2)$.
+
 \section{Circuitos Ímpares}
 
 Outra possível forma de estudar a conjectura de Erd\H{o}s e Hajnal é fixar o valor de $k$. Em particular, consideraremos o caso em que $k=3$, ou seja, queremos garantir a existência de circuitos ímpares grandes como subgrafos.

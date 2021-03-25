@@ -73,10 +73,10 @@ Kneser conjecturou que $\chi(KG(n,r)) = n-2r+2$ \cite{kneser1955aufgabe}, e a co
 Para toda função contínua $f: S^d \rightarrow\mathbb{R}^d$ da $d$-esfera para o $d$-espaço, existem pontos antípodas $x^*$ e $-x^*$ que são mapeados no mesmo ponto $f(x^*) = f(-x^*)$.
 \end{teorema}
 
-A prova será baseada na versão em Aigner e Ziegler \cite{aigner2010proofs}, e faz uso do seguinte seguinte versão do teorema, de Greene \cite{greene2002new}.
+A prova será baseada na versão em Aigner e Ziegler \cite{aigner2010proofs}, e faz uso do seguinte seguinte versão do teorema de Borsuk-Ulam, de Greene \cite{greene2002new}.
 
 \begin{teorema}\label{thgreene}
-Se a $d$-esfera $S^d$ é coberta por $d+1$ conjuntos $U_1, U_2, \cdots, U_{d+1}$, tal que os primeiros $d$ conjuntos $U_1,\cdots,U_d$ são aberto ou fechado, então algum dos $d+1$ conjuntos contém pontos antípodas $x^*$ e $-x^*$.
+Se a $d$-esfera $S^d$ é coberta por $d+1$ conjuntos $U_1, U_2, \cdots, U_{d+1}$, tal que os primeiros $d$ conjuntos $U_1,\cdots,U_d$ são abertos ou fechados, então algum dos $d+1$ conjuntos contém pontos antípodas $x^*$ e $-x^*$.
 \end{teorema}
 
 Seja $d = n - 2r$. Considere $2r+d$ pontos em posição geral na esfera $S^{d+1}$, e seja $V(n,r)$ o conjunto de todos os $r$-subconjuntos dos $2r+d$ pontos na esfera. Suponha que os elementos de $V(n,r)$ estejam particionados em $d+1$ classes, $V(n,r) = V_1 \dot\cup \cdots \dot\cup V_{d+1}$.
@@ -404,12 +404,24 @@ A conjectura de Erd\H{o}s e Hajnal é verdadeira para os grafos de Kneser.
 \end{corolario}
 
 \begin{proof}{(Corolário \ref{knesercor})}
-Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, e seja $G = KG(2n,n-2x)$ um grafo de Kneser com número cromático grande. Claramente $2n \geq 2(n-2x)$, logo temos que $\chi(KG(2n,n-2x)) = 4x+2$.
+Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, e seja $x$ um inteiro tal que $x \geq 14gk^2\log(k)$ e $x\geq k^4g$. Mostraremos que todo grafo de Kneser da forma $KG(2n, n-2x)$ para algum $n$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$, e com isso, mostraremos que todo grafo de Kneser com número cromático pelo menos $4x+2$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+
+Primeiramente, mostraremos que se supormos que todo grafo de Kneser da forma $KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$, então todo grafo de Kneser com número cromático pelo menos $4x+2$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+
+Suponha que $KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$. Seja $G_0 = KG(a,b)$ um grafo de Kneser com número cromático pelo menos $4x+2$, e seja $n$ tal que $n-2x = b$. Ou seja, $G_0$ é da forma $KG(a,n-2x)$. Note que $4x+2\leq\chi(G_0) = a-2n+4x+2$, ou seja, temos que $a\geq 2n$.
+
+Se $a = 2n$ então $G_0 = KG(2n,n-2x)$, e portanto contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+
+Caso contrário temos que $a > 2n$, então basta notar que um grafo de Kneser da forma $KG(a,b)$ contém $KG(a-1,b)$ como subgrafo, e portanto $KG(a,n-2x)$ contém $KG(2n, n-2x)$ como subgrafo, e logo contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+
+Agora basta provar que $KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+
+%Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, e seja $G = KG(2n,n-2x)$ um grafo de Kneser com número cromático grande. Claramente $2n \geq 2(n-2x)$, logo temos que $\chi(KG(2n,n-2x)) = 4x+2$.
  
 
 %Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, e seja $G = KG(2n,n-2x)$ um grafo de Kneser com número cromático grande. O número cromático de um grafo de Kneser $KG(n,r)$ é igual a $n-2r+2$ se $n \geq 2r$ \cite{lovasz1978kneser}, e $1$ caso contrário, logo para $x\geq 0$ o número cromático de $G$ é $4x+2$. 
 
-Seja $t = x/k$. Pelo Teorema \ref{moharwukn}, temos que $G$ contém o \textit{blow-up} de $H := KG(2n/t, (n-x)/t)$ com potência~$m = \binom{(n-x)(t-1)/t}{x}$. Por simplicidade, vamos assumir que o resultado das divisões são inteiros. Cada vértice de $H$ tem grau $\binom{(n+x)/t}{(n-x)/t} = \binom{(n+x)/t}{2x/t}$, que é limitado superiormente por
+Seja $G = KG(2n,n-2x)$ e seja $t = x/k$. Pelo Teorema \ref{moharwukn}, temos que $G$ contém o \textit{blow-up} de $H := KG(2n/t, (n-x)/t)$ com potência~$m = \binom{(n-x)(t-1)/t}{x}$. Por simplicidade, vamos assumir que o resultado das divisões são inteiros. Cada vértice de $H$ tem grau $\binom{(n+x)/t}{(n-x)/t} = \binom{(n+x)/t}{2x/t}$, que é limitado superiormente por
 
 \begin{equation*}
 \setlength{\jot}{5pt}
@@ -436,8 +448,6 @@ Caso $n > x/(\frac{1}{2} - \frac{1}{2k})$, seja $z$ tal que $\frac{n}{x} = 2 + 2
 \end{equation*}
 
 Logo $1+z > k/(k-1) = 1+1/(k-1)$, e portanto $z > 1/(k-1) > 1/k$.
-
-Seja $x \geq 14gk^2\log(k)$.
 
 %Como $x \geq 14gk^2\log(k)$, então $x > (k+2)^2$, logo
 
@@ -496,7 +506,7 @@ Para a desigualdade (\ref{kncase1eq2}) temos que $(3+2z)^{2k(2g-4)} < (3+3z)^{4k
 
 Equivalentemente, basta mostrar que  \[3^{4kg} < (1+z)^{x/2 - 4kg}.\]
 
-Como $\frac{1}{k} < 1+z$, temos que \[\left(1+\frac{1}{k}\right)^{x/2-4kg} < (1+z)^{x/2 - 4kg},\]
+Como $\frac{1}{k} < z$, temos que \[\left(1+\frac{1}{k}\right)^{x/2-4kg} < (1+z)^{x/2 - 4kg},\]
 
 e como $x\geq 14gk^2\log(k)$, então \[\left(1+\frac{1}{k}\right)^{7gk^2\log(k) - 4kg} \leq \left(1+\frac{1}{k}\right)^{x/2-4kg}.\]
 
@@ -633,7 +643,7 @@ Se $m \geq k(k\Delta)^{2g-4}$, onde $\Delta := \Delta(K_k) = k-1$, então pelo T
 
 Portanto basta mostrar que para $x$ suficientemente grande, vale que $m \geq k(k\Delta)^{2g-4}$.
 
-Seja $x\geq k^{4g}$. É razoável supor que $n-2x > 0$. Então
+Temos que $x\geq k^{4g}$. É razoável supor que $n-2x > 0$. Então
 
 \begin{equation*}
 \setlength{\jot}{5pt}
@@ -653,15 +663,15 @@ E logo concluímos o caso $n \leq x/(\frac{1}{2} - \frac{1}{2k})$.
 
 Portanto temos que para $x \geq 14gk^2\log(k)$ e $x\geq k^{4g}$, um grafo de Kneser da forma $KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos $k$ e cintura maior que $g$.
 
-Seja um grafo de Kneser $KG(a,b)$ com número cromático pelo menos $4x+2$, ou seja, temos que $a \geq 2b$ e $a-2b+2 \geq 4x+2$.
+% Seja um grafo de Kneser $KG(a,b)$ com número cromático pelo menos $4x+2$, ou seja, temos que $a \geq 2b$ e $a-2b+2 \geq 4x+2$.
 
-Seja $n$ tal que $n-2x = b$, então $KG(a,b)$ é da forma $KG(a,n-2x)$.
+% Seja $n$ tal que $n-2x = b$, então $KG(a,b)$ é da forma $KG(a,n-2x)$.
 
-Se $a = 2n$, então $KG(a,b)$ é da forma $KG(2n, n-2x)$, e logo contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+% Se $a = 2n$, então $KG(a,b)$ é da forma $KG(2n, n-2x)$, e logo contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
 
-Se $a > 2n$, basta notar que $KG(a,n-2x)$ contém $KG(a-1,n-2x)$ como subgrafo, e logo $KG(a,n-2x)$ contém $KG(2n,n-2x)$ como subgrafo. Portanto $KG(a,b)$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+% Se $a > 2n$, basta notar que $KG(a,n-2x)$ contém $KG(a-1,n-2x)$ como subgrafo, e logo $KG(a,n-2x)$ contém $KG(2n,n-2x)$ como subgrafo. Portanto $KG(a,b)$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
 
-Note que o caso $a<2n$ não ocorre, pois $\chi(KG(a,n-2x)) = a - 2n + 4x + 2$, e como $a < 2n$, então $a - 2n < 0$ e portanto $\chi(KG(a,n-2x)) < 4x+2$, contradição com o fato de que $KG(a,b)$ tem número cromático pelo menos $4x+2$.
+% Note que o caso $a<2n$ não ocorre, pois $\chi(KG(a,n-2x)) = a - 2n + 4x + 2$, e como $a < 2n$, então $a - 2n < 0$ e portanto $\chi(KG(a,n-2x)) < 4x+2$, contradição com o fato de que $KG(a,b)$ tem número cromático pelo menos $4x+2$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
