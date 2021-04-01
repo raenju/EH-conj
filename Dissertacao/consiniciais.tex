@@ -7,120 +7,124 @@
 % Texto reescrito
 %-----------------------------------
 
-\subsection{Construção de Tutte}
+Um primeiro passo para o estudo de grafos com número cromático e cintura grandes é considerar a existência de grafos livres de triângulos e com número cromático grande. 
 
-A primeira construção citada foi provada por W. Tutte \cite{descartes1947three}.
+Algumas construções bastante conhecidas incluem a construção de W. Tutte \cite{descartes1947three}, a construção de A. Zykov \cite{zykov1949some}, e a construção de J. Mycielski \cite{mycielski1955coloriage}. Uma construção menos conhecida usa planos projetivos.
 
-Seja $G$ um grafo livre de triângulos arbitrário, $n := |V(G)|$ e $k := \chi(G)$. Construiremos um grafo livre de triângulos e de número cromático $k+1$.
+% \subsection{Construção de Tutte}
 
-Seja $S$ um conjunto de $k(n-1)+1$ vértices, e para cada subconjunto $C \subset S$, com $|C| = n$, adicionamos uma cópia isomorfa de $G$, digamos $G_C$, e criamos um emparelhamento arbitrário entre vértices de $G_C$ e os vértices de $C$.
+% A primeira construção citada foi provada por W. Tutte \cite{descartes1947three}.
 
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.5 cm}]
-    \node[circle, draw=black] at (0,3) {};
-    \node[circle, draw=black] at (1,3) {};
-    \node at (2,3) {$\cdots$};
-    \node[circle, draw=black] at (3,3) {};
-    \node[circle, draw=black] at (4,3) {};
-    \node[circle, draw=black] at (5,3) {};
-    \node[circle, draw=black] at (6,3) {};
-    \node at (7,3) {$\cdots$};
-    \node at (9,3) {$\cdots$};
+% Seja $G$ um grafo livre de triângulos arbitrário, $n := |V(G)|$ e $k := \chi(G)$. Construiremos um grafo livre de triângulos e de número cromático $k+1$.
+
+% Seja $S$ um conjunto de $k(n-1)+1$ vértices, e para cada subconjunto $C \subset S$, com $|C| = n$, adicionamos uma cópia isomorfa de $G$, digamos $G_C$, e criamos um emparelhamento arbitrário entre vértices de $G_C$ e os vértices de $C$.
+
+% \begin{figure}[H]
+% \centering
+% \begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.5 cm}]
+%     \node[circle, draw=black] at (0,3) {};
+%     \node[circle, draw=black] at (1,3) {};
+%     \node at (2,3) {$\cdots$};
+%     \node[circle, draw=black] at (3,3) {};
+%     \node[circle, draw=black] at (4,3) {};
+%     \node[circle, draw=black] at (5,3) {};
+%     \node[circle, draw=black] at (6,3) {};
+%     \node at (7,3) {$\cdots$};
+%     \node at (9,3) {$\cdots$};
     
-    \node at (-1,3) {$S$};
+%     \node at (-1,3) {$S$};
     
-    \draw (2,3) ellipse (2.5 and 0.6);
-    \draw (6,3) ellipse (2.5 and 0.6);
+%     \draw (2,3) ellipse (2.5 and 0.6);
+%     \draw (6,3) ellipse (2.5 and 0.6);
     
-    \node at (2,5) {$G$};
-    \node at (6,5) {$G$};
+%     \node at (2,5) {$G$};
+%     \node at (6,5) {$G$};
     
-    \draw[-] (0,3.5) to (1.6,4.5);
-    \draw[-] (1,3.5) to (1.8,4.5);
-    \draw[-] (2,3.5) to (2,4.5);
-    \draw[-] (3,3.5) to (2.2,4.5);
-    \draw[-] (3.9,3.5) to (2.4,4.5);
-    \draw[-] (4.1,3.5) to (5.6,4.5);
-    \draw[-] (5,3.5) to (5.8,4.5);
-    \draw[-] (6,3.5) to (6,4.5);
-    \draw[-] (7,3.5) to (6.2,4.5);
-    \draw[-] (8,3.5) to (6.4,4.5);
-\end{tikzpicture}
-\caption{Construção de Tutte partindo de um grafo $G$.}
-\label{fig:tutteexample}
-\end{figure}
+%     \draw[-] (0,3.5) to (1.6,4.5);
+%     \draw[-] (1,3.5) to (1.8,4.5);
+%     \draw[-] (2,3.5) to (2,4.5);
+%     \draw[-] (3,3.5) to (2.2,4.5);
+%     \draw[-] (3.9,3.5) to (2.4,4.5);
+%     \draw[-] (4.1,3.5) to (5.6,4.5);
+%     \draw[-] (5,3.5) to (5.8,4.5);
+%     \draw[-] (6,3.5) to (6,4.5);
+%     \draw[-] (7,3.5) to (6.2,4.5);
+%     \draw[-] (8,3.5) to (6.4,4.5);
+% \end{tikzpicture}
+% \caption{Construção de Tutte partindo de um grafo $G$.}
+% \label{fig:tutteexample}
+% \end{figure}
 
-Claramente o novo grafo não contém triângulos, e cada cópia isomorfa de $G$ precisa de $k$ cores. Caso os vértices de $S$ sejam coloridos com $k$ cores, pelo princípio da casa dos pombos, existe um subconjunto $C \subset S$, com $|C| = n$, tal que $C$ é monocromático. Mas como $C$ está emparelhado com $G_C$ e algum vértice de $G_C$ está colorido com a mesma cor de $C$, tal coloração não é própria. Portanto são necessárias pelo menos $k+1$ cores, e note que $k+1$ cores são suficientes, pois basta colorir cada cópia isomorfa de $G$ com $k$ cores, e colorir $S$ com uma $(k+1)$-ésima cor.
+% Claramente o novo grafo não contém triângulos, e cada cópia isomorfa de $G$ precisa de $k$ cores. Caso os vértices de $S$ sejam coloridos com $k$ cores, pelo princípio da casa dos pombos, existe um subconjunto $C \subset S$, com $|C| = n$, tal que $C$ é monocromático. Mas como $C$ está emparelhado com $G_C$ e algum vértice de $G_C$ está colorido com a mesma cor de $C$, tal coloração não é própria. Portanto são necessárias pelo menos $k+1$ cores, e note que $k+1$ cores são suficientes, pois basta colorir cada cópia isomorfa de $G$ com $k$ cores, e colorir $S$ com uma $(k+1)$-ésima cor.
 
-\subsection{Construção de Zykov}
+% \subsection{Construção de Zykov}
 
-A próxima construção foi proposta por A. Zykov \cite{zykov1949some}.
+% A próxima construção foi proposta por A. Zykov \cite{zykov1949some}.
 
-Seja $G$ um grafo livre de triângulos, $n:=|V(G)|$ e $k:= \chi(G)$. Tome $k$ cópias disjuntas de $G$ e seja $S$ um conjunto independente de vértices, onde $|S| = n^k$.
+% Seja $G$ um grafo livre de triângulos, $n:=|V(G)|$ e $k:= \chi(G)$. Tome $k$ cópias disjuntas de $G$ e seja $S$ um conjunto independente de vértices, onde $|S| = n^k$.
 
-Considere os conjuntos de vértices $\{v_1,\cdots,v_k\}$ tais que cada vértice $v_i$ pertence a uma cópia distinta de $G$. Para cada conjunto, atribua um vértice distinto de $S$, e adicione arestas entre tal vértice de $S$ e os vértices do conjunto.
+% Considere os conjuntos de vértices $\{v_1,\cdots,v_k\}$ tais que cada vértice $v_i$ pertence a uma cópia distinta de $G$. Para cada conjunto, atribua um vértice distinto de $S$, e adicione arestas entre tal vértice de $S$ e os vértices do conjunto.
 
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.5 cm}]
-    \node[circle, draw=black] at (1,3) {};
-    \node[circle, draw=black] (A) at (2,3) {};
-    \node[circle, draw=black] at (3,3) {};
-    \node at (4,3) {$\cdots$};
-    \node at (-0.5,3) {$S$};
+% \begin{figure}[H]
+% \centering
+% \begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.5 cm}]
+%     \node[circle, draw=black] at (1,3) {};
+%     \node[circle, draw=black] (A) at (2,3) {};
+%     \node[circle, draw=black] at (3,3) {};
+%     \node at (4,3) {$\cdots$};
+%     \node at (-0.5,3) {$S$};
     
-    \node[circle, draw=black] (B) at (-3,5) {$v_1$};
-    \node[circle, draw=black] (C) at (0,5) {$v_2$};
-    \node[circle, draw=black] (D) at (7,5) {$v_k$};
+%     \node[circle, draw=black] (B) at (-3,5) {$v_1$};
+%     \node[circle, draw=black] (C) at (0,5) {$v_2$};
+%     \node[circle, draw=black] (D) at (7,5) {$v_k$};
     
-    \draw[dotted] (-3.5,5.5) circle (1.5);
-    \draw[dotted] (0.5,5.5) circle (1.5);
-    \draw[dotted] (7,5.5) circle (1.5);
+%     \draw[dotted] (-3.5,5.5) circle (1.5);
+%     \draw[dotted] (0.5,5.5) circle (1.5);
+%     \draw[dotted] (7,5.5) circle (1.5);
     
-    \node at (4,5.5) {$\cdots$};
+%     \node at (4,5.5) {$\cdots$};
     
-    \node at (-3.5,7.5) {$G$};
-    \node at (0.5,7.5) {$G$};
-    \node at (7,7.5) {$G$};
+%     \node at (-3.5,7.5) {$G$};
+%     \node at (0.5,7.5) {$G$};
+%     \node at (7,7.5) {$G$};
     
-    \draw[-] (A) to (B);
-    \draw[-] (A) to (C);
-    \draw[-] (A) to (D);
-\end{tikzpicture}
-\caption{Adjacência de um vértice de $S$ na construção de Zykov partindo de um grafo $G$.}
-\label{fig:zykovexample}
-\end{figure}
+%     \draw[-] (A) to (B);
+%     \draw[-] (A) to (C);
+%     \draw[-] (A) to (D);
+% \end{tikzpicture}
+% \caption{Adjacência de um vértice de $S$ na construção de Zykov partindo de um grafo $G$.}
+% \label{fig:zykovexample}
+% \end{figure}
 
-Temos que o novo grafo é livre de triângulos, pois cada cópia de $G$ é livre de triângulos, e o conjunto $S$ é independente. Temos também que o novo grafo tem número cromático $k+1$. Suponha que o novo grafo pode ser colorido com apenas $k$ cores. Sabemos que cada cópia de $G$ precisa de $k$ cores, em particular temos que a $i$-ésima cópia de $G$ contém um vértice de cor $i$, e logo temos um conjunto $\{v_1,\cdots,v_k\}$, onde $v_i$ é um vértice da $i$-ésima cópia de $G$ e $v_i$ tem cor $i$. Por construção, existe um vértice de $S$ adjacente a todo vértice de tal conjunto, e logo tal vértice não pode receber uma das $k$ cores.
+% Temos que o novo grafo é livre de triângulos, pois cada cópia de $G$ é livre de triângulos, e o conjunto $S$ é independente. Temos também que o novo grafo tem número cromático $k+1$. Suponha que o novo grafo pode ser colorido com apenas $k$ cores. Sabemos que cada cópia de $G$ precisa de $k$ cores, em particular temos que a $i$-ésima cópia de $G$ contém um vértice de cor $i$, e logo temos um conjunto $\{v_1,\cdots,v_k\}$, onde $v_i$ é um vértice da $i$-ésima cópia de $G$ e $v_i$ tem cor $i$. Por construção, existe um vértice de $S$ adjacente a todo vértice de tal conjunto, e logo tal vértice não pode receber uma das $k$ cores.
 
-\subsection{Construção de Mycielski}
+% \subsection{Construção de Mycielski}
 
-A próxima construção foi encontrada por J. Mycielski \cite{mycielski1955coloriage}. Seja $G$ um grafo livre de triângulos arbitrário, $k := \chi(G)$ e $V(G) = \{v_1, \cdots, v_n\}$. Para cada vértice $v_i$, adicionamos um novo vértice $w_i$, e $w_i$ é adjacente a $v_j$ se $v_i$ é adjacente a $v_j$, ou seja, $w_i$ tem a mesma vizinhança de $v_i$. E adicionamos um vértice $u$, adjacente a $w_1, \cdots, w_n$.
+% A próxima construção foi encontrada por J. Mycielski \cite{mycielski1955coloriage}. Seja $G$ um grafo livre de triângulos arbitrário, $k := \chi(G)$ e $V(G) = \{v_1, \cdots, v_n\}$. Para cada vértice $v_i$, adicionamos um novo vértice $w_i$, e $w_i$ é adjacente a $v_j$ se $v_i$ é adjacente a $v_j$, ou seja, $w_i$ tem a mesma vizinhança de $v_i$. E adicionamos um vértice $u$, adjacente a $w_1, \cdots, w_n$.
 
-\begin{figure}[H]
-\centering
-\begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.2 cm}]
-    \node[circle, draw=black] (A) at (0,2) {$v_1$};
-    \node[circle, draw=black] (B) at (0,0) {$v_2$};
-    \node[circle, draw=black] (C) at (3,2) {$v_1$};
-    \node[circle, draw=black] (D) at (3,0) {$v_2$};
-    \node[circle, draw=black] (E) at (4.5,2) {$w_1$};
-    \node[circle, draw=black] (F) at (4.5,0) {$w_2$};
-    \node[circle, draw=black] (G) at (6,1) {$u$};
+% \begin{figure}[H]
+% \centering
+% \begin{tikzpicture}[-latex ,auto ,node distance =0.7cm and 5cm, on grid,semithick ,state/.style ={circle, draw, text=white , minimum width =0.2 cm}]
+%     \node[circle, draw=black] (A) at (0,2) {$v_1$};
+%     \node[circle, draw=black] (B) at (0,0) {$v_2$};
+%     \node[circle, draw=black] (C) at (3,2) {$v_1$};
+%     \node[circle, draw=black] (D) at (3,0) {$v_2$};
+%     \node[circle, draw=black] (E) at (4.5,2) {$w_1$};
+%     \node[circle, draw=black] (F) at (4.5,0) {$w_2$};
+%     \node[circle, draw=black] (G) at (6,1) {$u$};
     
-    \draw[-] (A) to (B);
-    \draw[-] (C) to (D);
-    \draw[-] (C) to (F);
-    \draw[-] (D) to (E);
-    \draw[-] (E) to (G);
-    \draw[-] (F) to (G);
-\end{tikzpicture}
-\caption{O grafo completo $K_2$ (esquerda), e a construção de Mycielski partindo de $K_2$ (direita).}
-\label{fig:mycielskiexample}
-\end{figure}
+%     \draw[-] (A) to (B);
+%     \draw[-] (C) to (D);
+%     \draw[-] (C) to (F);
+%     \draw[-] (D) to (E);
+%     \draw[-] (E) to (G);
+%     \draw[-] (F) to (G);
+% \end{tikzpicture}
+% \caption{O grafo completo $K_2$ (esquerda), e a construção de Mycielski partindo de $K_2$ (direita).}
+% \label{fig:mycielskiexample}
+% \end{figure}
 
-O novo grafo é livre de triângulos, e sabemos que são necessárias $k$ cores para colorir os vértices~$v_1, \cdots, v_n$. Suponha por contradição que podemos colorir os vértices $w_1,\cdots, w_n$ com $k-1$ cores, e seja $c$ a cor não usada. Para cada $v_i$ com cor $c$, podemos colorir $v_i$ com a cor de $w_i$, pois a vizinhança de $v_i$ é igual a vizinhança de $w_i$, dessa forma encontramos uma $(k-1)-$coloração dos vértices $v_1,\cdots,v_n$, contradição com o fato de $\chi(G) = k$. Logo, $w_1,\cdots,w_n$ precisa de pelo menos $k$ cores, e $k$ cores bastam, pois basta atribuir a cor de $v_i$ para $w_i$. E é necessária uma $(k+1)$-ésima cor para o vértice $u$. Logo o novo grafo tem número cromático $k+1$.
+% O novo grafo é livre de triângulos, e sabemos que são necessárias $k$ cores para colorir os vértices~$v_1, \cdots, v_n$. Suponha por contradição que podemos colorir os vértices $w_1,\cdots, w_n$ com $k-1$ cores, e seja $c$ a cor não usada. Para cada $v_i$ com cor $c$, podemos colorir $v_i$ com a cor de $w_i$, pois a vizinhança de $v_i$ é igual a vizinhança de $w_i$, dessa forma encontramos uma $(k-1)-$coloração dos vértices $v_1,\cdots,v_n$, contradição com o fato de $\chi(G) = k$. Logo, $w_1,\cdots,w_n$ precisa de pelo menos $k$ cores, e $k$ cores bastam, pois basta atribuir a cor de $v_i$ para $w_i$. E é necessária uma $(k+1)$-ésima cor para o vértice $u$. Logo o novo grafo tem número cromático $k+1$.
 
 \subsection{Planos Projetivos}
 

@@ -635,7 +635,13 @@ Então $m \leq k(k\Delta)^{2g-4}$, e concluímos o caso $n > x/(\frac{1}{2} - \f
 
 Caso $n \leq x/(\frac{1}{2} - \frac{1}{2k})$, então $n-2x \leq n/k$. Mostraremos que $KG(2n,n-2x)$ contém $KG(k,1) = K_k$ como subgrafo, e ademais, se $x$ é grande então $KG(2n,n-2x)$ contém um \textit{blow-up} de~$K_k$ com potência grande.
 
-Como $n-2x \leq n/k$, é possível separar $2n$ em $k$ blocos de tamanho $2n/k$, e cada bloco contém pelo menos $n-2x$ elementos. Logo cada bloco corresponde a $\binom{2n/k}{n-2x}$ vértices de $KG(2n, n-2x)$, e vértices de blocos distintos são adjacentes, pois seus conjuntos claramente tem interseção vazia.
+Como $n-2x \leq n/k$, é possível separar $2n$ em $k$ blocos de tamanho $2n/k$, e cada bloco contém pelo menos $n-2x$ elementos. Formalmente, podemos tomar os seguintes conjuntos de vértices.
+
+\[V_i = \left\{v \in V : \ j \in \left[(i-1)\frac{2n}{k}+1, i\frac{2n}{k}\right]\forall j \in v\right\}.\]
+
+Ou seja, cada conjunto $V_i$ contém os vértices formados apenas por elementos de $[(i-1)2n/k+1, i2n/k]$.
+
+Logo cada conjunto corresponde a $\binom{2n/k}{n-2x}$ vértices de $KG(2n, n-2x)$, e vértices de blocos distintos são adjacentes, pois seus conjuntos claramente tem interseção vazia.
 
 Então temos $k$ conjuntos de vértices, cada conjunto com $m := \binom{2n/k}{n-2x}$ vértices, e todo par de vértices de conjuntos distintos são adjacentes. Portanto temos um \textit{blow-up} de $K_k$ com potência $m$.
 
