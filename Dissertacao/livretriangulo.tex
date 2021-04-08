@@ -8,7 +8,7 @@ Um possível primeiro passo para o estudo da conjectura de Erd\H{o}s e Hajnal é
 Em \cite{rodl1977chromatic} R\"{o}dl demonstrou que para todo $k$, existe um número $f(k)$ tal que todo grafo com número cromático pelo menos $f(k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. 
 
 \begin{teorema}\label{rodlthm}
-Para todo inteiro positivo $k$, existe um inteiro $f(k)$ tal que todo grafo $G$ com $\chi(G) \geq f(k)$ contém um subgrafo livre de triângulos $H$ com $\chi(H) \geq k$.
+Para todo inteiro $k$, existe um inteiro $f(k)$ tal que todo grafo $G$ com $\chi(G) \geq f(k)$ contém um subgrafo livre de triângulos $H$ com $\chi(H) \geq k$.
 \end{teorema}
 
 Em termos da conjectura de Erd\H{o}s e Hajnal, o Teorema \ref{rodlthm} mostra que $f(k,4)$ existe para todo $k$.
@@ -20,13 +20,13 @@ Mostraremos que para todo par de inteiros $m$ e $k$, existe $\phi(m,k)$ tal que 
 E pelo teorema de Erd\H{o}s, existe um $m$ tal que $K_m$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. Então tomando $m$ adequado, todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos e com número cromático $k$.
 
 \begin{lema}\label{livretriangulolema1}
-Para todo par de inteiros $m,k$, existe um inteiro $\phi(m,k)$ tal que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$, ou contém um clique de tamanho $m$.
+Para todo par de inteiros $m$ e $k$, existe um inteiro $\phi(m,k)$ tal que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$, ou contém um clique de tamanho $m$.
 \end{lema}
 
 \begin{proof}(Lema \ref{livretriangulolema1})
 Provaremos por indução em $m$. Claramente $\phi(2,k) = 2$ para todo $k$, pois todo grafo com número cromático pelo menos $2$ contém um $K_2$.
 
-Dado um grafo $G = (V,E)$ e uma ordenação $<$ de seus vértices, seja $L(v,G)$ o grafo induzido pelos vizinhos à esquerda de $v$ em $G$, ou seja, induzido pelos vértices adjacentes a $v$ e menores que $v$ na ordenação.
+Dado um grafo $G = (V,E)$ e uma ordenação $<$ de seus vértices, seja $L(v,G)$ o grafo induzido pelos vizinhos à esquerda de $v$ em $G$, ou seja, induzido pelos vértices adjacentes a $v$ e menores que~$v$ na ordenação $<$.
 
 \begin{figure}[H]
 \centering
@@ -57,15 +57,15 @@ Dado um grafo $G = (V,E)$ e uma ordenação $<$ de seus vértices, seja $L(v,G)$
 
 Suponha que $\phi(m-1,k)$ existe. Então seja $G_0$ um grafo tal que \[\chi(G_0) = (k-1)^{\phi(m-1,k)-1}+1 =: \phi(m,k).\]
 
-Se $G_0$ contém $K_m$ como subgrafo, concluímos a prova. Então suponha que $G_0$ não contém $K_m$ como subgrafo, e seja $<$ uma ordenação dos vértices de $G_0$. Note que para todo $v \in V(G_0)$ o grafo $L(v,G_0)$ não contém $K_{m-1}$, pois $v$ é adjacente a todos os vértices de $L(v,G_0)$, e logo um $K_{m-1}$ em $L(v,G_0)$ implica em $K_m$ ser um subgrafo de $G_0$.
+Se $G_0$ contém $K_m$ como subgrafo, concluímos a prova. Então suponha que $G_0$ não contém $K_m$ como subgrafo, e seja $<$ uma ordenação dos vértices de $G_0$. Note que para todo $v \in V(G_0)$ o grafo~$L(v,G_0)$ não contém $K_{m-1}$, pois $v$ é adjacente a todos os vértices de $L(v,G_0)$, e logo o grafo induzido por $v\cup V(K_{m-1})$ é um $K_{m}$, o que não pode ocorrer pois $G_0$ não contém $K_m$ como subgrafo.
 
-Consideraremos os dois seguintes casos, se $\chi(L(v,G_0)) \geq \phi(m-1,k)$ para algum $v$, e se $\chi(L(v,G_0)) \leq \phi(m-1,k) - 1$ para todo $v$.
+Consideraremos os dois seguintes casos, se para algum $v$ temos que $\chi(L(v,G_0)) \geq \phi(m-1,k)$, ou se $\chi(L(v,G_0)) \leq \phi(m-1,k) - 1$ para todo $v$.
 
 No caso de $\chi(L(v,G_0)) \geq \phi(m-1,k)$ para algum $v$, por hipótese de indução temos que para algum $v$, $L(v, G_0)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$, ou contém um clique de tamanho $m-1$.
 
 Se $L(v, G_0)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$, como $L(v,G_0)$ é subgrafo de $G_0$, temos que $G_0$ contém um subgrafo livre livre de triângulos e com número cromático pelo menos $k$. E se $L(v, G_0)$ contém um clique de tamanho $m-1$, como $v$ é adjacente a todo vértice de $L(v, G_0)$ em $G_0$, temos que $G_0$ contém um clique de tamanho $m$.
 
-No caso $\chi(L(v,G_0)) \leq \phi(m-1,k)-1$ para todo $v\in G_0$, considere uma $l$-coloração de cada $L(v, G_0)$, onde $l \leq \phi(m-1, k)$. Seja $B_i^v$ o conjunto de vértices de $L(v, G_0)$ de cor $i$, com $i \leq l$. Então $\cup_{i=1}^l B_i^v$ é a $l$-coloração de $L(v,G_0)$ considerada.
+No caso $\chi(L(v,G_0)) \leq \phi(m-1,k)-1$ para todo $v\in G_0$, considere uma $l$-coloração de cada~$L(v, G_0)$, onde $l \leq \phi(m-1, k)$. Seja $B_i^v$ o conjunto de vértices de $L(v, G_0)$ de cor $i$, com~$i \leq l$. Então $\cup_{i=1}^l B_i^v$ é a $l$-coloração de $L(v,G_0)$ considerada.
 
 Considere a seguinte partição de $E(G_0)$.
 
@@ -89,7 +89,7 @@ Ou seja, uma aresta $\{v_j, v\}$, onde $v_j < v$, está na parte $E_i$ se $v_j$ 
 \label{fig:trianglefree-edgecolor}
 \end{figure}
 
-Mostraremos que $\chi(V(G_0),E_i) \geq k$ para algum $i$. Suponha por contradição que  $\chi(V(G_0),E_i) \leq k-1$ para todo $i$. Podemos colorir os vértices de $G_0$ usando o vetor das cores das partes, ou seja, um vértice $v$ de $G_0$ pode ser colorido com o vetor $w$, onde $w_i$ é a cor atribuída ao vértice $v$ na $(k-1)$-coloração de $\chi(V(G_0),E_i)$. Tal coloração de $G_0$ é própria, e usa no máximo $(k-1)^{\phi(m-1,k)-1}$ cores, contradição com o fato de que $\chi(G_0) = (k-1)^{\phi(m-1,k)-1}+1$. Portanto existe um $i$ tal que $\chi(V(G_0), E_i) \geq k$.
+Mostraremos que $\chi(V(G_0),E_i) \geq k$ para algum $i$. Suponha por contradição que~$\chi(V(G_0),E_i) \leq k-1$ para todo $i$. Podemos colorir os vértices de $G_0$ usando o vetor das cores das partes, ou seja, um vértice $v$ de $G_0$ pode ser colorido com o vetor $w$, onde $w_i$ é a cor atribuída ao vértice $v$ na $(k-1)$-coloração de $\chi(V(G_0),E_i)$. Tal coloração de $G_0$ é própria, e usa no máximo $(k-1)^{\phi(m-1,k)-1}$ cores, contradição com o fato de que $\chi(G_0) = (k-1)^{\phi(m-1,k)-1}+1$. Portanto existe um $i$ tal que $\chi(V(G_0), E_i) \geq k$.
 
 Basta mostrar que $(V(G_0),E_i)$ é livre de triângulos. Suponha por contradição que os vértices $v_1,v_2,v_3$ formam um triângulo em $(V(G_0),E_i)$, sem perda de generalidade digamos que $v_1 < v_2 < v_3$. Como $v_1,v_2 < v_3$, temos que $v_1,v_2\in L(v_3, G_0)$, e como $v_1,v_2 \in (V(G_0),E_i)$, temos que $v_1$ e $v_2$ receberam a cor $i$ na coloração de $L(v_3, G_0)$, contradição pois a aresta $v_1v_2 \in L(v_3, G_0)$, e logo $v_1$ e $v_2$ não podem receber a mesma cor. Portanto $(V(G_0),E_i)$ é livre de triângulos.
 
@@ -116,9 +116,9 @@ Portanto, temos que para todo $m,k$, existe um inteiro $\phi(m,k)$ tal que todo 
 
 \begin{proof}{(Teorema \ref{rodlthm})}
 
-Seja $k$ o parâmetro do teorema. Pelo teorema de Erd\H{o}s, existe um grafo livre de triângulos e com número cromático pelo menos $k$, então seja $m$ o tamanho de um menor tal grafo.
+Seja $k$ o parâmetro do teorema. Pelo teorema de Erd\H{o}s, existe um grafo livre de triângulos e com número cromático pelo menos $k$, então seja $m$ o tamanho de um menor grafo livre de triângulos e com número cromático pelo menos $k$.
 
-Pelo Lema \ref{livretriangulolema1}, existe um inteiro $\phi(m,k)$ tal que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos com número cromático pelo menos $k$, ou contém um clique de tamanho $m$.
+Pelo Lema \ref{livretriangulolema1}, existe um inteiro $\phi(m,k)$ tal que todo grafo com número cromático pelo menos~$\phi(m,k)$ contém um subgrafo livre de triângulos com número cromático pelo menos $k$, ou contém um clique de tamanho $m$.
 
 Pela escolha de $m$, um clique de tamanho $m$ contém um subgrafo livre de triângulos com número cromático pelo menos $k$. Logo todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$.
 
@@ -138,7 +138,7 @@ Sabemos que $\phi(2,k) = 2$, e
 
 \[\phi(m,k) = (k-1)^{\phi(m-1,k)-1}+1.\]
 
-Note que ao expandir o expoente $\phi(m-1,k)-1$, temos
+Ao expandir o expoente $\phi(m-1,k)-1$, temos
 
 \begin{equation*}
 \setlength{\jot}{5pt}
@@ -148,7 +148,7 @@ Note que ao expandir o expoente $\phi(m-1,k)-1$, temos
 \end{aligned}
 \end{equation*}
 
-Logo, temos que 
+Logo, ao abrir a recorrência, temos que 
 
 \[\phi(m,k) = (k-1)^{(k-1)^{\cdots^{(k-1)^{\phi(2,k)-1}}}}+1,\]
 
@@ -163,13 +163,13 @@ Outra possível forma de estudar a conjectura de Erd\H{o}s e Hajnal é fixar o v
 Considere o seguinte resultado de Erd\H{o}s \cite{erdHos1966chromatic}.
 
 \begin{teorema}\label{teocircimpar}
-Se todo circuito ímpar de um grafo $G$ tem comprimento no máximo $2r-1$, então $\chi(G) \leq 2r$.
+Se todo circuito ímpar de um grafo $G$ tem comprimento no máximo $2r-1$, então~$\chi(G) \leq 2r$.
 \end{teorema}
 
 Demonstraremos o Teorema \ref{teocircimpar} de acordo com a prova apresentada por Bollobás em \cite{bollobas2004extremal}.
 
 \begin{lema}\label{lemacircimpar}
-Seja $G$ um grafo $2$-conexo contendo um circuito ímpar. Seja $C$ um circuito par em $G$. Então existem vértices $x,y \in C$ e um caminho $P$ entre $x$ e $y$ independente de $C$ tal que $d_C(x,y) \not\equiv d_P(x,y)$ (mod $2$), onde $d_H(x,y)$ denota a distância entre $x$ e $y$ em $H$.
+Seja $G$ um grafo $2$-conexo contendo um circuito ímpar. Seja $C$ um circuito par em $G$. Então existem vértices $x,y \in C$ e um caminho $P$ entre $x$ e $y$ independente de $C$ tal que~$d_C(x,y) \not\equiv d_P(x,y)$ (mod $2$), onde $d_H(x,y)$ denota a distância entre $x$ e $y$ em $H$.
 \end{lema}
 
 \begin{proof}(Lema \ref{lemacircimpar})
@@ -193,7 +193,7 @@ Portanto, para algum par de vértices $x,y$ de $C$ e algum caminho $P$ entre $x$
 \end{proof}
 
 \begin{proof}(Teorema \ref{teocircimpar})
-A prova será feita por indução na ordem de $G$. Suponha que $\chi(G) > 2r$ mas o teorema é verdadeiro apenas para grafos de ordem menor que $|G|$.
+A prova será feita por indução na ordem de $G$. Suponha que~$\chi(G) > 2r$ mas o teorema é verdadeiro apenas para grafos de ordem menor que $|G|$.
 
 Note que para todo vértice $x\in V(G)$ temos que $\chi(G - x) = 2r$, logo $\delta(G) \geq 2r$. Seja $Q = x_1,x_2,\cdots,x_q$ um caminho mais longo em $G$. Logo $\Gamma(x_1) \subset \{x_2,x_3,\cdots, x_q\}$. Sejam
 \[J = \{i : x_i \in \Gamma(x_1)\},\]
