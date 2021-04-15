@@ -1,11 +1,11 @@
 \chapter{Primeiros Resultados}
 \label{cap:livretriangulos}
 
-Um possível primeiro passo para o estudo da conjectura de Erd\H{o}s e Hajnal é fixar cada parâmetro com o valor não-trivial mais simples. No caso, consideraremos os casos em que $g=4$, ou seja, que os subgrafos que procuramos são livres de triângulos, e os casos em que $k=3$, ou seja, que os subgrafos contenham algum circuito ímpar.
+Um possível primeiro passo para o estudo da conjectura de Erd\H{o}s e Hajnal é fixar cada parâmetro com o valor não-trivial mais simples. Consideraremos os casos em que $g=4$, ou seja, que os subgrafos que procuramos são livres de triângulos, e os casos em que $k=3$, ou seja, que os subgrafos contenham algum circuito ímpar.
 
 \section{Grafos Livres de Triângulos}
 
-Em \cite{rodl1977chromatic} R\"{o}dl demonstrou que para todo $k$, existe um número $f(k)$ tal que todo grafo com número cromático pelo menos $f(k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. 
+Em \cite{rodl1977chromatic} R\"{o}dl demonstrou que para todo $k$, existe um inteiro $f(k)$ tal que todo grafo com número cromático pelo menos $f(k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. 
 
 \begin{teorema}\label{rodlthm}
 Para todo inteiro $k$, existe um inteiro $f(k)$ tal que todo grafo $G$ com $\chi(G) \geq f(k)$ contém um subgrafo livre de triângulos $H$ com $\chi(H) \geq k$.
@@ -13,11 +13,11 @@ Para todo inteiro $k$, existe um inteiro $f(k)$ tal que todo grafo $G$ com $\chi
 
 Em termos da conjectura de Erd\H{o}s e Hajnal, o Teorema \ref{rodlthm} mostra que $f(k,4)$ existe para todo $k$.
 
-A prova de R\"{o}dl é bastante sucinta, feita por meio de apenas uma indução finita. Apresentaremos tal prova a seguir.
+A prova de R\"{o}dl é bastante sucinta, feita por meio de uma indução finita. Apresentaremos tal prova a seguir.
 
-Mostraremos que para todo par de inteiros $m$ e $k$, existe $\phi(m,k)$ tal que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos com número cromático pelo menos $k$ ou contém um clique de tamanho $m$. 
+Mostraremos que para todo par de inteiros $m$ e $k$, existe um inteiro $\phi(m,k)$ tal que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos com número cromático pelo menos $k$ ou contém um clique de tamanho $m$. 
 
-E pelo teorema de Erd\H{o}s, existe um $m$ tal que $K_m$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. Então tomando $m$ adequado, todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos e com número cromático $k$.
+E pelo teorema de Erd\H{o}s, existe um $m$ tal que $K_m$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. Então tomando $m$ adequado, todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$.
 
 \begin{lema}\label{livretriangulolema1}
 Para todo par de inteiros $m$ e $k$, existe um inteiro $\phi(m,k)$ tal que todo grafo com número cromático pelo menos $\phi(m,k)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$, ou contém um clique de tamanho $m$.
@@ -63,9 +63,11 @@ Consideraremos os dois seguintes casos, se para algum $v$ temos que $\chi(L(v,G_
 
 No caso de $\chi(L(v,G_0)) \geq \phi(m-1,k)$ para algum $v$, por hipótese de indução temos que para algum $v$, $L(v, G_0)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$, ou contém um clique de tamanho $m-1$.
 
-Se $L(v, G_0)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$, como $L(v,G_0)$ é subgrafo de $G_0$, temos que $G_0$ contém um subgrafo livre livre de triângulos e com número cromático pelo menos $k$. E se $L(v, G_0)$ contém um clique de tamanho $m-1$, como $v$ é adjacente a todo vértice de $L(v, G_0)$ em $G_0$, temos que $G_0$ contém um clique de tamanho $m$.
+Temos que $L(v, G_0)$ não contém um clique de tamanho $m-1$, pois supomos que $G_0$ não contém~$K_m$ como subgrafo, então temos que $L(v, G_0)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. Como $L(v,G_0)$ é subgrafo de $G_0$, temos que $G_0$ contém um subgrafo livre livre de triângulos e com número cromático pelo menos $k$.
 
-No caso $\chi(L(v,G_0)) \leq \phi(m-1,k)-1$ para todo $v\in G_0$, considere uma $l$-coloração de cada~$L(v, G_0)$, onde $l \leq \phi(m-1, k)$. Seja $B_i^v$ o conjunto de vértices de $L(v, G_0)$ de cor $i$, com~$i \leq l$. Então $\cup_{i=1}^l B_i^v$ é a $l$-coloração de $L(v,G_0)$ considerada.
+%Se $L(v, G_0)$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$, como $L(v,G_0)$ é subgrafo de $G_0$, temos que $G_0$ contém um subgrafo livre livre de triângulos e com número cromático pelo menos $k$. E se $L(v, G_0)$ contém um clique de tamanho $m-1$, como $v$ é adjacente a todo vértice de $L(v, G_0)$ em $G_0$, temos que $G_0$ contém um clique de tamanho $m$. Porém como supomos que $G_0$ não contém $K_m$ como subgrafo, o caso em que $L(v,G_0)$ contém $K_{m-1}$ não ocorre.
+
+No caso $\chi(L(v,G_0)) \leq \phi(m-1,k)-1$ para todo $v\in G_0$, considere uma $l$-coloração de cada~$L(v, G_0)$, onde $l \leq \phi(m-1, k)-1$. Seja $B_i^v$ o conjunto de vértices de $L(v, G_0)$ de cor $i$, com~$i \leq l$. Então $\cup_{i=1}^l B_i^v$ é a $l$-coloração de $L(v,G_0)$ considerada.
 
 Considere a seguinte partição de $E(G_0)$.
 
@@ -91,7 +93,7 @@ Ou seja, uma aresta $\{v_j, v\}$, onde $v_j < v$, está na parte $E_i$ se $v_j$ 
 
 Mostraremos que $\chi(V(G_0),E_i) \geq k$ para algum $i$. Suponha por contradição que~$\chi(V(G_0),E_i) \leq k-1$ para todo $i$. Podemos colorir os vértices de $G_0$ usando o vetor das cores das partes, ou seja, um vértice $v$ de $G_0$ pode ser colorido com o vetor $w$, onde $w_i$ é a cor atribuída ao vértice $v$ na $(k-1)$-coloração de $\chi(V(G_0),E_i)$. Tal coloração de $G_0$ é própria, e usa no máximo $(k-1)^{\phi(m-1,k)-1}$ cores, contradição com o fato de que $\chi(G_0) = (k-1)^{\phi(m-1,k)-1}+1$. Portanto existe um $i$ tal que $\chi(V(G_0), E_i) \geq k$.
 
-Basta mostrar que $(V(G_0),E_i)$ é livre de triângulos. Suponha por contradição que os vértices $v_1,v_2,v_3$ formam um triângulo em $(V(G_0),E_i)$, sem perda de generalidade digamos que $v_1 < v_2 < v_3$. Como $v_1,v_2 < v_3$, temos que $v_1,v_2\in L(v_3, G_0)$, e como $v_1,v_2 \in (V(G_0),E_i)$, temos que $v_1$ e $v_2$ receberam a cor $i$ na coloração de $L(v_3, G_0)$, contradição pois a aresta $v_1v_2 \in L(v_3, G_0)$, e logo $v_1$ e $v_2$ não podem receber a mesma cor. Portanto $(V(G_0),E_i)$ é livre de triângulos.
+Basta mostrar que $(V(G_0),E_i)$ é livre de triângulos. Suponha por contradição que existem vértices $v_1,v_2,v_3$ que formam um triângulo em $(V(G_0),E_i)$, sem perda de generalidade digamos que~$v_1 < v_2 < v_3$. Como $v_1,v_2 < v_3$, temos que $v_1,v_2\in L(v_3, G_0)$, e como $v_1,v_2 \in (V(G_0),E_i)$, temos que $v_1$ e $v_2$ receberam a cor $i$ na coloração de $L(v_3, G_0)$, contradição pois a aresta~$v_1v_2 \in L(v_3, G_0)$, e logo $v_1$ e $v_2$ não podem receber a mesma cor. Portanto $(V(G_0),E_i)$ é livre de triângulos.
 
 \begin{figure}[H]
 \centering
@@ -132,6 +134,19 @@ Na seção anterior, mostramos que existe um inteiro $\phi(m,k)$ tal que todo gr
 
 Temos então que $f(k,4) \leq \phi(m,k)$. É interessante determinar o valor de $\phi(m,k)$, para termos um limitante superior para $f(k,4)$.
 
+Usaremos a notação de flechas de Knuth \cite{knuth1976mathematics}, definida a seguir.
+
+\begin{definicao}\label{knuthuparrow}
+Para inteiros $a,b$ e $n$, temos que
+
+\[ a \uparrow^n b = \begin{cases} 
+      ab & \text{se } n = 0\\
+      1 & \text{se } n\geq 1 \text{ e }b=0\\
+      a \uparrow^{n-1} (a \uparrow^n (b-1)) & \text{se } n\geq 1 \text{ e } b\geq 1.
+   \end{cases}
+\]
+\end{definicao}
+
 Temos que $m$ deve ser tal que $K_m$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. Pelo teorema de Erd\H{o}s, temos que existe um grafo livre de triângulos e com número cromático pelo menos $k$ com $k^{3g}$ vértices, ou seja, podemos tomar $m := k^{12}$.
 
 Sabemos que $\phi(2,k) = 2$, e
@@ -152,7 +167,7 @@ Logo, ao abrir a recorrência, temos que
 
 \[\phi(m,k) = (k-1)^{(k-1)^{\cdots^{(k-1)^{\phi(2,k)-1}}}}+1,\]
 
-onde $k-1$ ocorre $m-2$ vezes, e $\phi(2,k)-1 = 1$. Portanto, temos que $\phi(m,k) = 1+(k-1)\uparrow\uparrow m-2$, usando a notação de Knuth.
+onde $k-1$ ocorre $m-2$ vezes, e $\phi(2,k)-1 = 1$. Portanto, temos que $\phi(m,k) = 1+(k-1)\uparrow\uparrow m-2$.
 
 Temos então que $f(k,4) \leq 1+ (k-1) \uparrow\uparrow (k^{12}-2)$.
 
@@ -179,7 +194,7 @@ Tome
 
 \[V(C) \cap V(D) = \{x_{i_1}, x_{i_2}, \cdots, x_{i_r} : 1\leq i_1 < \cdots < i_r \leq 2l+1 \},\ r\geq 2.\]
 
-Suponha que a afirmação do lema seja falsa. Então temos
+Suponha por contradição que a afirmação do lema seja falsa. Ou seja, a distância entre $x_{i_j}$ e~$x_{i_{j+1}}$ por $C$ e a distância por $D$ tem a mesma paridade. E note que $d_D(x_{i_j}, x_{i_{j+1}}) = i_{j-1} - i_j$. Então temos
 
 \[d_C(x_{i_j}, x_{i_{j+1}}) \equiv i_{j+1} - i_j\ (\text{mod } 2),\ 1\leq j< r,\]
 
@@ -187,19 +202,19 @@ e
 
 \[d_C(x_{i_r}, x_{i_1}) \equiv i_1 - i_r + 1\ (\text{mod } 2).\]
 
-Somando as congruências acima, temos que o lado esquerdo é $0$, pois $C$ é um circuito par, e o lado direito é $1$. 
+Somando as congruências acima, temos que o lado esquerdo é $0$, pois $C$ é um circuito par, e o lado direito é $1$, uma contradição.
 
-Portanto, para algum par de vértices $x,y$ de $C$ e algum caminho $P$ entre $x$ e $y$ independente de $C$, temos que $d_C(x,y) \not\equiv d_P(x,y)$ (mod $2$).
+Portanto, para algum par de vértices $x,y$ de $C$ e algum caminho $P$ entre $x$ e $y$ independente de~$C$, temos que $d_C(x,y) \not\equiv d_P(x,y)$ (mod $2$).
 \end{proof}
 
 \begin{proof}(Teorema \ref{teocircimpar})
-A prova será feita por indução na ordem de $G$. Suponha que~$\chi(G) > 2r$ mas o teorema é verdadeiro apenas para grafos de ordem menor que $|G|$.
+A prova será feita por indução na ordem de $G$. Suponha que~$\chi(G) > 2r$ mas o teorema é verdadeiro apenas para grafos de ordem menor que $|G|$. Ou seja, todo circuito ímpar de $G$ tem comprimento no máximo $2r-1$.
 
 Note que para todo vértice $x\in V(G)$ temos que $\chi(G - x) = 2r$, logo $\delta(G) \geq 2r$. Seja $Q = x_1,x_2,\cdots,x_q$ um caminho mais longo em $G$. Logo $\Gamma(x_1) \subset \{x_2,x_3,\cdots, x_q\}$. Sejam
 \[J = \{i : x_i \in \Gamma(x_1)\},\]
 \[j = \max(J).\]
 
-Então $|J| \geq 2r$, e para todo $i\geq r$, temos que $2i+1\not\in J$ e $j-2i+1\not\in J$. Logo $j\geq 4r$. O grafo $G$ contém o circuito $C=x_1,x_2,\cdots,x_j$, logo $j$ é par.
+Então $|J| \geq 2r$, e para todo $i\geq r$, temos que $2i+1\not\in J$ e $j-2i+1\not\in J$. Logo $j\geq 4r$. O grafo~$G$ contém o circuito $C=x_1,x_2,\cdots,x_j$, logo $j$ é par.
 
 \begin{figure}[H]
 \centering
@@ -230,11 +245,11 @@ Então $|J| \geq 2r$, e para todo $i\geq r$, temos que $2i+1\not\in J$ e $j-2i+1
 \label{fig:circimpar-j2r}
 \end{figure}
 
-Pelo Lema \ref{lemacircimpar}, existe um caminho $P$ de comprimento $p$ entre $x_1$ e $x_l$, e $p \not\equiv l$ (mod $2$). Então $x_1 x_2 \cdots x_l P x_1$ e $x_l x_{l+1} \cdots x_1 P x_l$ são circuitos ímpares, e a soma de seus comprimentos é pelo menos $4r+2$, logo algum dos circuitos ímpares tem comprimento pelo menos $2r+1$, uma contradição.
+Pelo Lema \ref{lemacircimpar}, existe um caminho $P$ de comprimento $p$ entre $x_1$ e $x_l$, onde $p \not\equiv l$ (mod $2$). Então $x_1 x_2 \cdots x_l P x_1$ e $x_l x_{l+1} \cdots x_1 P x_l$ são circuitos ímpares, e a soma de seus comprimentos é pelo menos $4r+2$, logo algum dos circuitos ímpares tem comprimento pelo menos $2r+1$, uma contradição.
 \end{proof}
 
 Pelo Teorema \ref{teocircimpar}, todo grafo $G$ com $\chi(G) \geq 2r+1$ contém um circuito ímpar de comprimento pelo menos $2r+1$. Então em termos da conjectura de Erd\H{o}s e Hajnal, temos que $f(3,2r+1) \leq 2r+1$.
 
 De fato, temos que $f(3,2r+1) = 2r+1$ pois claramente $K_{2r}$ não contém um circuito ímpar de comprimento pelo menos $2r+1$, portanto nem todo grafo com número cromático $2r$ contém um circuito ímpar de comprimento pelo menos $2r+1$.
 
-Note que ao tomar um valor par de $g$, queremos um circuito ímpar de comprimento pelo menos $2r$, o que é equivalente a procurar um circuito ímpar de comprimento pelo menos $2r+1$, logo temos que $f(3,2r) = f(3,2r+1)$.
+Note que ao tomar um valor par de $g$, queremos um circuito ímpar de comprimento pelo menos~$2r$, o que é equivalente a procurar um circuito ímpar de comprimento pelo menos $2r+1$, logo temos que $f(3,2r) = f(3,2r+1)$.
