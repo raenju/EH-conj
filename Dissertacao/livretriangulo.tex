@@ -147,6 +147,10 @@ Para inteiros $a,b$ e $n$, temos que
 \]
 \end{definicao}
 
+Ou seja, $a\uparrow^0 b = ab$, $a\uparrow b$ representa a exponenciação $a^b$, e \[a\uparrow^n b = a \uparrow^{n-1} (a \uparrow^{n-1} (a \uparrow^{n-1} \cdots a))\] onde a operação $\uparrow^{n-1}$ é aplicada $b$ vezes. Em particular, note que
+
+\[a\uparrow\uparrow b = \underbrace{a\uparrow (a\uparrow (a \cdots \uparrow a))}_{\text{b}} = \underbrace{a^{a^{\cdots^{a}}}}_{\text{b}}.\]
+
 Temos que $m$ deve ser tal que $K_m$ contém um subgrafo livre de triângulos e com número cromático pelo menos $k$. Pelo teorema de Erd\H{o}s, temos que existe um grafo livre de triângulos e com número cromático pelo menos $k$ com $k^{3g}$ vértices, ou seja, podemos tomar $m := k^{12}$.
 
 Sabemos que $\phi(2,k) = 2$, e

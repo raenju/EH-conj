@@ -63,9 +63,15 @@ Seja $G$ um grafo. O \textit{blow-up} de $G$ de potência $m$, denotado por $G^{
 O número cromático de $KG(n,r) = n-2r+2$ se $n\geq 2r$, e $1$ caso contrário.
 \end{afirmacao}
 
-Se $n < 2r$, quaisquer dois $r$-subconjuntos de $[n]$ contém um elemento em comum, e logo o grafo $KG(n,r)$ não contém arestas. Portanto $\chi(KG(n,r)) = 1$.
+Se $n < 2r$, quaisquer dois $r$-subconjuntos de $[n]$ contém um elemento em comum, e logo o grafo~$KG(n,r)$ não contém arestas. Portanto $\chi(KG(n,r)) = 1$.
 
-Se $n\geq 2r$, podemos colorir $KG(n,r)$ com $n-2r+2$ cores da seguinte forma, para cada vértice $v$ atribua a cor $\min(v)$ se $\min(v) < n-2r+2$, e caso $\min(v) \geq n-2r+2$, atribua a cor $n-2r+2$. Temos portanto que $\chi(KG(n,r)) \leq n-2r+2$.
+Se $n\geq 2r$, podemos colorir $KG(n,r)$ com $n-2r+2$ cores da seguinte forma. %, para cada vértice~$v$ atribua a cor $\min(v)$ se $\min(v) < n-2r+2$, e caso $\min(v) \geq n-2r+2$, atribua a cor $n-2r+2$. Temos portanto que $\chi(KG(n,r)) \leq n-2r+2$.
+
+\[ \text{cor}(v) = \begin{cases} 
+      \min(v) & \text{se } \min(v) < n-2r+2\\
+      n-2r+2 & \text{se } \min(v) \geq n-2r+2.
+   \end{cases}
+\]
 
 Kneser conjecturou que $\chi(KG(n,r)) = n-2r+2$ \cite{kneser1955aufgabe}, e a conjectura foi provada por Lovász \cite{lovasz1978kneser}, por meio do teorema de Borsuk-Ulam \cite{borsuk1933drei}.
 
@@ -73,13 +79,13 @@ Kneser conjecturou que $\chi(KG(n,r)) = n-2r+2$ \cite{kneser1955aufgabe}, e a co
 Para toda função contínua $f: S^d \rightarrow\mathbb{R}^d$ da $d$-esfera para o $d$-espaço, existem pontos antípodas $x^*$ e $-x^*$ que são mapeados no mesmo ponto $f(x^*) = f(-x^*)$.
 \end{teorema}
 
-A prova será baseada na versão em Aigner e Ziegler \cite{aigner2010proofs}, e faz uso do seguinte seguinte versão do teorema de Borsuk-Ulam, de Greene \cite{greene2002new}.
+A prova será baseada na versão em Aigner e Ziegler \cite{aigner2010proofs}, e faz uso da versão de Greene do teorema de Borsuk-Ulam \cite{greene2002new} a seguir.
 
 \begin{teorema}\label{thgreene}
-Se a $d$-esfera $S^d$ é coberta por $d+1$ conjuntos $U_1, U_2, \cdots, U_{d+1}$, tal que os primeiros $d$ conjuntos $U_1,\cdots,U_d$ são abertos ou fechados, então algum dos $d+1$ conjuntos contém pontos antípodas $x^*$ e $-x^*$.
+Se a $d$-esfera $S^d$ é coberta por $d+1$ conjuntos $U_1, U_2, \cdots, U_{d+1}$, tal que os primeiros~$d$ conjuntos $U_1,\cdots,U_d$ são abertos ou fechados, então algum dos $d+1$ conjuntos contém pontos antípodas $x^*$ e $-x^*$.
 \end{teorema}
 
-Seja $d = n - 2r$. Considere $2r+d$ pontos em posição geral na esfera $S^{d+1}$, e seja $V(n,r)$ o conjunto de todos os $r$-subconjuntos dos $2r+d$ pontos na esfera. Suponha que os elementos de $V(n,r)$ estejam particionados em $d+1$ classes, $V(n,r) = V_1 \dot\cup \cdots \dot\cup V_{d+1}$.
+Seja $d = n - 2r$. Considere $2r+d$ pontos em posição geral na esfera $S^{d+1}$, e seja $V(n,r)$ o conjunto de todos os $r$-subconjuntos dos $2r+d$ pontos na esfera. Suponha que os elementos de~$V(n,r)$ estejam particionados em $d+1$ classes, $V(n,r) = V_1 \dot\cup \cdots \dot\cup V_{d+1}$.
 
 Para $i=1,\cdots,d+1$, tome \[O_i = \{x\in S^{d+1} : \text{ O hemisfério aberto } H_x \text{ com polo } x \text{ contém algum } r\text{-conjunto de } V_i\}.\]
 
@@ -118,7 +124,9 @@ Portanto, algum conjunto $O_i$ contém pontos antípodas $x^*$ e $-x^*$, e logo 
 \label{fig:knesersphereAB}
 \end{figure}
 
-% O número cromático de um grafo de Kneser $KG(n,r)$ é $n-2r+2$ se $n \geq 2r$, e $1$ caso contrário \cite{lovasz1978kneser}.
+Então concluímos que existem vértices $A$ e $B$ adjacentes que recebem a mesma cor. Logo não existe uma coloração própria com $d+1 = n-2+1$ cores.
+
+Então temos que $\chi(KG(n,r))\geq n-2r+2$. Portanto $\chi(KG(n,r)) = n-2r+2$.
 
 %%%%%%%%%%%%%%%%%%%%
 %% Escrever sobre %%
@@ -150,7 +158,7 @@ Dado um grafo $G$ com $\chi(G) > k$, seja $H$ um subgrafo de $G^{(m)}$. Suponha 
 
 Para cada vértice $a$ de $G$, seja $a_H$ o \textit{blow-up} de $a$, ou seja, $a_H$ é o conjunto de $m$ vértices correspondentes ao vértice $a$ em $G^{(m)}$.
 
-Suponha por contradição que $H$ pode ser colorido com até $k$ cores, e fixe uma $k$ coloração de $H$. Como $a_H$ tem $m$ vértices e $H$ pode ser colorido com $k$ cores, pelo princípio da casa dos pombos alguma cor é usada pelo menos $m/k$ vezes em cada $a_H$. Então para cada vértice $a$ de $G$, seja $c(a)$ uma cor que ocorre pelo menos $m/k$ vezes em $a_H$ na coloração fixada.
+Suponha por contradição que $H$ pode ser colorido com até $k$ cores, e fixe uma $k$ coloração de~$H$. Como $a_H$ tem $m$ vértices e $H$ pode ser colorido com $k$ cores, pelo princípio da casa dos pombos alguma cor é usada pelo menos $m/k$ vezes em cada $a_H$. Então para cada vértice $a$ de $G$, seja $c(a)$ uma cor que ocorre pelo menos $m/k$ vezes em $a_H$ na coloração fixada.
 
 Para cada aresta $ab$ de $G$, seja $A$ o conjunto de vértices de $a_H$ de cor $c(a)$ e seja $B$ o conjunto de vértices de $b_H$ de cor $c(b)$. Então temos que $|A| \geq m/k$ e $|B| \geq m/k$, e logo pela escolha de $H$, existe uma aresta entre $A$ e $B$. Logo $c(a)$ é diferente de $c(b)$.
 
@@ -167,7 +175,7 @@ Para cada aresta $ab$ de $G$, seja $A$ o conjunto de vértices de $a_H$ de cor $
 \label{fig:knesercolorsets}
 \end{figure}
 
-Temos portanto que para cada aresta $ab$ de $G$, a cor $c(a)$ é diferente da cor $c(b)$, então podemos colorir cada vértice $a$ de $G$ com a cor $c(a)$ e obteremos uma $k$-coloração de $G$. Contradição, pois $\chi(G) > k$.
+Temos portanto que para cada aresta $ab$ de $G$, a cor $c(a)$ é diferente da cor $c(b)$, então podemos colorir cada vértice $a$ de $G$ com a cor $c(a)$ e obteremos uma $k$-coloração de $G$. Contradição, pois temos que $\chi(G) > k$.
 
 Portanto, $H$ não pode ser colorido com apenas $k$ cores.
 
@@ -189,7 +197,7 @@ Queremos mostrar que existe um subgrafo $H$ de $G^{(m)}$ onde vale $\overline{A_
 
 Mostraremos que (\ref{kneserlllineq}) vale usando o lema local de Lovász.
 
-Para tanto, seja $\mathcal{A}$ a união do conjunto dos eventos $A_C$ para $|C| \leq g$ com o conjunto dos eventos $A_B$ para $B$ isomorfo a $K_{s,s}$. Queremos mostrar que para cada $A\in\mathcal{A}$, existe $y(A) \in (0,1)$ tal que
+Seja $\mathcal{A}$ a união do conjunto dos eventos $A_C$ para $|C| \leq g$ com o conjunto dos eventos $A_B$ para~$B$ isomorfo a $K_{s,s}$. Queremos mostrar que para cada $A\in\mathcal{A}$, existe $y(A) \in (0,1)$ tal que
 
 \[\bbp(A)\leq y(A) \prod_{D\in \Gamma(A)}(1-y(D))\ \forall A\in\mathcal{A},\]
 
@@ -199,11 +207,11 @@ Primeiramente, analisaremos o número de eventos que não são independentes de 
 
 Considere um circuito $C$ com $|C| \leq g$. Como $\Delta(G^{(m)}) \leq m\Delta$, então $C$ compartilha arestas com no máximo $|C|(m\Delta)^{j-2} = |C|(sk\Delta)^{j-2}$ circuitos de comprimento $j$ em $G^{(m)}$, assim como compartilha arestas com no máximo $|C|\binom{m}{s}^2$ cópias de $K_{s,s}$.
 
-Logo cada evento $A_C$ não é independente de no máximo $|C|(sk\Delta)^{j-2}$ outros eventos $A_{C_2}$, onde $C_2$ é um circuito de comprimento $j$, e não é independente de no máximo $|C|\binom{m}{s}^2$ eventos $A_B$ com $B$ isomorfo a $K_{s,s}$.
+Logo cada evento $A_C$ não é independente de no máximo $|C|(sk\Delta)^{j-2}$ outros eventos $A_{C_j}$, onde~$C_j$ é um circuito de comprimento $j$, e não é independente de no máximo $|C|\binom{m}{s}^2$ eventos $A_B$ com $B$ isomorfo a $K_{s,s}$.
 
-Considere uma cópia $B$ de $K_{s,s}$. Existem no máximo $s^2(sk\Delta)^{j-2}$ circuitos de comprimento $j$ em $G^{(m)}$ que compartilham arestas com $B$, e existem no máximo $\binom{m}{s}^2$ cópias de $K_{s,s}$ que compartilham arestas com~$B$.
+Considere uma cópia $B$ de $K_{s,s}$. Existem no máximo $s^2(sk\Delta)^{j-2}$ circuitos de comprimento $j$ em~$G^{(m)}$ que compartilham arestas com $B$, e existem no máximo $\binom{m}{s}^2$ cópias de $K_{s,s}$ que compartilham arestas com~$B$.
 
-Logo cada evento $A_B$ não é independente de no máximo $s^2(sk\Delta)^{j-2}$ eventos $A_C$ onde $C$ é um circuito de comprimento $j$, e não é independente de no máximo $\binom{m}{s}^2$ eventos $A_{B_2}$, onde $B_2$ é isomorfo a $K_{s,s}$.
+Logo cada evento $A_B$ não é independente de no máximo $s^2(sk\Delta)^{j-2}$ eventos $A_C$ onde $C$ é um circuito de comprimento $j$, e não é independente de no máximo $\binom{m}{s}^2$ eventos $A_{B_s}$, onde $B_s$ é isomorfo a $K_{s,s}$.
 
 Para cada circuito $C$ com $|C| \leq g$, seja $y_{|C|} := y(A_C) = \bbp(A_C)^{1-\lambda} = s^{-(1-\lambda)^2|C|} < s^{(2\lambda - 1)|C|}$, e seja~$y_0 := y(A_B) = e^{-0.5s^{1+\lambda}} \approx \bbp(A_B)^{0.5}$. Então queremos mostrar que
 
@@ -268,14 +276,14 @@ Como $-\log(1-z) < z/0.9$ para $z>0$ pequeno, temos
 
 \[0.5s^{1+\lambda} \geq \sum_{3\leq j \leq g} s^2(sk\Delta)^{j-2}\frac{y_j}{0.9} + \binom{m}{k}^2\frac{y_0}{0.9},\]
 
-e temos que $y_j = s^{-(1-\lambda)^2j}$ e $y_0 = e^{-0.5s^{1+\lambda}}$, e assim
+e temos que $y_j = s^{-(1-\lambda)^2j}$ e $y_0 = e^{-0.5s^{1+\lambda}}$, assim
 
 \[0.45s^{1+\lambda} \geq \sum_{3\leq j \leq g} s^2(sk\Delta)^{j-2} s^{-(1-\lambda)^2j} + \binom{m}{k}^2e^{-0.5s^{1+\lambda}}.\]
 
 Como $s^{-(1-\lambda)^2j} < s^{(2\lambda - 1)j}$, para mostrar que a desigualdade (\ref{eq2}) vale, basta mostrar que
 
 \begin{equation}\label{eq4}
-0.4s^{1+\lambda} \geq \sum_{3\leq j\leq g}s^{(2\lambda-1)j}s^2(sk\Delta)^{j-2}+e^{-0.5s^{1+\lambda}}\binom{sk}{s}^2
+0.4s^{1+\lambda} \geq \sum_{3\leq j\leq g}s^{(2\lambda-1)j}s^2(sk\Delta)^{j-2}+e^{-0.5s^{1+\lambda}}\binom{sk}{s}^2.
 \end{equation}
 
 Portanto, para provar o Teorema \ref{moharwuthm}, basta mostrar que as desigualdades (\ref{eq3}) e (\ref{eq4}) valem.
@@ -331,19 +339,22 @@ Note que como $(k\Delta)^{1/4} > 4(1+\log(k))$ para $k$ suficientemente grande, 
 
 Portanto $e^{-0.5s^{1+\lambda}}\binom{sk}{s}^2 < 1$.
 
-Para concluir que as desigualdade \ref{eq3} e \ref{eq4} valem, basta mostrar que
+Para concluir que as desigualdade (\ref{eq3}) e (\ref{eq4}) valem, basta mostrar que
 
 \[0.9\lambda(1-\lambda)\log s \geq 1.1s^{-1} + 1\]
 e
 \[0.4s^{1+\lambda}\geq 1.1s + 1.\]
 
 Como a ordem de $\log s$ é maior que a ordem de $s^{-1}$, e a ordem de $s^{1+\lambda}$ é maior que a ordem de $s$, as desigualdades valem para $s$ suficientemente grande. E temos que $s$ é grande em função de $k$ e $g$, pois $s > (k\Delta)^{2g-4}$, e $k$ é grande.
+
+% $g\geq 4$, então $4g/(4g-1) \leq 4*4/(4*4-1) ~= 1.066$
+
 \end{proof}
 
 Mostraremos agora que grafos de Kneser contém \textit{blow-ups} de grafos de Kneser menores com potência grande \cite{mohar2016dichromatic}.
 
 \begin{teorema}[Mohar e Wu \cite{mohar2016dichromatic}]\label{moharwukn}
-Sejam $n,r,t$ e $x$ inteiros não-negativos tais que $0 < r < n$ e $x < rt$. O grafo de Kneser KG$(nt, rt-x)$ contém o \textit{blow-up} de KG$(n,r)$ com potência $\binom{r(t-1)}{x}$ como subgrafo. Ademais se $x < t$, KG$(nt, rt-x)$ contém o \textit{blow-up} de KG$(n,r)$ com potência $\binom{rt}{x}$, e se $x = t$, contém o \textit{blow-up} de~KG$(n,r)$ com potência $\binom{rt}{x}-r$.
+Sejam $n,r,t$ e $x$ inteiros não-negativos tais que $0 < r < n$ e~$x < rt$. O grafo de Kneser KG$(nt, rt-x)$ contém o \textit{blow-up} de KG$(n,r)$ com potência $\binom{r(t-1)}{x}$ como subgrafo. Ademais se $x < t$, KG$(nt, rt-x)$ contém o \textit{blow-up} de KG$(n,r)$ com potência $\binom{rt}{x}$, e se $x = t$, contém o \textit{blow-up} de~KG$(n,r)$ com potência $\binom{rt}{x}-r$.
 \end{teorema}
 
 \begin{proof}{(Teorema \ref{moharwukn})}
@@ -390,7 +401,7 @@ Dado um vértice $A\in V(G)$, seja $f(A) = \{a\in [n] : (a,b)\in A \text{ para a
 \label{fig:kneserprojection}
 \end{figure}
 
-Note que se para dois vértices $A,B$ de $G$, temos que $f(A)\cap f(B) = \emptyset$, então $A\cap B = \emptyset$. Logo, se~$|f(A)| = |f(B)| = r$ e $f(A)$ e $f(B)$ são adjacentes em $H$, então $A$ e $B$ são adjacentes em $G$. Para cada vértice $X\in V(H)$, se $f(A) = X$ para algum vértice $A$ de $G$, então $A$ é um subconjunto de $X \times [t]$.
+Note que se para dois vértices $A,B$ de $G$, temos que $f(A)\cap f(B) = \emptyset$, então $A\cap B = \emptyset$. Logo, se~$|f(A)| = |f(B)| = r$ e $f(A)$ e $f(B)$ são adjacentes em $H$, então $A$ e $B$ são adjacentes em $G$. Para cada vértice $X\in V(H)$, se $f(A) = X$ para algum vértice $A$ de $G$, então $A$ é um subconjunto de~$X \times [t]$.
 
 Se $x<t$, como $A \subset X \times [t]$ é um conjunto de tamanho $rt-x$, pelo princípio da casa dos pombos temos que $f(A) = X$. Então existem $\binom{rt}{x}$ vértices de $G$ que são projetados em $X$ por $f$. Temos então que $G$ contém o \textit{blow-up} de $H$ de potência $\binom{rt}{x}$.
 
@@ -404,7 +415,7 @@ A conjectura de Erd\H{o}s e Hajnal é verdadeira para os grafos de Kneser.
 \end{corolario}
 
 \begin{proof}{(Corolário \ref{knesercor})}
-Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, e seja $x$ um inteiro tal que $x \geq 14gk^2\log(k)$ e $x\geq k^4g$. Mostraremos que todo grafo de Kneser da forma $KG(2n, n-2x)$ para algum $n$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$, e com isso, mostraremos que todo grafo de Kneser com número cromático pelo menos $4x+2$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, e seja~$x$ um inteiro tal que $x \geq 14gk^2\log(k)$ e $x\geq k^4g$. Mostraremos que todo grafo de Kneser da forma $KG(2n, n-2x)$ para algum $n$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$, e com isso, mostraremos que todo grafo de Kneser com número cromático pelo menos $4x+2$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos~$g$.
 
 Primeiramente, mostraremos que se supormos que todo grafo de Kneser da forma $KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$, então todo grafo de Kneser com número cromático pelo menos $4x+2$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
 
@@ -414,7 +425,7 @@ Se $a = 2n$ então $G_0 = KG(2n,n-2x)$, e portanto contém um subgrafo com núme
 
 Caso contrário temos que $a > 2n$, então basta notar que um grafo de Kneser da forma $KG(a,b)$ contém $KG(a-1,b)$ como subgrafo, e portanto $KG(a,n-2x)$ contém $KG(2n, n-2x)$ como subgrafo, e logo contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
 
-Agora basta provar que $KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
+Agora basta provar que $KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos~$k$ e cintura pelo menos $g$.
 
 %Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, e seja $G = KG(2n,n-2x)$ um grafo de Kneser com número cromático grande. Claramente $2n \geq 2(n-2x)$, logo temos que $\chi(KG(2n,n-2x)) = 4x+2$.
  
@@ -633,7 +644,7 @@ k(k\Delta)^{2g-4} & < \left(\frac{(n-x)(t-1)/t}{x}\right)^x \\
 
 Então $m \leq k(k\Delta)^{2g-4}$, e concluímos o caso $n > x/(\frac{1}{2} - \frac{1}{2k})$.
 
-Caso $n \leq x/(\frac{1}{2} - \frac{1}{2k})$, então $n-2x \leq n/k$. Mostraremos que $KG(2n,n-2x)$ contém $KG(k,1) = K_k$ como subgrafo, e ademais, se $x$ é grande então $KG(2n,n-2x)$ contém um \textit{blow-up} de~$K_k$ com potência grande.
+Caso $n \leq x/(\frac{1}{2} - \frac{1}{2k})$, então $n-2x \leq n/k$. Mostraremos que $KG(2n,n-2x)$ contém~$KG(k,1) = K_k$ como subgrafo, e ademais, se $x$ é grande então $KG(2n,n-2x)$ contém um \textit{blow-up} de~$K_k$ com potência grande.
 
 Como $n-2x \leq n/k$, é possível separar $2n$ em $k$ blocos de tamanho $2n/k$, e cada bloco contém pelo menos $n-2x$ elementos, então é possível tomar vértices dentro de cada bloco. Formalmente, podemos tomar os seguintes conjuntos de vértices.
 
@@ -667,7 +678,7 @@ m &= \binom{2n/k}{n-2x}\\
 
 E logo concluímos o caso $n \leq x/(\frac{1}{2} - \frac{1}{2k})$.
 
-Portanto temos que para $x \geq 14gk^2\log(k)$ e $x\geq k^{4g}$, um grafo de Kneser da forma $KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos $k$ e cintura maior que $g$.
+Portanto temos que para $x \geq 14gk^2\log(k)$ e $x\geq k^{4g}$, um grafo de Kneser da forma~$KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos $k$ e cintura maior que $g$.
 
 % Seja um grafo de Kneser $KG(a,b)$ com número cromático pelo menos $4x+2$, ou seja, temos que $a \geq 2b$ e $a-2b+2 \geq 4x+2$.
 
