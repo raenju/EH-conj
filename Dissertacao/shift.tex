@@ -130,11 +130,11 @@ Temos portanto que $L(D)$ e $S_n^1$ são ``quase isomorfos'', exceto pelo fato d
 
 De forma semelhante, mostraremos que $S_n^r$ é uma simetrização de $L^r(D)$ para $r>1$.
 
-Temos que $L^r(D) = L(L^{r-1}(D))$, e como $L^{r-1}(D)$ é um direcionamento de $S_n^{r-1}$, sabemos que os vértices de $L^{r-1}(D)$ são as $r$-uplas $(v_0,\cdots,v_{r-1})$, onde $1\leq v_0 < \cdots < v_{r-1} \leq n$, e temos que para cada escolha de $1\leq v_0 < \cdots < v_{r} \leq n$, existe um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$.
+Suponha que $S_n^{r-1}$ é uma simetrização de $L^{r-1}(D)$. Temos que $L^r(D) = L(L^{r-1}(D))$, e como temos que $L^{r-1}(D)$ é um direcionamento de $S_n^{r-1}$, sabemos que os vértices de $L^{r-1}(D)$ são as $r$-uplas $(v_0,\cdots,v_{r-1})$, onde $1\leq v_0 < \cdots < v_{r-1} \leq n$, e para cada escolha de~$1\leq v_0 < \cdots < v_{r} \leq n$, existe um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$.
 
 Para cada sequência $1\leq v_0 < \cdots < v_{r} \leq n$, denote por $(v_0,\cdots,v_{r})$ o arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ em $L^{r-1}(D)$. Logo $L(L^{r-1}(D))$ tem como vértices as $(r+1)$-uplas $(v_0,\cdots,v_{r})$, onde $1\leq v_0 < \cdots < v_r \leq n$.
 
-Temos que para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$, existe em $L^{r-1}(D)$ um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ e um arco de $(v_1,\cdots,v_{r})$ para $(v_2,\cdots,v_{r+1})$. Logo em $L(L^{r-1}(D))$, para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$ existe um arco de $(v_0,\cdots,v_{r})$ para $(v_1,\cdots,v_{r+1})$. Logo
+Temos que para cada $1\leq v_0 < \cdots < v_{r+1} \leq n$, existe em $L^{r-1}(D)$ um arco de $(v_0,\cdots,v_{r-1})$ para $(v_1,\cdots,v_r)$ e um arco de $(v_1,\cdots,v_{r})$ para $(v_2,\cdots,v_{r+1})$. Portanto em $L(L^{r-1}(D))$, para cada~$1\leq v_0 < \cdots < v_{r+1} \leq n$ existe um arco de $(v_0,\cdots,v_{r})$ para $(v_1,\cdots,v_{r+1})$. Logo
 
 \[V(L^r(D)) = \{(v_0,\cdots,v_{r}) : 1\leq v_0 < \cdots < v_r \leq n\},\]
 \[A(L^r(D)) = \{(v_0,\cdots,v_{r})(v_1,\cdots,v_{r+1}) : 1\leq v_0 < \cdots < v_{r+1} \leq n\}.\]
@@ -222,13 +222,19 @@ De forma geral, o número cromático de $S_n^r$ é~$(1+o(1))\log_2 \log_2 \cdots
 
 \section{Esboço da prova}
 
-Seja $D$ uma orientação transitiva de $K_n$. Mostraremos que $L^r(D)$ é isomorfo a um direcionamento de $S_n^r$. Aplicando o Lema Local de Lovász, encontraremos em $S_n^r$ um subgrafo $H$ tal que $H$ tem cintura grande e contém pelo menos uma aresta de cada $K_{d,d}$ de $S_n^r$.
+A seguir, um esboço da demonstração de que os \textit{shift graphs} respeitam a conjectura de Erd\H{o}s e Hajnal. Usando o Lema Local de Lovász, mostraremos que existe um subgrafo $H$ de $S_n^r$ tal que $H$ tem cintura grande e contém pelo menos uma aresta de cada $K_{d,d}$ de $S_n^r$, onde $d$ é $o(n)$.
 
-Queremos então mostrar que o número cromático de $H$ não é limitado por uma constante, ou seja, $\chi(H) \rightarrow \infty$ conforme $n \rightarrow \infty$.
+%Seja $D$ uma orientação transitiva de $K_n$. Temos que $L^r(D)$ é isomorfo a um direcionamento de $S_n^r$, e usando o lema local de Lovász, encontraremos um subgrafo $H$ de $S_n^r$ tal que $H$ tem cintura grande e contém pelo menos uma aresta de cada $K_{d,d}$ de $S_n^r$, onde $d$ é $o(n)$.
 
-Provaremos que se temos uma $t$-coloração de $S_n^r$ sem $K_{d,d}$ monocromático, existe uma $2^t$-coloração de $S_n^{r-1}$ sem $K_{td,td}$ monocromático. E logo, existe uma $t'$-coloração de $S_n^i$ sem $K_{d',d'}$ monocromático para cada $i\in [0,r]$, para algum par de inteiros $t'$ e $d'$.
+Queremos mostrar que o número cromático de $H$ não é limitado por uma constante, ou seja, que $\chi(H) \rightarrow \infty$ conforme $n \rightarrow \infty$.
 
-Uma coloração própria de $H$ é uma coloração de $S_n^r$ sem $K_{d,d}$ monocromático. Então suponha que o número cromático de $H$ é limitado por uma constante, existem constantes $t'$ e $d'$ tais que $S_n^i$ pode ser $t'$-colorido sem $K_{d',d'}$ monocromático, em particular, existe tal coloração para $S_n^0 = D$. Contradição, pois note que um conjunto de $2d'$ vértices coloridos com uma mesma cor é um $K_{d',d'}$ monocromático em $D$, e com apenas $t' < \infty$ cores, alguma cor ocorre pelo menos $2d'$ vezes em $D$ conforme $n\rightarrow\infty$. Logo o número cromático de $H$ não é limitado por uma contante.
+Mostraremos que se temos uma $t$-coloração de $S_n^r$ sem $K_{d,d}$ monocromático, existe uma $2^t$-coloração de $S_n^{r-1}$ sem $K_{td,td}$ monocromático. E logo existe uma $t'$-coloração de $S_n^i$ sem $K_{d',d'}$ monocromático para cada $i\in [0,r]$, para algum par de inteiros $t'$ e $d'$.
+
+Uma coloração própria de $H$ é uma coloração de $S_n^r$ sem $K_{d,d}$ monocromático. Então se $H$ tem número cromático limitado por constante, então em particular, existem constantes $t'$ e $d'$ tais que~$S_n^0$ pode ser colorido com $t'$ cores sem $K_{d',d'}$ monocromático para todo $n$.
+
+Mas como $S_n^0$ é isomorfo ao $K_n$, então temos constantes $t'$ e $d'$ tais que existe uma $t'$-coloração de~$K_n$ sem $K_{d',d'}$ monocromático para todo $n$. Contradição, pois note que um conjunto de $2d'$ vértices coloridos com uma mesma cor é um $K_{d',d'}$ monocromático, e com apenas $t' < \infty$ cores, alguma cor ocorre pelo menos $2d'$ vezes. Logo o número cromático de $H$ não é limitado por uma constante.
+
+%Uma coloração própria de $H$ é uma coloração de $S_n^r$ sem $K_{d,d}$ monocromático. Então suponha que o número cromático de $H$ é limitado por uma constante, existem constantes $t'$ e $d'$ tais que $S_n^i$ pode ser $t'$-colorido sem $K_{d',d'}$ monocromático, em particular, existe tal coloração para $S_n^0 = D$. Contradição, pois note que um conjunto de $2d'$ vértices coloridos com uma mesma cor é um $K_{d',d'}$ monocromático em $D$, e com apenas $t' < \infty$ cores, alguma cor ocorre pelo menos $2d'$ vezes em $D$ conforme $n\rightarrow\infty$. Logo o número cromático de $H$ não é limitado por uma contante.
 
 \section{Prova do Teorema}
 
@@ -307,7 +313,7 @@ Claramente, temos no máximo $2^t$ cores. Então basta mostrar que tal coloraç�
 
 Suponha por contradição que existe $K_{td,td}$ monocromático de cor $v$, e digamos que os arcos vão do conjunto de vértices $A$ para o conjunto de vértices $B$. Seja $k$ o número de entradas $0$ em $v$. Para cada vértice de $B$, sabemos que chegam no máximo $d-1$ arcos com cada uma das $k$ cores de entrada $0$ em $v$, pois caso contrário tal cor não teria entrada $0$ em $v$. Logo, no máximo $ktd(d-1)$ arcos do $K_{td,td}$ tem uma das $k$ cores de entrada $0$. Portanto, temos pelo menos $t^2d^2 - ktd(d-1) = td(td - k(d-1))$ arcos com uma das $t-k$ cores de entrada $1$ em $v$.
 
-Como temos $|A| = td$ e $td(td - k(d-1))$ arcos com uma das cores de entrada $1$, pelo principio da casa dos pombos, de algum vértice de $A$ saem pelo menos $td - k(d-1) = d(t-k) + k$ arcos com uma das cores de entrada $1$. E como temos $t-k$ cores com entrada $1$, alguma delas ocorre pelo menos $d + k/(t-k)$ vezes. 
+Como temos $|A| = td$ e $td(td - k(d-1))$ arcos com uma das cores de entrada $1$, pelo princípio da casa dos pombos, de algum vértice de $A$ saem pelo menos $td - k(d-1) = d(t-k) + k$ arcos com uma das cores de entrada $1$. E como temos $t-k$ cores com entrada $1$, alguma delas ocorre pelo menos $d + k/(t-k)$ vezes.
 
 Temos portanto que de algum vértice de $A$ saem pelo menos $d$ arcos com uma cor de entrada~$1$, e entram pelo menos $d$ arcos da mesma cor (pois tal cor tem entrada $1$ em $v$). Tal configuração corresponde a um $K_{d,d}$ monocromático em $L(D)$, contradição.
 
@@ -330,7 +336,7 @@ Existe um subgrafo $H$ de $S_n^r$ com cintura pelo menos $g$ e contendo pelo men
 \end{lema}
 
 \begin{proof}(Lema \ref{shiftlema2})
-Seja $\lambda = 1/4g$, $\theta = (g-2)/(g-1.75)$, $d = n^\theta$ e $p = d^{\lambda-1}$. Seja $H$ um subgrafo aleatório de $S_n^r$ em que cada aresta é escolhida com probabilidade $p$, e seja $\Delta = \Delta(S_n^r) = n-r-1$.
+Seja $\lambda = 1/4g$, $\theta = (g-2)/(g-1.75)$, $d = n^\theta$ e $p = d^{\lambda-1}$. Seja $H$ um subgrafo aleatório de $S_n^r$ em que cada aresta é escolhida com probabilidade $p$, e seja~$\Delta = \Delta(S_n^r) = n-r-1$.
 Demonstraremos usando o Lema Local de Lovász que com probabilidade positiva $H$ tem cintura pelo menos $g$ e contém uma aresta de cada $K_{d,d}$.
 
 Para cada circuito $C$ de $S_n^r$ com $|C| \leq g$, seja $A_C$ o evento de todas as arestas de $C$ estarem em~$H$. Então temos que \[\bbp(A_C) = p^{|C|}.\]
@@ -650,18 +656,20 @@ então a inequação (\ref{shiftllleq2}) é verdadeira.
 
 Logo temos que (\ref{shiftllleq1}) e (\ref{shiftllleq2}) são verdadeiras para $n$ suficientemente grande.
 
-Portanto, pelo Lema Local de Lovász, a probabilidade de nenhum evento $A_C$ e nenhum evento $A_B$ ocorrerem é positiva, ou seja, existe um subgrafo de $S_n^r$ com cintura maior que $g$ e com pelo menos uma aresta de cada $K_{d,d}$.
+Portanto, pelo Lema Local de Lovász, a probabilidade de nenhum dos eventos $A_C$ e $A_B$ ocorrerem é positiva, ou seja, existe um subgrafo de $S_n^r$ com cintura maior que $g$ e com pelo menos uma aresta de cada $K_{d,d}$.
 
 \end{proof}
 
+Mostraremos agora que os \textit{shift graphs} respeitam a conjectura de Erd\H{o}s e Hajnal.
+
 \begin{proof}(Teorema \ref{shiftteo})
-Seja $D$ uma orientação transitiva de $K_n$, e sejam $k,g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal. %, e considere a sequência $D = L^0(D), L(D), L^2(D), \cdots, L^r(D)$.
+Seja $D$ uma orientação transitiva de $K_n$, e sejam $k,g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal.
 
 Note que $S_{n-1}^r$ é subgrafo de $S_n^r$, logo $\chi(S_{n-1}^r) \leq \chi(S_n^r)$, então basta mostrar que existe algum~$n_0 := n_0(k,g)$ tal que $S_{n_0}^r$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
 
-Por \ref{shiftlema2}, existe um subgrafo de $S_n^r$ com cintura pelo menos $g$ e que contenha pelo menos uma aresta de cada $K_{d,d}$. Seja $H$ um tal subgrafo.
+Pelo Lema \ref{shiftlema2}, existe um subgrafo de $S_n^r$ com cintura pelo menos $g$ e que contenha pelo menos uma aresta de cada $K_{d,d}$. Seja $H$ um tal subgrafo.
 
-Suponha por contradição que o número cromático de $H$ é limitado por uma constante $t$, logo uma coloração própria de $H$ corresponde a uma $t$-coloração de $S_n^r$ sem $K_{d,d}$ monocromático, e portanto, pela afirmação \ref{shiftafirm1}, corresponde a uma $t$-coloração de $L^r(D)$ sem $K_{d,d}$ monocromático.
+Suponha por contradição que o número cromático de $H$ é limitado por uma constante $t$, logo uma coloração própria de $H$ corresponde a uma $t$-coloração de $S_n^r$ sem $K_{d,d}$ monocromático, e portanto, pela Afirmação \ref{shiftafirm1}, corresponde a uma $t$-coloração de $L^r(D)$ sem $K_{d,d}$ monocromático.
 
 Pelo Lema \ref{shiftlema1}, existe uma $2^t$-coloração de $L^{r-1}(D)$ sem $K_{td,td}$ monocromático. Aplicando o lema novamente, temos que existe uma $2^{2^t}$-coloração de $L^{r-2}(D)$ sem $K_{2^ttd,2^ttd}$ monocromático.
 
@@ -811,7 +819,7 @@ t_i &= (i-1)a+b+1,\ (i-1)a+b+2,\ \cdots,\ ia, & i\in [1,n-1].
 \end{aligned}
 \end{equation*}
 
-Ou seja, $s_i$ é a sequência composta por todos os elementos entre $(i-1)a + 1$ até $(i-1)a+b$, e~$t_i$ é a sequência composta por todos os elementos entre $(i-1)a + b$ até $ia$.
+Ou seja, $s_i$ é a sequência composta por todos os elementos entre $(i-1)a + 1$ até $(i-1)a+b$, e~$t_i$ é a sequência composta por todos os elementos entre $(i-1)a + b+1$ até $ia$.
 
 Denote por $(s_i,s_j)$, para $1\leq i < j \leq n$, os vértices de $G$ da forma \[s_i,t_i,s_j = ((i-1)a+1,\cdots, ia, (j-1)a+1,\cdots, (j-1)a+b).\]
 
@@ -848,21 +856,17 @@ Temos que $H$ é um grafo da seguinte forma
 \setlength{\jot}{6pt}
 \begin{aligned}
 V(H) &= \{(s_i,s_j) : 1\leq i<j\leq n\}\\
-E(H) &= \{vw : v,w\in V(H), max(v) = min(w)\}.
+E(H) &= \{vw : v,w\in V(H),\ max(v) = min(w)\}.
 \end{aligned}
 \end{equation*}
-
-%Lembre que o \textit{shift graph} $S_n$ tem como conjunto de vértices os pares $(i,j)$, com $1\leq i < j \leq n$, e dois vértices $(i,j)$ e $(k,l)$ são adjacentes se $i=l$ ou $j=k$. 
-
-%Note que dois vértices $(s_i,s_j)$ e $(s_k,s_l)$ são adjacentes em $H$ se e somente se os vértices $(i,j)$ e $(k,l)$ são adjacentes em $S_n$, portanto temos que $H$ é isomorfo ao \textit{shift graph} $S_n$.
 
 E note que o \textit{shift graph} $S_n$ é da forma
 
 \begin{equation*}
 \setlength{\jot}{6pt}
 \begin{aligned}
-V(H) &= \{(i,j) : 1\leq i<j\leq n\}\\
-E(H) &= \{vw : v,w\in V(H), max(v) = min(w)\}.
+V(S_n) &= \{(i,j) : 1\leq i<j\leq n\}\\
+E(S_n) &= \{vw : v,w\in V(S_n),\ max(v) = min(w)\}.
 \end{aligned}
 \end{equation*}
 
@@ -899,9 +903,9 @@ s_i &= (i-1)d+1,\ (i-1)d+2,\ \cdots,\ id, & i\in [1,n].
 
 Ou seja, $s_i$ é a sequência composta por todos os elementos de $(i-1)d+1$ até $id$.
 
-Seja $H$ o subgrafo induzido pelos vértices da forma $(s_{i_1}, \cdots, s_{i_t})$, onde $i_1 < i_2 < \cdots < i_t$ e~$t = (a+b)/d$.
+Seja $H$ o subgrafo induzido pelos vértices da forma $(s_{i_1}, \cdots, s_{i_t})$, onde $1\leq i_1 < i_2 < \cdots < i_t\leq n$ e~$t = (a+b)/d$.
 
-Note que dois vértices $(s_{i_1}, \cdots, s_{i_t})$ e $(s_{j_1}, \cdots, s_{j_t})$ são adjacentes se os $b/d$ maiores elementos de um vértice coincidem com os $b/d$ maiores elementos do outro vértice.
+Note que dois vértices $(s_{i_1}, \cdots, s_{i_t})$ e $(s_{j_1}, \cdots, s_{j_t})$ são adjacentes se os $b/d$ maiores elementos de um vértice coincidem com os $b/d$ menores elementos do outro vértice.
 
 %Equivalentemente, o conjunto de vértices de $H$ são os $t$-subconjuntos de $[n]$, e dois vértices $v$ e $w$ são adjacentes se os $b/d$ maiores elementos de $v$ coincidem com os $b/d$ menores elementos de $w$.
 
@@ -920,8 +924,8 @@ E note que o \textit{type graph} $G(n,\sigma_{a/d,b/d})$ é da forma
 \begin{equation*}
 \setlength{\jot}{6pt}
 \begin{aligned}
-V(H) &= \binom{[n]}{\frac{a+b}{d}} = \binom{[n]}{t}\\
-E(H) &= \{vw : v,w\in V(H), max_{b/d}(v) = min_{b/d}(w)\}.
+V(G(n,\sigma_{a/d,b/d})) &= \binom{[n]}{\frac{a+b}{d}} = \binom{[n]}{t}\\
+E(G(n,\sigma_{a/d,b/d})) &= \{vw : v,w\in V(G(n,\sigma_{a/d,b/d})), max_{b/d}(v) = min_{b/d}(w)\}.
 \end{aligned}
 \end{equation*}
 

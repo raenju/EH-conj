@@ -453,7 +453,9 @@ Sejam $k$ e $g$ os parâmetros da conjectura de Erd\H{o}s e Hajnal, e seja~$x$ u
 
 Primeiramente, mostraremos que se supormos que todo grafo de Kneser da forma $KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$, então todo grafo de Kneser com número cromático pelo menos $4x+2$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
 
-Suponha que $KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$. Seja $G_0 = KG(a,b)$ um grafo de Kneser com número cromático pelo menos $4x+2$, e seja $n$ tal que $n-2x = b$. Ou seja, $G_0$ é da forma $KG(a,n-2x)$. Note que $4x+2\leq\chi(G_0) = a-2n+4x+2$, ou seja, temos que $a\geq 2n$.
+Suponha que $KG(2n,n-2x)$ contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$. Seja $G_0 = KG(a,b)$ um grafo de Kneser com número cromático pelo menos $4x+2$, e seja $n$ tal que $n-2x = b$. Ou seja, $G_0$ é da forma $KG(a,n-2x)$. 
+
+Note que $4x+2\leq\chi(G_0) = a-2n+4x+2$, ou seja, temos que $a\geq 2n$.
 
 Se $a = 2n$ então $G_0 = KG(2n,n-2x)$, e portanto contém um subgrafo com número cromático pelo menos $k$ e cintura pelo menos $g$.
 
@@ -623,7 +625,7 @@ k^{2g(2k+1)} &< \left(1+z\right)^{(2k^2+3k+1)2g\log k}\\
 
 Portanto a desigualdade (\ref{kncase1eq3}) vale.
 
-Mostraremos que $m \leq k(k\Delta)^{2g-4}$.
+Mostraremos que $m \geq k(k\Delta)^{2g-4}$.
 
 %Usando as desigualdades (\ref{kncase1eq1}), (\ref{kncase1eq2}) e (\ref{kncase1eq3}), temos
 
@@ -676,7 +678,7 @@ k(k\Delta)^{2g-4} & < \left(\frac{(n-x)(t-1)/t}{x}\right)^x \\
 \end{aligned}
 \end{equation*}
 
-Então $m \leq k(k\Delta)^{2g-4}$, e concluímos o caso $n > x/(\frac{1}{2} - \frac{1}{2k})$.
+Então $m \geq k(k\Delta)^{2g-4}$, e concluímos o caso $n > x/(\frac{1}{2} - \frac{1}{2k})$.
 
 Caso $n \leq x/(\frac{1}{2} - \frac{1}{2k})$, então $n-2x \leq n/k$. Mostraremos que $KG(2n,n-2x)$ contém~$KG(k,1) = K_k$ como subgrafo, e ademais, se $x$ é grande então $KG(2n,n-2x)$ contém um \textit{blow-up} de~$K_k$ com potência grande.
 
