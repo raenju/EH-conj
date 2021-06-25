@@ -222,288 +222,288 @@ Ademais, as colunas de $M_G$ correspondentes a um conjunto independente de $G$ c
 E como $|V(G)| = (n^2+n+1)(n+1)$, temos que $\chi(G) \geq (n+1)/2$. Então, basta tomar um plano projetivo de ordem $n = 2^{\ceil*{\text{log}_2 k}+1}$, e o grafo obtido pela construção tera número cromático pelo menos $k$.
 
 
-\section{Teorema de Erd\H{o}s}
-
-Para demonstrar o Teorema \ref{teoerdos}, será usado o método probabilístico, seguindo a prova de Bollobás \cite{bollobas2013modern}.
-
-Considere o espaço de probabilidade $\mathcal{G}_{n,p}$ dos grafos com $n$ vértices onde cada aresta ocorre independentemente com probabilidade $p$.
-
-Sejam $k$ e $g$ os parâmetros do teorema. Consideremos $k,g \geq 4$, pois claramente o teorema é verdadeiro para $k \leq 3$ e para $g \leq 3$. 
+% \section{Teorema de Erd\H{o}s}
+
+% Para demonstrar o Teorema \ref{teoerdos}, será usado o método probabilístico, seguindo a prova de Bollobás \cite{bollobas2013modern}.
+
+% Considere o espaço de probabilidade $\mathcal{G}_{n,p}$ dos grafos com $n$ vértices onde cada aresta ocorre independentemente com probabilidade $p$.
+
+% Sejam $k$ e $g$ os parâmetros do teorema. Consideremos $k,g \geq 4$, pois claramente o teorema é verdadeiro para $k \leq 3$ e para $g \leq 3$. 
 
-Seja $n = k^{3g}$ e $p = 2k^{2-3g} = 2k^2/n$. Considere $G \in\mathcal{G}_{n,p}$ e seja $Z_c$ o número de circuitos de tamanho $c$ em $G$. Note que
+% Seja $n = k^{3g}$ e $p = 2k^{2-3g} = 2k^2/n$. Considere $G \in\mathcal{G}_{n,p}$ e seja $Z_c$ o número de circuitos de tamanho $c$ em $G$. Note que
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\bbe(Z_c) &= \frac{p^c(n)_c}{2c} \\
-&< \frac{(np)^c}{2c} \\
-&= \frac{2^ck^{2c}}{2c}.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \bbe(Z_c) &= \frac{p^c(n)_c}{2c} \\
+% &< \frac{(np)^c}{2c} \\
+% &= \frac{2^ck^{2c}}{2c}.
+% \end{aligned}
+% \end{equation*}
 
-Temos então que o número esperado de circuitos de tamanho até $g-1$ em $G$ é
+% Temos então que o número esperado de circuitos de tamanho até $g-1$ em $G$ é
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\sum\limits_{c=3}^{g-1}\bbe_p(Z_c) &< \sum\limits_{c=3}^{g-1}\frac{2^ck^{2c}}{2c} \\
-&\leq \frac{k^{2(g-1)}}{6}\sum\limits_{c=3}^{g-1}2^c \\
-&< \frac{2^gk^{2(g-1)}}{6} &= \frac{2^{g-1}k^{2(g-1)}}{3}.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \sum\limits_{c=3}^{g-1}\bbe_p(Z_c) &< \sum\limits_{c=3}^{g-1}\frac{2^ck^{2c}}{2c} \\
+% &\leq \frac{k^{2(g-1)}}{6}\sum\limits_{c=3}^{g-1}2^c \\
+% &< \frac{2^gk^{2(g-1)}}{6} &= \frac{2^{g-1}k^{2(g-1)}}{3}.
+% \end{aligned}
+% \end{equation*}
 
-Denote por $\Omega_1$ o conjunto dos grafos de $\mathbb(G)_{n,p}$ com no máximo $f := 2^{g-1}k^{2g-2}$ circuitos de comprimento menor ou igual a $g-1$.
+% Denote por $\Omega_1$ o conjunto dos grafos de $\mathbb(G)_{n,p}$ com no máximo $f := 2^{g-1}k^{2g-2}$ circuitos de comprimento menor ou igual a $g-1$.
 
-Seja $X$ o número de circuitos de comprimento até $g-1$ em $G$. Temos que $\bbp(\Omega_1) = \bbp(X < f)$, e $\bbp(\overline{\Omega_1}) = \bbp(X\geq f)$. Note que $\mathbb{E}(X) = \sum\limits_{c=3}^{g-1}\bbe(Z_c)$, e pela desigualdade de Markov temos que \[\mathbb{P}(X \geq f) \leq \frac{\mathbb{E}(X)}{f}.\]
+% Seja $X$ o número de circuitos de comprimento até $g-1$ em $G$. Temos que $\bbp(\Omega_1) = \bbp(X < f)$, e $\bbp(\overline{\Omega_1}) = \bbp(X\geq f)$. Note que $\mathbb{E}(X) = \sum\limits_{c=3}^{g-1}\bbe(Z_c)$, e pela desigualdade de Markov temos que \[\mathbb{P}(X \geq f) \leq \frac{\mathbb{E}(X)}{f}.\]
 
-Temos então a seguinte desigualdade
+% Temos então a seguinte desigualdade
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\sum\limits_{c=3}^{g-1}\bbe(Z_c) &= \bbe(X) \\ 
-&\geq \bbp(\overline{\Omega_1})f \\
-&= (1 - \bbp(\Omega_1))f.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \sum\limits_{c=3}^{g-1}\bbe(Z_c) &= \bbe(X) \\ 
+% &\geq \bbp(\overline{\Omega_1})f \\
+% &= (1 - \bbp(\Omega_1))f.
+% \end{aligned}
+% \end{equation*}
 
-Temos também que
+% Temos também que
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\sum\limits_{c=3}^{g-1}\bbe(Z_c) &< \frac{2^{(g-1)}k^{(2g-2)}}{3} \\
-&= \frac{f}{3}.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \sum\limits_{c=3}^{g-1}\bbe(Z_c) &< \frac{2^{(g-1)}k^{(2g-2)}}{3} \\
+% &= \frac{f}{3}.
+% \end{aligned}
+% \end{equation*}
 
-Logo $f/3 > (1-\mathbb{P}(\Omega_1))f$. Portanto, concluímos que
+% Logo $f/3 > (1-\mathbb{P}(\Omega_1))f$. Portanto, concluímos que
 
-\begin{equation}\label{teoerdosomega1}
-\bbp(\Omega_1) > \frac{2}{3}.  
-\end{equation}
+% \begin{equation}\label{teoerdosomega1}
+% \bbp(\Omega_1) > \frac{2}{3}.  
+% \end{equation}
 
-Seja $s = n/k = k^{3g-1}$, e seja $\Omega_2$ o conjunto dos grafos em $\mathcal{G}_{n,p}$ tais que para todo conjunto de~$s$ vértices, o subgrafo induzido por estes vértices contém ao menos $f+1$ arestas. Seja $I_l$ o número de subconjuntos de $s$ vértices em $G$ que induzem exatamente $l$ arestas.
+% Seja $s = n/k = k^{3g-1}$, e seja $\Omega_2$ o conjunto dos grafos em $\mathcal{G}_{n,p}$ tais que para todo conjunto de~$s$ vértices, o subgrafo induzido por estes vértices contém ao menos $f+1$ arestas. Seja $I_l$ o número de subconjuntos de $s$ vértices em $G$ que induzem exatamente $l$ arestas.
 
-Seja $I$ o número de subconjuntos de $s$ vértices em $G$ que induzem no máximo $f$ arestas, ou seja, \[I = \sum\limits_{l=0}^{f}I_l.\]
+% Seja $I$ o número de subconjuntos de $s$ vértices em $G$ que induzem no máximo $f$ arestas, ou seja, \[I = \sum\limits_{l=0}^{f}I_l.\]
 
-Note que $\Omega_2$ é o conjunto dos grafos de $\mathcal{G}_{n,p}$ com $I = 0$. E temos que
+% Note que $\Omega_2$ é o conjunto dos grafos de $\mathcal{G}_{n,p}$ com $I = 0$. E temos que
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\bbe(I) &= \sum\limits_{m=0}^{\infty}\bbp(I = m)m \\
-&\geq \sum\limits_{m=1}^{\infty}\bbp(I = m) \\
-&= \bbp(I \geq 1) \\
-&= 1 - \bbp(I = 0) &= 1 - \bbp(\Omega_2).
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \bbe(I) &= \sum\limits_{m=0}^{\infty}\bbp(I = m)m \\
+% &\geq \sum\limits_{m=1}^{\infty}\bbp(I = m) \\
+% &= \bbp(I \geq 1) \\
+% &= 1 - \bbp(I = 0) &= 1 - \bbp(\Omega_2).
+% \end{aligned}
+% \end{equation*}
 
-Mostraremos agora que para $l < f$, temos que
+% Mostraremos agora que para $l < f$, temos que
 
-\[\frac{\bbe(I_l)}{\bbe(I_{l+1})} < \frac{1}{2}.\]
+% \[\frac{\bbe(I_l)}{\bbe(I_{l+1})} < \frac{1}{2}.\]
 
-Para isso, 
+% Para isso, 
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\frac{\bbe(I_l)}{\bbe(I_{l+1})} &= \frac{\binom{n}{s}p^l (1-p)^{\binom{s}{2}-l} \binom{\binom{s}{2}}{l}}{\binom{n}{s}p^{l+1} (1-p)^{\binom{s}{2}-l-1} \binom{\binom{s}{2}}{l+1}} \\
-&= \frac{(1-p)(l+1)}{p\left(\binom{s}{2}-l\right)}.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \frac{\bbe(I_l)}{\bbe(I_{l+1})} &= \frac{\binom{n}{s}p^l (1-p)^{\binom{s}{2}-l} \binom{\binom{s}{2}}{l}}{\binom{n}{s}p^{l+1} (1-p)^{\binom{s}{2}-l-1} \binom{\binom{s}{2}}{l+1}} \\
+% &= \frac{(1-p)(l+1)}{p\left(\binom{s}{2}-l\right)}.
+% \end{aligned}
+% \end{equation*}
 
-Sabemos que $l < f$, $s = k^{3g-1}$, $f = 2^{g-1}k^{2g-1}$, $p = 2k^2/n$ e $n = k^{3g}$, portanto
+% Sabemos que $l < f$, $s = k^{3g-1}$, $f = 2^{g-1}k^{2g-1}$, $p = 2k^2/n$ e $n = k^{3g}$, portanto
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\frac{(1-p)(l+1)}{p\left(\binom{s}{2}-l\right)} &< \frac{(1-p)(f+1)}{p\left(\binom{s}{2}-f\right)} \\
-&= \frac{(1-\frac{2k^2}{n})(2^{g-1}k^{2g-2}+1)}{\frac{2k^2}{n}\left(\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\right)} \\
-&= \frac{(n-2k^2)(2^{g-1}k^{2g-2}+1)}{2k^2\left(\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\right)} \\
-&= \frac{(k^{3g}-2k^2)(2^{g-1}k^{2g-2}+1)}{2k^2\left(\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\right)} \\
-&= \frac{k^2(k^{3g-2}-2)(2^{g-1}k^{2g-2}+1)}{2k^2\left(\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\right)} \\
-&= \frac{1}{2} \times \frac{(k^{3g-2}-2)(2^{g-1}k^{2g-2}+1)}{\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}}.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \frac{(1-p)(l+1)}{p\left(\binom{s}{2}-l\right)} &< \frac{(1-p)(f+1)}{p\left(\binom{s}{2}-f\right)} \\
+% &= \frac{(1-\frac{2k^2}{n})(2^{g-1}k^{2g-2}+1)}{\frac{2k^2}{n}\left(\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\right)} \\
+% &= \frac{(n-2k^2)(2^{g-1}k^{2g-2}+1)}{2k^2\left(\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\right)} \\
+% &= \frac{(k^{3g}-2k^2)(2^{g-1}k^{2g-2}+1)}{2k^2\left(\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\right)} \\
+% &= \frac{k^2(k^{3g-2}-2)(2^{g-1}k^{2g-2}+1)}{2k^2\left(\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\right)} \\
+% &= \frac{1}{2} \times \frac{(k^{3g-2}-2)(2^{g-1}k^{2g-2}+1)}{\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}}.
+% \end{aligned}
+% \end{equation*}
 
-Basta mostrar que 
+% Basta mostrar que 
 
-\[\frac{(k^{3g-2}-2)(2^{g-1}k^{2g-2}+1)}{\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}} \leq 1.\]
+% \[\frac{(k^{3g-2}-2)(2^{g-1}k^{2g-2}+1)}{\frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}} \leq 1.\]
 
-Equivalentemente, basta mostrar que %Note que E(I_l) >= 0
+% Equivalentemente, basta mostrar que %Note que E(I_l) >= 0
 
-%\[(k^{3g-2}-2)(2^{g-1}k^{2g-2}+1) \leq \frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\]
+% %\[(k^{3g-2}-2)(2^{g-1}k^{2g-2}+1) \leq \frac{k^{3g-1}(k^{3g-1}-1)}{2}-2^{g-1}k^{2g-2}\]
 
-\[k^{3g-2}2^{g-1}k^{2g-2}-2^{g-1}k^{2g-2} + k^{3g-2}-2 \leq \frac{k^{3g-1}(k^{3g-1}-1)}{2}.\]
+% \[k^{3g-2}2^{g-1}k^{2g-2}-2^{g-1}k^{2g-2} + k^{3g-2}-2 \leq \frac{k^{3g-1}(k^{3g-1}-1)}{2}.\]
 
-Temos que
+% Temos que
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-k^{3g-2}2^{g-1}k^{2g-2}-2^{g-1}k^{2g-2} + k^{3g-2}-2 &< k^{3g-2}2^{g-1}k^{2g-2} + k^{3g-2} \\
-&= k^{3g-2}(2^{g-1}k^{2g-2}+1).
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% k^{3g-2}2^{g-1}k^{2g-2}-2^{g-1}k^{2g-2} + k^{3g-2}-2 &< k^{3g-2}2^{g-1}k^{2g-2} + k^{3g-2} \\
+% &= k^{3g-2}(2^{g-1}k^{2g-2}+1).
+% \end{aligned}
+% \end{equation*}
 
-Então basta mostrar que
+% Então basta mostrar que
 
-\[2^{g-1}k^{2g-2}+1 \leq \frac{k(k^{3g-1}-1)}{2}.\]
+% \[2^{g-1}k^{2g-2}+1 \leq \frac{k(k^{3g-1}-1)}{2}.\]
 
-Como $k>2$, valem as seguintes desigualdades:
+% Como $k>2$, valem as seguintes desigualdades:
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-k^{3g-1}-1 &< \frac{k(k^{3g-1}-1)}{2}, \\
-2^{g-1}k^{2g-2}+1 &< k^{3g-3}+1.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% k^{3g-1}-1 &< \frac{k(k^{3g-1}-1)}{2}, \\
+% 2^{g-1}k^{2g-2}+1 &< k^{3g-3}+1.
+% \end{aligned}
+% \end{equation*}
 
-Então basta que
+% Então basta que
 
-\[k^{3g-3}+1 \leq k^{3g-1}-1,\]
+% \[k^{3g-3}+1 \leq k^{3g-1}-1,\]
 
-ou equivalentemente, basta que
+% ou equivalentemente, basta que
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-2 &\leq k^{3g-1} - k^{3g-3} \\
-&= k^{3g-3}(k^2 - 1).
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% 2 &\leq k^{3g-1} - k^{3g-3} \\
+% &= k^{3g-3}(k^2 - 1).
+% \end{aligned}
+% \end{equation*}
 
-E como $k \geq 4$ e $g \geq 4$, a desigualdade acima claramente vale. Portanto
+% E como $k \geq 4$ e $g \geq 4$, a desigualdade acima claramente vale. Portanto
 
-\[\frac{\bbe(I_l)}{\bbe(I_{l+1})} < \frac{1}{2}.\]
+% \[\frac{\bbe(I_l)}{\bbe(I_{l+1})} < \frac{1}{2}.\]
 
-E assim temos que
+% E assim temos que
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\bbe(I) &= \sum\limits_{l=0}^{f}\bbe(I_l) \\
-&< \sum\limits_{l=0}^{f} \bbe(I_f)\left(\frac{1}{2}\right)^{f-l} \\
-&= \bbe(I_f)\sum\limits_{l=0}^{f} \left(\frac{1}{2}\right)^{f-l} \\
-&< 2\bbe(I_f) \\
-&= 2p^f(1-p)^{\binom{s}{2}-f}\binom{n}{s}\binom{\binom{s}{2}}{f}.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \bbe(I) &= \sum\limits_{l=0}^{f}\bbe(I_l) \\
+% &< \sum\limits_{l=0}^{f} \bbe(I_f)\left(\frac{1}{2}\right)^{f-l} \\
+% &= \bbe(I_f)\sum\limits_{l=0}^{f} \left(\frac{1}{2}\right)^{f-l} \\
+% &< 2\bbe(I_f) \\
+% &= 2p^f(1-p)^{\binom{s}{2}-f}\binom{n}{s}\binom{\binom{s}{2}}{f}.
+% \end{aligned}
+% \end{equation*}
 
-Usando as desigualdades $\binom{a}{b} \leq \left(\frac{ea}{b}\right)^b$ e  $(1-p) \leq e^{-p}$, escrevemos
+% Usando as desigualdades $\binom{a}{b} \leq \left(\frac{ea}{b}\right)^b$ e  $(1-p) \leq e^{-p}$, escrevemos
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\bbe(I) &< 2p^f(1-p)^{\binom{s}{2}-f}\binom{n}{s}\binom{\binom{s}{2}}{f} \\
-&\leq 2e^{-p\left(\binom{s}{2}-f\right)}\left(\frac{en}{s}\right)^s\left(\frac{\binom{s}{2}e}{f}\right)^f p^f.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \bbe(I) &< 2p^f(1-p)^{\binom{s}{2}-f}\binom{n}{s}\binom{\binom{s}{2}}{f} \\
+% &\leq 2e^{-p\left(\binom{s}{2}-f\right)}\left(\frac{en}{s}\right)^s\left(\frac{\binom{s}{2}e}{f}\right)^f p^f.
+% \end{aligned}
+% \end{equation*}
 
-Como $\binom{s}{2} \leq s^2/2$, $n/s = k$, $s = n/k$, $ps^2 = 2k^{3g}$, $ps = 2k$, $f = 2^{g-1}k^{2g-2}$ e $pf = 2^g k^{-g}$, temos que
+% Como $\binom{s}{2} \leq s^2/2$, $n/s = k$, $s = n/k$, $ps^2 = 2k^{3g}$, $ps = 2k$, $f = 2^{g-1}k^{2g-2}$ e $pf = 2^g k^{-g}$, temos que
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-2e^{-p\left(\binom{s}{2}-f\right)}\left(\frac{en}{s}\right)^s\left(\frac{\binom{s}{2}e}{f}\right)^f p^f &\leq 2(ek)^{\frac{n}{k}}\left(\frac{eps^2}{2f}\right)^f e^{-ps^2/2+ps/2+pf} \\
-&= 2(ek)^{\frac{n}{k}} \left(\frac{ek^{g+2}}{2^{g-1}}\right)^f e^{-n+k+2^{g}k^{-g}} \\
-&= 2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} \left(\frac{e}{2^{g-1}}\right)^f e^{k+2^g k^{-g}}.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% 2e^{-p\left(\binom{s}{2}-f\right)}\left(\frac{en}{s}\right)^s\left(\frac{\binom{s}{2}e}{f}\right)^f p^f &\leq 2(ek)^{\frac{n}{k}}\left(\frac{eps^2}{2f}\right)^f e^{-ps^2/2+ps/2+pf} \\
+% &= 2(ek)^{\frac{n}{k}} \left(\frac{ek^{g+2}}{2^{g-1}}\right)^f e^{-n+k+2^{g}k^{-g}} \\
+% &= 2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} \left(\frac{e}{2^{g-1}}\right)^f e^{k+2^g k^{-g}}.
+% \end{aligned}
+% \end{equation*}
 
-Note que $2^{g-1} > e^2$, logo
+% Note que $2^{g-1} > e^2$, logo
 
-\[\left(\frac{e}{2^{g-1}}\right)^f < \left(\frac{e}{e^2}\right)^f = e^{-f},\]
+% \[\left(\frac{e}{2^{g-1}}\right)^f < \left(\frac{e}{e^2}\right)^f = e^{-f},\]
 
-e portanto
+% e portanto
 
-\[2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} \left(\frac{e}{2^{g-1}}\right)^f e^{k+2^g k^{-g}} < 2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} e^{-f} e^{k+2^g k^{-g}}.\]
+% \[2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} \left(\frac{e}{2^{g-1}}\right)^f e^{k+2^g k^{-g}} < 2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} e^{-f} e^{k+2^g k^{-g}}.\]
 
-Note também que $(2/k)^g < 1$, e logo
+% Note também que $(2/k)^g < 1$, e logo
 
-\[2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} e^{k-f+2^g k^{-g}} < 2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} e^{k-f+1}.\]
+% \[2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} e^{k-f+2^g k^{-g}} < 2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} e^{k-f+1}.\]
 
-Temos que $f \geq 8k^6$, pois $f = 2^{g-1}k^{2g-2}$, e $k,g \geq 4$. Logo $e^{k-f+1} < e^0 = 1$. Concluímos então que
+% Temos que $f \geq 8k^6$, pois $f = 2^{g-1}k^{2g-2}$, e $k,g \geq 4$. Logo $e^{k-f+1} < e^0 = 1$. Concluímos então que
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\bbe(I) &< 2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} e^{k-f+1} \\ 
-&< 2(ek)^{\frac{n}{k}}k^{(g+2)f}e^{-n}.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \bbe(I) &< 2(ek)^{\frac{n}{k}} k^{(g+2)f} e^{-n} e^{k-f+1} \\ 
+% &< 2(ek)^{\frac{n}{k}}k^{(g+2)f}e^{-n}.
+% \end{aligned}
+% \end{equation*}
 
-Para simplificar os cálculos, consideremos $\text{ln}(\bbe(I))$.
+% Para simplificar os cálculos, consideremos $\text{ln}(\bbe(I))$.
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\text{ln}(\bbe(I)) &< \text{ln}(2(ek)^{\frac{n}{k}}k^{(g+2)f}e^{-n})\\
-&= \text{ln}(2) -n\left(1 - \frac{1+\text{ln}(k)}{k} - \frac{(g+2)2^{g-1} \text{ln}(k)}{k^{g+2}}\right).
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \text{ln}(\bbe(I)) &< \text{ln}(2(ek)^{\frac{n}{k}}k^{(g+2)f}e^{-n})\\
+% &= \text{ln}(2) -n\left(1 - \frac{1+\text{ln}(k)}{k} - \frac{(g+2)2^{g-1} \text{ln}(k)}{k^{g+2}}\right).
+% \end{aligned}
+% \end{equation*}
 
-Mostraremos que 
+% Mostraremos que 
 
-\[-n\left(1 - \frac{1+\text{ln}(k)}{k} - \frac{(g+2)2^{g-1} \text{ln}(k)}{k^{g+2}}\right) < -\frac{n}{4}.\]
+% \[-n\left(1 - \frac{1+\text{ln}(k)}{k} - \frac{(g+2)2^{g-1} \text{ln}(k)}{k^{g+2}}\right) < -\frac{n}{4}.\]
 
-Ou seja, mostraremos que
+% Ou seja, mostraremos que
 
-\[\frac{1+\text{ln}(k)}{k} + \frac{(g+2)2^{g-1} \text{ln}(k)}{k^{g-1}k^3} < \frac{3}{4}.\]
+% \[\frac{1+\text{ln}(k)}{k} + \frac{(g+2)2^{g-1} \text{ln}(k)}{k^{g-1}k^3} < \frac{3}{4}.\]
 
-Como $(1+\text{ln}(k))/k$ e $\text{ln}(k)/k^3$ são decrescentes, e $k \geq 4$, temos
+% Como $(1+\text{ln}(k))/k$ e $\text{ln}(k)/k^3$ são decrescentes, e $k \geq 4$, temos
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\frac{1+\text{ln}(k)}{k} + \frac{(g+2)2^{g-1} \text{ln}(k)}{k^{g-1}k^3} &< \frac{1+\text{ln}(4)}{4} + \frac{(g+2)2^{g-1}}{k^{g-1}}\frac{\text{ln}(k)}{k^3}\\
-&< \frac{1+\text{ln}(4)}{4} + \frac{(g+2)2^{g-1}}{4^{g-1}}\frac{\text{ln}(4)}{4^3} \\
-&= \frac{1+\text{ln}(4)}{4} + \frac{(g+2)}{2^{g-1}}\frac{\text{ln}(4)}{4^3}.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \frac{1+\text{ln}(k)}{k} + \frac{(g+2)2^{g-1} \text{ln}(k)}{k^{g-1}k^3} &< \frac{1+\text{ln}(4)}{4} + \frac{(g+2)2^{g-1}}{k^{g-1}}\frac{\text{ln}(k)}{k^3}\\
+% &< \frac{1+\text{ln}(4)}{4} + \frac{(g+2)2^{g-1}}{4^{g-1}}\frac{\text{ln}(4)}{4^3} \\
+% &= \frac{1+\text{ln}(4)}{4} + \frac{(g+2)}{2^{g-1}}\frac{\text{ln}(4)}{4^3}.
+% \end{aligned}
+% \end{equation*}
 
-E como $(g+2)/2^{g-1} < 1$, 
+% E como $(g+2)/2^{g-1} < 1$, 
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\frac{1+\text{ln}(4)}{4} + \frac{(g+2)}{2^{g-1}}\frac{\text{ln}(4)}{4^3} &< \frac{1+\text{ln}(4)}{4} + \frac{\text{ln}(4)}{4^3} \\
-&\approx 0.62 \\
-&< \frac{3}{4}.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \frac{1+\text{ln}(4)}{4} + \frac{(g+2)}{2^{g-1}}\frac{\text{ln}(4)}{4^3} &< \frac{1+\text{ln}(4)}{4} + \frac{\text{ln}(4)}{4^3} \\
+% &\approx 0.62 \\
+% &< \frac{3}{4}.
+% \end{aligned}
+% \end{equation*}
 
-Portanto $\text{ln}(\bbe(I)) < \text{ln}(2) - n/4$, e logo
+% Portanto $\text{ln}(\bbe(I)) < \text{ln}(2) - n/4$, e logo
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\bbe(I) &< e^{\text{ln}(2)-n/4} \\
-&< \frac{1}{3}.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \bbe(I) &< e^{\text{ln}(2)-n/4} \\
+% &< \frac{1}{3}.
+% \end{aligned}
+% \end{equation*}
 
-E como temos que $\bbe(I) \geq 1 - \bbp(\Omega_2)$, concluímos que
+% E como temos que $\bbe(I) \geq 1 - \bbp(\Omega_2)$, concluímos que
 
-\begin{equation}\label{teoerdosomega2}
-\bbp(\Omega_2) > \frac{2}{3}.
-\end{equation}
+% \begin{equation}\label{teoerdosomega2}
+% \bbp(\Omega_2) > \frac{2}{3}.
+% \end{equation}
 
-Por \ref{teoerdosomega1} e \ref{teoerdosomega2}, temos que $\Omega_1 \cap \Omega_2 \neq \emptyset$. Seja $G_0 \in \Omega_1 \cap \Omega_2$, removemos de $G_0$ uma aresta de cada circuito de comprimento menor que $g$. Temos então um grafo $G$ com cintura pelo menos $g$. Como~$G_0 \in \Omega_1$, no máximo $f$ arestas foram removidas. Como $G_0 \in \Omega_2$, todo conjunto de $s$ vértices em $G_0$ induz ao menos $f+1$ arestas, e logo todo conjunto de $s$ vértices em $G$ induz ao menos uma aresta. Portanto o maior conjunto independente de $G$ tem tamanho no máximo $s-1$. E como~$s = n/k$, temos
+% Por \ref{teoerdosomega1} e \ref{teoerdosomega2}, temos que $\Omega_1 \cap \Omega_2 \neq \emptyset$. Seja $G_0 \in \Omega_1 \cap \Omega_2$, removemos de $G_0$ uma aresta de cada circuito de comprimento menor que $g$. Temos então um grafo $G$ com cintura pelo menos $g$. Como~$G_0 \in \Omega_1$, no máximo $f$ arestas foram removidas. Como $G_0 \in \Omega_2$, todo conjunto de $s$ vértices em $G_0$ induz ao menos $f+1$ arestas, e logo todo conjunto de $s$ vértices em $G$ induz ao menos uma aresta. Portanto o maior conjunto independente de $G$ tem tamanho no máximo $s-1$. E como~$s = n/k$, temos
 
-\begin{equation*}
-\setlength{\jot}{6pt}
-\begin{aligned}
-\chi(G) &\geq \frac{n}{\alpha(G)} \\
-&\geq \frac{n}{(s-1)} \\
-&> \frac{n}{s}\\
-&= \frac{kn}{n} & = k.
-\end{aligned}
-\end{equation*}
+% \begin{equation*}
+% \setlength{\jot}{6pt}
+% \begin{aligned}
+% \chi(G) &\geq \frac{n}{\alpha(G)} \\
+% &\geq \frac{n}{(s-1)} \\
+% &> \frac{n}{s}\\
+% &= \frac{kn}{n} & = k.
+% \end{aligned}
+% \end{equation*}
 
-Logo $G$ tem número cromático pelo menos $k$ e cintura pelo menos $g$.
+% Logo $G$ tem número cromático pelo menos $k$ e cintura pelo menos $g$.
 
 %-----------------------------------
 % Fim do texto reescrito
