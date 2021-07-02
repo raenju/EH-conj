@@ -16,7 +16,7 @@ Um \textit{shift graph} de parâmetro $n$, denotado $S_n$, é um grafo cujos vé
     \node at (4.35,2.2) {\large{$(2,4)$}};
     \node at (7.35,0.8) {\large{$(3,4)$}};
 \end{tikzpicture}
-\caption{O \textit{shift graph} $S_4$}
+\caption{O \textit{shift graph} $S_4$.}
 \label{fig:shiftgraph}
 \end{figure}
 
@@ -33,7 +33,7 @@ Um \textit{shift graph} de parâmetro $n$ e ordem $r$, denotado $S_n^r$, é um g
     \node at (4.9,1.25) {$(2,3,5)$};
     \node at (8.7,2.95) {$(3,4,5)$};
 \end{tikzpicture}
-\caption{Alguns vértices de $S_5^{2}$}
+\caption{Alguns vértices de $S_5^{2}$.}
 \label{fig:shiftgraphorder2}
 \end{figure}
 
@@ -673,25 +673,101 @@ Suponha por contradição que o número cromático de $H$ é limitado por uma co
 
 Pelo Lema \ref{shiftlema1}, existe uma $2^t$-coloração de $L^{r-1}(D)$ sem $K_{td,td}$ monocromático. Aplicando o lema novamente, temos que existe uma $2^{2^t}$-coloração de $L^{r-2}(D)$ sem $K_{2^ttd,2^ttd}$ monocromático.
 
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+
+    \node (D0) at (0,0) {$L^r(D)$};
+    \draw[dotted] (D0) circle (1);
+    \node (D1) at (5,0) {$L^{r-1}(D)$};
+    \draw[dotted] (D1) circle (1);
+    \node (D2) at (10,0) {$L^{r-2}(D)$};
+    \draw[dotted] (D2) circle (1);
+    \node[below=of D0] {
+        \begin{tabular}{c}
+        $t$-coloração sem \\ $K_{d,d}$ monocromático 
+        \end{tabular}
+    };
+    \node[below=of D1] {
+        \begin{tabular}{c}
+        $2^t$-coloração sem \\ $K_{td,td}$ monocromático 
+        \end{tabular}
+    };
+    \node[below=of D2] {
+        \begin{tabular}{c}
+        $2^{2^t}$-coloração sem \\ $K_{2^ttd,2^ttd}$ monocromático 
+        \end{tabular}
+    };
+    \draw[->] (1.25,0) to (3.75,0);
+    \draw[->] (6.25,0) to (8.75,0);
+    \node at (2.5,0.3) {Lema};
+    \node at (7.5,0.3) {Lema};
+\end{tikzpicture}
+\caption{Aplicações sucessivas do Lema.}
+\label{fig:shiftlemmaap}
+\end{figure}
+
 Então, aplicando o lema $r$ vezes temos que existe uma $t'$-coloração de $L^0(D)$ sem $K_{d',d'}$ monocromático, para algum $t'$ e algum $d'$. 
 
 \begin{figure}[H]
 \centering
 \begin{tikzpicture}
-    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.95\textwidth]{figuras/ch_shift/shift-sequence.png}};
-    \node at (2.3,5.8) {\large$D$};
-    \node at (5.8,5.8) {\large$L^1(D)$};
-    \node at (13.25,5.8) {\large$L^r(D)$};
-    \node at (13.1,1.9) {\large$H$};
-    \node at (9.52,5.8) {\Large$\cdots$};
-    \draw[->](11.9,2.1) to [bend left,looseness=1.2] node [left]{Coloração} (11.9,5.6);
-    \draw[->](5.3,7) to [bend right,looseness=1] node [above]{Lema} (2.8,7);
-    \draw[->](8.8,7) to [bend right,looseness=1] node [above]{Lema} (6.3,7);
-    \draw[->](12.75,7) to [bend right,looseness=1] node [above]{Lema} (10.25,7);
+
+    \node (D0) at (0,0) {};
+    \draw[dotted] (D0) circle (1);
+    \node (D1) at (5,0) {};
+    \draw[dotted] (D1) circle (1);
+    \node (D2) at (8.5,0) {$\cdots$};
+    \node (D3) at (12,0) {};
+    \draw[dotted] (D3) circle (1);
+    \node[xshift=-0.2cm, yshift=0.1cm] (DH) at (D0) {$H$};
+    \draw[dotted] (DH) circle (0.7);
+    \node[above=of D0] {$L^r(D)$};
+    \node[above=of D1] {$L^{r-1}(D)$};
+    \node[above=of D3] {$L^0(D)$};
+    \node[below=of D0] {
+        \begin{tabular}{c}
+        $t$-coloração sem \\ $K_{d,d}$ monocromático 
+        \end{tabular}
+    };
+    \node[below=of D1] {
+        \begin{tabular}{c}
+        $2^t$-coloração sem \\ $K_{td,td}$ monocromático 
+        \end{tabular}
+    };
+    \node[below=of D3] {
+        \begin{tabular}{c}
+        $t'$-coloração sem \\ $K_{d',d'}$ monocromático 
+        \end{tabular}
+    };
+    \draw[->] (1.25,0) to (3.75,0);
+    \draw[->] (6.25,0) to (7.5,0);
+    \draw[->] (9.5,0) to (10.75,0);
+    \node at (2.5,0.3) {Lema};
+    \node at (6.825,0.3) {Lema};
+    \node at (10.025,0.3) {Lema};
 \end{tikzpicture}
-\caption{A coloração de $H$ corresponde a uma $t$-coloração de $L^r(D)$ sem $K_{d,d}$ monocromático, e por meio de aplicações sucessivas do Lema, obtemos uma $t'$-coloração de $D$ sem $K_{t',t'}$ monocromático.}
-\label{fig:shiftsequence}
+\caption{A coloração de $H$ corresponde a uma $t$-coloração de $L^r(D)$ sem $K_{d,d}$ monocromático, e por meio de aplicações sucessivas do Lema, obtemos uma $t'$-coloração de $L^0(D)$ sem $K_{d',d'}$ monocromático.}
+\label{fig:shiftlemmasequence}
 \end{figure}
+
+% \begin{figure}[H]
+% \centering
+% \begin{tikzpicture}
+%     \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.95\textwidth]{figuras/ch_shift/shift-sequence.png}};
+%     \node at (2.3,5.8) {\large$D$};
+%     \node at (5.8,5.8) {\large$L^1(D)$};
+%     \node at (13.25,5.8) {\large$L^r(D)$};
+%     \node at (13.1,1.9) {\large$H$};
+%     \node at (9.52,5.8) {\Large$\cdots$};
+%     \draw[->](11.9,2.1) to [bend left,looseness=1.2] node [left]{Coloração} (11.9,5.6);
+%     \draw[->](5.3,7) to [bend right,looseness=1] node [above]{Lema} (2.8,7);
+%     \draw[->](8.8,7) to [bend right,looseness=1] node [above]{Lema} (6.3,7);
+%     \draw[->](12.75,7) to [bend right,looseness=1] node [above]{Lema} (10.25,7);
+% \end{tikzpicture}
+% \caption{A coloração de $H$ corresponde a uma $t$-coloração de $L^r(D)$ sem $K_{d,d}$ monocromático, e por meio de aplicações sucessivas do Lema, obtemos uma $t'$-coloração de $D$ sem $K_{t',t'}$ monocromático.}
+% \label{fig:shiftsequence}
+% \end{figure}
 
 Mas $L^0(D) = D$, e note que todo conjunto de $2d'$ vértices de $D$ é um $K_{d',d'}$, então concluímos que existe uma $t'$ coloração de $D$ tal que nenhuma cor ocorre $2d'$ vezes, uma contradição pois se~$n \geq t'(2d'-1)+1$, pelo princípio da casa dos pombos, alguma cor ocorre pelo menos $2d'$ vezes.
 
