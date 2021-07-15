@@ -228,11 +228,13 @@ A seguir, um esboço da demonstração de que os \textit{shift graphs} respeitam
 
 Queremos mostrar que o número cromático de $H$ não é limitado por uma constante, ou seja, que $\chi(H) \rightarrow \infty$ conforme $n \rightarrow \infty$.
 
-Mostraremos que se temos uma $t$-coloração de $S_n^r$ sem $K_{d,d}$ monocromático, existe uma $2^t$-coloração de $S_n^{r-1}$ sem $K_{td,td}$ monocromático. E logo existe uma $t'$-coloração de $S_n^i$ sem $K_{d',d'}$ monocromático para cada $i\in [0,r]$, para algum par de inteiros $t'$ e $d'$.
+Mostraremos que se temos uma $t$-coloração de $S_n^r$ sem $K_{d,d}$ monocromático, então existe uma $2^t$-coloração de $S_n^{r-1}$ sem $K_{td,td}$ monocromático. E logo existe uma $2^{2^t}$-coloração de $S_n^{r-2}$ sem~$K_{2^ttd,2^ttd}$ monocromático, e assim sucessivamente.
 
 Uma coloração própria de $H$ é uma coloração de $S_n^r$ sem $K_{d,d}$ monocromático. Então se $H$ tem número cromático limitado por constante, então em particular, existem constantes $t'$ e $d'$ tais que~$S_n^0$ pode ser colorido com $t'$ cores sem $K_{d',d'}$ monocromático para todo $n$.
 
-Mas como $S_n^0$ é isomorfo ao $K_n$, então temos constantes $t'$ e $d'$ tais que existe uma $t'$-coloração de~$K_n$ sem $K_{d',d'}$ monocromático para todo $n$. Contradição, pois note que um conjunto de $2d'$ vértices coloridos com uma mesma cor é um $K_{d',d'}$ monocromático, e com apenas $t' < \infty$ cores, alguma cor ocorre pelo menos $2d'$ vezes. Logo o número cromático de $H$ não é limitado por uma constante.
+Mas como $S_n^0$ é isomorfo ao $K_n$, então temos constantes $t'$ e $d'$ tais que existe uma $t'$-coloração de~$K_n$ sem $K_{d',d'}$ monocromático para todo $n$. Contradição, pois se $n \geq t'(2d'-1)+1$, alguma cor ocorre pelo menos $2d'$ vezes, e note que todo conjunto de $2d'$ vértices de $K_n$ contém um $K_{d',d'}$, logo temos um $K_{d',d'}$ monocromático. Portanto o número cromático de $H$ não é limitado por uma constante.
+
+%pois note que um conjunto de $2d'$ vértices coloridos com uma mesma cor é um $K_{d',d'}$ monocromático, e com apenas $t' < \infty$ cores, alguma cor ocorre pelo menos $2d'$ vezes. Logo o número cromático de $H$ não é limitado por uma constante.
 
 %Uma coloração própria de $H$ é uma coloração de $S_n^r$ sem $K_{d,d}$ monocromático. Então suponha que o número cromático de $H$ é limitado por uma constante, existem constantes $t'$ e $d'$ tais que $S_n^i$ pode ser $t'$-colorido sem $K_{d',d'}$ monocromático, em particular, existe tal coloração para $S_n^0 = D$. Contradição, pois note que um conjunto de $2d'$ vértices coloridos com uma mesma cor é um $K_{d',d'}$ monocromático em $D$, e com apenas $t' < \infty$ cores, alguma cor ocorre pelo menos $2d'$ vezes em $D$ conforme $n\rightarrow\infty$. Logo o número cromático de $H$ não é limitado por uma contante.
 
